@@ -5,7 +5,9 @@
 <%@ page import = "java.sql.SQLException" %>
 <%@ page import = "java.sql.Connection" %>
 <%@ page import = "java.sql.ResultSet" %>
+<%@ page import = "java.sql.PreparedStatement" %>
 <%@ page import = "service.Singer" %>
+
 
 
 singerList <br>
@@ -18,8 +20,6 @@ singerList <br>
 	Connection conn = null;
 	ResultSet rs = null;
 
-	try{
-	
 		Class.forName("com.mysql.jdbc.Driver"); 
 		String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?" + "useUnicode=true&characterEncoding=euckr";
 		String dbUser = "root";
@@ -31,7 +31,7 @@ singerList <br>
 		pstmt = conn.prepareStatement("select * from tb_user");
 		rs = pstmt.executeQuery();
 		
-	} while(rs.next()){
+	 while(rs.next()){
 %>
 		<tr>
 			<td><%= rs.getString(" singer_id")%></td>
@@ -39,14 +39,6 @@ singerList <br>
 			<td><%= rs.getString("singer_age")%></td>
 		</tr>
 <%
-	} catch(SQLException ex) {
-		out.println(ex.getMessage());
-		ex.printStackTrace();
-		
-		} finally {
-			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
-			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
-			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
-		}
+	}
 %>
 </table>

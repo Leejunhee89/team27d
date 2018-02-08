@@ -1,8 +1,8 @@
 package service;
 
-<<<<<<< HEAD
+
 public class Rapper { //CRUD 유국화 1
-=======
+
 public class Rapper { //CRUD 유국화
 	private String rapperId;
 	private String rapperName;
@@ -26,6 +26,6 @@ public class Rapper { //CRUD 유국화
 	public void setRapperAge(String rapperAge) {
 		this.rapperAge = rapperAge;
 	}
->>>>>>> branch 'master' of https://github.com/Leejunhee89/team27d
+
 
 }

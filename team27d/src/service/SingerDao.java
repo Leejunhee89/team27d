@@ -4,7 +4,7 @@ public class SingerDao {
 
 
 	
-	public void singer() {
+	public void selectSingerList() {
 		
 
 	}

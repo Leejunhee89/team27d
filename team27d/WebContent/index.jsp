@@ -7,6 +7,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-	hello
+	팀명 : team27d
+팀원 :이춘림 역할 ex) actor CRUD
+팀원 :이춘림 역할 ex) actor CRUD
+팀원 :이춘림 역할 ex) actor CRUD
+팀원 :이춘림 역할 ex) actor CRUD
+팀원 :이춘림 역할 ex) actor CRUD
+
+<ul>
+   <li>actor list</li> 
+   <li>actoress list</li> 
+   <li>anaunseo list</li> 
+   <li>comedian list</li>
+   <li>rapper list</li>
+   <li>singer list</li>
+</ul>
+	
+	
 </body>
 </html>

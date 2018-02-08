@@ -24,7 +24,8 @@ singerList <br>
 		
 		pstmt = conn.prepareStatement("select * from tb_user");
 		rs = pstmt.executeQuery();
-		}while(rs.next()){
+		
+		while(rs.next()){
 %>
 		<tr>
 			<td><%= rs.getString("singer_id")%></td>
@@ -39,7 +40,7 @@ singerList <br>
 		conn.close();
 		pstmt.close();
 		
-	}
-}
+		}
+	
 
 %>

@@ -6,27 +6,28 @@
 <title>Insert title here</title>
 </head>
 <body>
-   <table> 
-      <tr>   
-         <td>ÆÀ¸í : team27d</td><br>
-      </tr>
-      <tr>
-         <td>ÆÀÀå :ÀÌÁØÈñ ¿ªÇÒ: actor,actoress CRUD</td>
-      </tr>
-      <tr>
-         <td>ÆÀ¿ø :ÀÌÃá¸² ¿ªÇÒ: anaunseo CRUD</td>
-      </tr>
-      <tr>
-         <td>ÆÀ¿ø :¹æ¹Î¿µ ¿ªÇÒ: comedian CRUD</td>
-      </tr>
-      <tr>
-         <td>ÆÀ¿ø :À¯±¹È­ ¿ªÇÒ: rapper CRUD</td>
-      </tr>
-      <tr>
-         <td>ÆÀ¿ø :³ªÀ±ÁÖ ¿ªÇÒ: singer CRUD</td>
-      </tr>
-   </table>
+		<table> 
+		   <tr>   
+		      <td>ÆÀ¸í : team27d</td><br>
+		   </tr>
+		   <tr>
+		      <td>ÆÀÀå :ÀÌÁØÈñ ¿ªÇÒ: actor,actoress CRUD</td>
+		   </tr>
+		   <tr>
+		      <td>ÆÀ¿ø :ÀÌÃá¸² ¿ªÇÒ: anaunseo CRUD</td>
+		   </tr>
+		   <tr>
+		      <td>ÆÀ¿ø :¹æ¹Î¿µ ¿ªÇÒ: comedian CRUD</td>
+		   </tr>
+		   <tr>
+		      <td>ÆÀ¿ø :À¯±¹È­ ¿ªÇÒ: rapper CRUD</td>
+		   </tr>
+		   <tr>
+		      <td>ÆÀ¿ø :³ªÀ±ÁÖ ¿ªÇÒ: singer CRUD</td>
+		   </tr>
+		</table>
    
+<<<<<<< HEAD
    <ul>
       <li><a href="<%= request.getContextPath() %>/#/#">actor list</a></li> 
       <li><a href="<%= request.getContextPath() %>/#/#">actoress list</a></li> 
@@ -35,5 +36,15 @@
       <li><a href="<%= request.getContextPath() %>/#/#">rapper list</a></li>
       <li><a href="<%= request.getContextPath() %>/singerList.jsp">singer list</a></li>
    </ul>   
+=======
+		<ul>
+		   <li><a href="<%= request.getContextPath() %>/#/#">actor list</a></li> 
+		  <li><a href="<%= request.getContextPath() %>/#/#">actoress list</a></li> 
+		  <li><a href="<%= request.getContextPath() %>/#/#">anaunseo list</a></li> 
+		  <li><a href="<%= request.getContextPath() %>/#/#">comedian list</a></li>
+		  <li><a href="<%= request.getContextPath() %>/#/#">rapper list</a></li>
+		  <li><a href="<%= request.getContextPath() %>/#/#">singer list</a></li>
+		</ul>   
+>>>>>>> branch 'master' of https://github.com/Leejunhee89/team27d
 </body>
 </html>

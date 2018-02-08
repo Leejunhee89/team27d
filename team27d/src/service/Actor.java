@@ -1,27 +1,28 @@
 package service;
 
 public class Actor {
-	private int actor_id;
-	private String actor_name;
-	private int actor_age;
-	public int getActor_id() {
-		return actor_id;
+	private int actorId;
+	private String actorName;
+	private int actorAge;
+	public int getActorId() {
+		return actorId;
 	}
-	public void setActor_id(int actor_id) {
-		this.actor_id = actor_id;
+	public void setActorId(int actorId) {
+		this.actorId = actorId;
 	}
-	public String getActor_name() {
-		return actor_name;
+	public String getActorName() {
+		return actorName;
 	}
-	public void setActor_name(String actor_name) {
-		this.actor_name = actor_name;
+	public void setActorName(String actorName) {
+		this.actorName = actorName;
 	}
-	public int getActor_age() {
-		return actor_age;
+	public int getActorAge() {
+		return actorAge;
 	}
-	public void setActor_age(int actor_age) {
-		this.actor_age = actor_age;
+	public void setActorAge(int actorAge) {
+		this.actorAge = actorAge;
 	}
+	
 	  
 }    
   

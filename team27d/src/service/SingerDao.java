@@ -11,9 +11,9 @@ public class SingerDao {
 	Connection conn = null;
 	ResultSet rs = null;
 	
-	public void selectSingerList(Singer list) {
+	public void selectSingerList(Singer list, Connection conn) {
 		
-			try {
+
 			Class.forName("com.mysql.jdbc.Driver"); 
 			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?" + "useUnicode=true&characterEncoding=euckr";
 			String dbUser = "root";
@@ -21,18 +21,8 @@ public class SingerDao {
 			
 			conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			
+			
 			pstmt = conn.prepareStatement("select * from tb_user");
 			rs = pstmt.executeQuery();
 			
-			}finally{
-			rs.close();
-			conn.close();
-			pstmt.close();
-			
-			}
-		
-
-	%>
-
-	}
 }

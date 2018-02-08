@@ -33,7 +33,7 @@
       <li><a href="<%= request.getContextPath() %>/#/#">anaunseo list</a></li> 
       <li><a href="<%= request.getContextPath() %>/#/#">comedian list</a></li>
       <li><a href="<%= request.getContextPath() %>/#/#">rapper list</a></li>
-      <li><a href="<%= request.getContextPath() %>/#/#">singer list</a></li>
+      <li><a href="<%= request.getContextPath() %>/singerList.jsp">singer list</a></li>
    </ul>   
 </body>
 </html>

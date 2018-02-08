@@ -8,19 +8,19 @@
 </head>
 <body>
 	팀명 : team27d
-팀원 :이춘림 역할 ex) actor CRUD
-팀원 :이춘림 역할 ex) actor CRUD
-팀원 :이춘림 역할 ex) actor CRUD
-팀원 :이춘림 역할 ex) actor CRUD
-팀원 :이춘림 역할 ex) actor CRUD
+팀장 :이준희 역할: actor,actoress CRUD
+팀원 :이춘림 역할: anaunseo CRUD
+팀원 :방민영 역할: comedian CRUD
+팀원 :유국화 역할: rapper CRUD
+팀원 :나윤주 역할: singer CRUD
 
 <ul>
-   <li>actor list</li> 
-   <li>actoress list</li> 
-   <li>anaunseo list</li> 
-   <li>comedian list</li>
-   <li>rapper list</li>
-   <li>singer list</li>
+   <li><a href="<%= request.getContextPath() %>/#/#">actor list</a></li> 
+   <li><a href="<%= request.getContextPath() %>/#/#">actoress list</a></li> 
+   <li><a href="<%= request.getContextPath() %>/#/#">anaunseo list</a></li> 
+   <li><a href="<%= request.getContextPath() %>/#/#">comedian list</a></li>
+   <li><a href="<%= request.getContextPath() %>/#/#">rapper list</a></li>
+   <li><a href="<%= request.getContextPath() %>/#/#">singer list</a></li>
 </ul>
 	
 	

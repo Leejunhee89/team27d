@@ -22,6 +22,6 @@ public class Actor {
 	public void setActor_age(int actor_age) {
 		this.actor_age = actor_age;
 	}
-	
+	  
 }    
   

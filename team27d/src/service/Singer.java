@@ -1,5 +1,5 @@
 package service;
 
-public class Singer {
+public class Singer { //³ªÀ±ÁÖ
 
 }

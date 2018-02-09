@@ -46,9 +46,9 @@ public class AnaunseoDao {
 			System.out.println(e.getMessage	());
 			System.out.println("예외발생");
 		}finally {
-			if(rs!=null) try{ rs.close();} catch(SQLException ex) {}
-			if(pstmt!=null) try{ pstmt.close();} catch(SQLException ex) {}
-			if(conn!=null) try{ conn.close();} catch(SQLException ex) {}
+			if(rs!=null) try{ rs.close(); rs = null; } catch(SQLException ex) {}
+			if(pstmt!=null) try{ pstmt.close(); pstmt = null; } catch(SQLException ex) {}
+			if(conn!=null) try{ conn.close(); conn = null; } catch(SQLException ex) {}
 		}
 		//세팅된 어레이 리스트의 주소를 리턴
 		return arrAnaunseo;

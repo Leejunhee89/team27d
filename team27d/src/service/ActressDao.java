@@ -36,7 +36,7 @@ public class ActressDao {
 			// 드라이버로딩에 필요한 정보들을 입력해준다.
 			// DB연결에 conn = DriverManager.getConnection 문장도 트라이 케치문으로 감싼다. 이유) 정보가 틀릴 예외를 잡아준다.
 			
-			pstmt = conn.prepareStatement("select actress_id, actress_name, actress_age from actress"); 
+			pstmt = conn.prepareStatement("select actress_id as actressId, actress_name as actressName, actress_age as actressAge from actress"); 
 			// 어떤 쿼리문을 쓸지 문장을 준비한다.
 			result = pstmt.executeQuery();
 			// 쿼리문을 실행
@@ -47,13 +47,13 @@ public class ActressDao {
 				// 쿼리문장에서 실행된 값이 Actor 클래스에 겟팅되고 셋팅된다. 그 값들이 배열에 담긴다.
 				
 				Actress actress = new Actress();
-				String actressId = result.getString("actor_id");
-				String actressName = result.getString("actress_name");	
-				String actressAge = result.getString("actress_age");
+				int actressId = result.getInt("actressId");
+				String actressName = result.getString("actressName");	
+				int actressAge = result.getInt("actressAge");
 				
-				actress.setActressId(Integer.parseInt(actressId));
+				actress.setActressId(actressId);
 				actress.setActressName(actressName);
-				actress.setActressAge(Integer.parseInt(actressAge));
+				actress.setActressAge(actressAge);
 				arrayActress.add(actress);
 				
 								

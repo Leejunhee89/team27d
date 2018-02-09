@@ -55,27 +55,26 @@ public class ComedianDao {
 				comedian.setComedianName(resultSet.getString("comedianName"));
 				comedian.setComedianAge(resultSet.getInt("comedianAge"));
 				list.add(comedian);
-				
-			/*statement변수에 값이 담겨있으면 PreparedStatement객체를 종료한다.
-			 *connection변수에 값이 담겨있으면 Connection객체를 종료한다.
-			 *resultSet변수에 값이 담겨있으면 ResultSet객체를 종료한다.
-			 */
-			if(statement!=null) {statement.close();}
-			if(connection!=null) {connection.close();}
-			if(resultSet!=null) {resultSet.close();}
-			}
+			}	
 			
 		/*Class.forName메소드의 예외를 catch문을 통해 잡아내어 printStackTrace메소드로 예외를 알려준다.
 		 *SQL예외를 catch문을 통해 잡아내어 printStackTrace메소드로 예외를 알려준다.
 		 *finally문을 통해 list변수에 담긴 ArrayList<Comedian>주소를 리턴한다.
+		 *statement변수에 값이 담겨있으면 PreparedStatement객체를 종료한다.
+		 *connection변수에 값이 담겨있으면 Connection객체를 종료한다.
+		 *resultSet변수에 값이 담겨있으면 ResultSet객체를 종료한다.
 		 */
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
 			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			return list;
-		}
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				
+			}finally {
+				if(statement!=null) {try {statement.close();} catch (SQLException e) {e.printStackTrace();}}
+				if(connection!=null) {try {connection.close();} catch (SQLException e) {e.printStackTrace();}}
+				if(resultSet!=null) {try {resultSet.close();} catch (SQLException e) {e.printStackTrace();}}
+			}
+		return list;
 	}
 }

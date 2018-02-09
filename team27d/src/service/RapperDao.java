@@ -1,16 +1,19 @@
 package service;
 
-public class RapperDao { //CRUD À¯±¹È­
+import java.util.ArrayList;
+
+public class RapperDao {
 
 	public static void main(String[] args) {
 		
 	}
 	
-	public Rapper selectRapperList(Rapper rap) {
+	public ArrayList<String> selectRapperList() {
+		ArrayList<String> list = new ArrayList<String>();
+		Rapper rap = new Rapper();
 		rap.getRapperId();
 		rap.getRapperName();
 		rap.getRapperAge();
-		return rap;
+		return list;
 	}
-
 }

@@ -2,13 +2,13 @@ package service;
 
 public class Comedian {
 
-	private String comedianId;
+	private int comedianId;
 	private String comedianName;
-	private String comedianAge;
-	public String getComedianId() {
+	private int comedianAge;
+	public int getComedianId() {
 		return comedianId;
 	}
-	public void setComedianId(String comedianId) {
+	public void setComedianId(int comedianId) {
 		this.comedianId = comedianId;
 	}
 	public String getComedianName() {
@@ -17,12 +17,11 @@ public class Comedian {
 	public void setComedianName(String comedianName) {
 		this.comedianName = comedianName;
 	}
-	public String getComedianAge() {
+	public int getComedianAge() {
 		return comedianAge;
 	}
-	public void setComedianAge(String comedianAge) {
+	public void setComedianAge(int comedianAge) {
 		this.comedianAge = comedianAge;
 	}
-	
 	
 }

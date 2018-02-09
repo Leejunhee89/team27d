@@ -36,14 +36,16 @@ public class ComedianDao {
 				comedian.setComedianAge(resultSet.getInt("comedian_age"));
 				arrayComedian.add(comedian);
 				
+			if(preparedStatement!=null) {preparedStatement.close();}
+			if(connection!=null) {connection.close();}
 			}
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			return arrayComedian;
 		}
-		
-		return arrayComedian;
 	}
 }

@@ -59,11 +59,11 @@ public class AnaunseoDao {
 		return isUpdate;
 	}
 	
-	public ArrayList<Anaunseo> selectActorList() throws SQLException {
+	public ArrayList<Anaunseo> selectActorList() {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		Anaunseo ana = null;
+		
 		//아나운서를 넣을수 있는 어레이 리스트 생성
 		ArrayList<Anaunseo> list = new ArrayList<Anaunseo>();
 		
@@ -79,8 +79,12 @@ public class AnaunseoDao {
 			//anaunseo_id anaunseoId : 가능
 			//anaunseo_id "anaunseoId" : 가능
 			//위의 주석 코드는  별명 붙이는 것이다
-			String sql = "SELECT anaunseo_id as anaunseoId, anaunseo_name as anaunseoName,"
-							+ " anaunseo_age as anaunseoAge FROM anaunseo";
+			// 쿼리 한줄로....
+			String sql = "SELECT "
+					+ "			anaunseo_id as anaunseoId"
+					+ "			, anaunseo_name as anaunseoName"
+					+ "			,anaunseo_age as anaunseoAge "
+					+ "FROM anaunseo";
 			
 			conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			//쿼리 준비
@@ -89,12 +93,12 @@ public class AnaunseoDao {
 			rs = pstmt.executeQuery();
 			//rs에  레코드 없을때까지 DB에 저장된 값 ana에 세팅 후 세팅된 ana를 어레이리스트에 저장
 			while(rs.next()) {
-				ana = new Anaunseo();
-				ana.setAnaunseoId( rs.getInt("anaunseoId") );
-				ana.setAnaunseoName( rs.getString("anaunseoName") );
-				ana.setAnaunseoAge( rs.getInt("anaunseoAge") );
+				Anaunseo anaunseo = new Anaunseo();
+				anaunseo.setAnaunseoId( rs.getInt("anaunseoId") );
+				anaunseo.setAnaunseoName( rs.getString("anaunseoName") );
+				anaunseo.setAnaunseoAge( rs.getInt("anaunseoAge") );
 				
-				list.add(ana);
+				list.add(anaunseo);
 			}
 			//단위테스트 코드
 			System.out.println(list.size() + "<=== 단위테스트 코드");

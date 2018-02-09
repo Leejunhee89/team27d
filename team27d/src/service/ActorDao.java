@@ -25,7 +25,6 @@ public class ActorDao {
 		ResultSet result = null;
 				
 		try {
-			
 			Class.forName("com.mysql.jdbc.Driver");
 			/*드라이버로딩을 위해 Class.forName 을 트라이 캐치문으로 감싼다. 이유) 정보가 틀릴 예외를 잡아준다.
 			 *드라이버로딩에 필요한 정보들을 입력해준다.
@@ -41,13 +40,10 @@ public class ActorDao {
 			// 쿼리문을 실행
 			pstmt = conn.prepareStatement(sql); 
 			result = pstmt.executeQuery();
-			
-			
-			
+
 			while(result.next()) {
 				// 만약 예외가 생기지 않고 실행이 된다면 while(result.next()) 문장이 실행 될것이다.
-				// 쿼리문장에서 실행된 값이 Actor 클래스에 겟팅되고 셋팅된다. 그 값들이 배열에 담긴다.
-				
+				// 쿼리문장에서 실행된 값이 Actor 클래스에 겟팅되고 셋팅된다. 그 값들이 배열에 담긴다.			
 				Actor actor = new Actor();
 				int actorId = result.getInt("actorId");
 				String actorName = result.getString("actorName");	
@@ -56,15 +52,10 @@ public class ActorDao {
 				actor.setActorId(actorId);
 				actor.setActorName(actorName);
 				actor.setActorAge(actorAge);
-				list.add(actor);
-				
-								
-						
+				list.add(actor);		
 			}
-		
 			//단위테스트 : 배열이나 기타 리턴값에 값이 잘들어갔는지 확인하기 위한 테스트(입력만 할때 toString을 활용하여 활용할수있다.)
 			System.out.println(list.size());
-		
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -75,8 +66,7 @@ public class ActorDao {
 			if (result != null) try {result.close();} catch (SQLException ex) {}
 			if (pstmt != null) try {pstmt.close();} catch (SQLException ex) {}
 			if (conn != null) try {conn.close();} catch (SQLException ex) {}
-		}
-				
+		}			
 		return list;
 	}	
 }

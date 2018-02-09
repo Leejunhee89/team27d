@@ -32,7 +32,7 @@
 		      <td><img  src="/team27d/image/kong.JPG" width="100" height="150"> </td>
 		   </tr>
 		</table>
-   
+    
 
    <ul>
       <li><a href="/team27d/actorList.jsp">actor list</a></li> 

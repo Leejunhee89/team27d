@@ -21,7 +21,7 @@ ArrayList<Anaunseo> list = anaDao.selectActorList();
 <title>Insert title here</title>
 </head>
 <body>
-
+   
 <h1>아나운서 리스트</h1>
 <table border = "1">
 	<tr>

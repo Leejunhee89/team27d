@@ -13,24 +13,23 @@
 <body>
 	<h1>래퍼 리스트</h1>
 	<%
-		//래퍼 dao클래스 객체 생성
 		RapperDao rapperdao = new RapperDao();
-		//래퍼를 타입으로 리스트 객체 생성
 		ArrayList<Rapper> rapperlist = new ArrayList<Rapper>();
-		//래퍼 dao 객체 내에 있는 메서드 호출를 호출해서 리스트에 담음
 		rapperlist = rapperdao.selectRapperList();
 	%>
 	<table border="1">
-		<tr>
-			<th>아이디</th><th>이름</th><th>나이</th>
-		<tr>
+		<thead>
+			<tr>
+				<th>아이디</th>
+				<th>이름</th>
+				<th>나이</th>
+			<tr>
+		</thead>
+		<tbody>
 		<%
 			for(Rapper rap : rapperlist){ 
 		%>
 			<tr>
-				<%
-					System.out.println(rap + "<----for문 실행"); 
-				%>		
 				<td><%=rap.getRapperId()%></td>
 				<td><%=rap.getRapperName()%></td>
 				<td><%=rap.getRapperAge()%></td>
@@ -38,6 +37,7 @@
 		<%
 			}
 		%>
+		</tbody>
 	</table>
 </body>
 </html>

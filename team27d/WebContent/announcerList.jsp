@@ -22,10 +22,10 @@ ArrayList<Anaunseo> list = anaDao.selectActorList();
 </head>
 <body>
 
-<p>아나운서 리스트</p>
+<h1>아나운서 리스트</h1>
 <table border = "1">
 	<tr>
-		<td>아나운서 ID</td><td>아나운서 NAME</td><td>아나운서 AGE</td>
+		<th>아나운서 ID</th><th>아나운서 NAME</th><th>아나운서 AGE</th>
 	</tr>
 	<%
 	// list를 순차탐색하면서 list에 들어있는 Anaunseo를 하나하나 참조한다. 

@@ -20,25 +20,28 @@ public class SingerDao {
 	public ArrayList<Singer> selectSingerList() {
 		
 		ArrayList<Singer> list = new ArrayList<Singer>();
-		
+		/* ArrayList<Singer> 주소값을 담고있는 객체참조변수 list를 할당.*/
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-			
+		/*db 연결 및 실행을 위한 기본값 설정*/	
+		
 		try {
-			//db로딩
+			/*db로딩*/
 			Class.forName("com.mysql.jdbc.Driver"); 
-			//db연결
+			
+			/*db연결*/
  			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
  			String dbUser = "root";
  			String dbPass = "java0000";
-			//쿼리 실행
+ 			
+ 			/*쿼리 실행*/
 			String sql = "select singer_id as singerId, singer_name as singerName, singer_age as singerAge from singer";
 			
 			conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			
 			pstmt = conn.prepareStatement(sql);
-			//쿼리실행결과 사용
+			/*쿼리실행결과 사용*/
 			rs = pstmt.executeQuery();
 			
 		while(rs.next()){
@@ -47,7 +50,9 @@ public class SingerDao {
 				sing.setSingerName(rs.getString("singerName"));
 				sing.setSingerAge(rs.getInt("singerAge"));
 				list.add(sing);
-				//결과값을 셋팅 및 겟딩 해줌.
+				/*Singer.java의 주소를 담고있는 sing 객체참조변수 생성. sing을 통해 데이터값을 셋팅 및 겟팅해준다.
+				 * 설정된 값을  list에 sing을 add해준다. 
+				 * */
 				}
 		}catch(ClassNotFoundException e){ 
 			//ClassNotFoundException 예외발생시 캐치절 매개변수로 넘겨줌

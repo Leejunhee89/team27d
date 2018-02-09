@@ -16,16 +16,20 @@
 
 <html>
 <body>
-	<table>
+	<table border="1">
 		<tr>
-		<th>id</th><th>name</th><th>age</th>
+		<th>아이디</th>
+		<th>이름</th>
+		<th>나이</th>
 		</tr> 
 		
 		<%
 			for(Singer sin : list){
 		%>
 		<tr>
-		<td><%=sin.getSingerId()%></td><td><%=sin.getSingerName()%></td><td><%=sin.getSingerAge()%></td>
+		<td><%=sin.getSingerId()%></td>
+		<td><%=sin.getSingerName()%></td>
+		<td><%=sin.getSingerAge()%></td>
 		</tr>
 		<!-- for절을 이용해 Singer list를 호출 -->
 		<%

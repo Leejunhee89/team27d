@@ -22,8 +22,7 @@ public class AnaunseoDao {
 			//DB로딩
 			Class.forName("com.mysql.jdbc.Driver");
 			//DB연결
-			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?" +
-					"useUnicode=true&characterEncoding=euckr";
+			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
 			String dbUser = "root";
 			String dbPass = "java0000";
 			String sql = "INSERT INTO anaunseo VALUES(?, ?, ?)";
@@ -34,7 +33,7 @@ public class AnaunseoDao {
 			prepareStatement.setString(2, anaunseo.getAnaunseoName());
 			prepareStatement.setInt(3, anaunseo.getAnaunseoAge());
 			
-			isUpdate =prepareStatement.executeUpdate();
+			isUpdate = prepareStatement.executeUpdate();
 			
 		} catch(ClassNotFoundException e){
 			e.printStackTrace();
@@ -71,20 +70,15 @@ public class AnaunseoDao {
 			//DB로딩
 			Class.forName("com.mysql.jdbc.Driver");
 			//DB연결
-			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?" +
-					"useUnicode=true&characterEncoding=euckr";
+			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
 			String dbUser = "root";
 			String dbPass = "java0000";
 			//anaunseo_id as anaunseoId : as는 생략가능하다
 			//anaunseo_id anaunseoId : 가능
 			//anaunseo_id "anaunseoId" : 가능
 			//위의 주석 코드는  별명 붙이는 것이다
-			// 쿼리 한줄로....
-			String sql = "SELECT "
-					+ "			anaunseo_id as anaunseoId"
-					+ "			, anaunseo_name as anaunseoName"
-					+ "			,anaunseo_age as anaunseoAge "
-					+ "FROM anaunseo";
+			// 쿼리 한줄로....<ok>
+			String sql = "SELECT anaunseo_id AS anaunseoId, anaunseo_name AS anaunseoName, anaunseo_age AS anaunseoAge FROM anaunseo ORDER BY anaunseo_id ASC";
 			
 			conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			//쿼리 준비

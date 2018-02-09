@@ -4,13 +4,14 @@
 <%@ page import = "java.util.ArrayList" %>
 <%@ page import = "service.Anaunseo" %>
 <!DOCTYPE html PUBLIC >
+
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	<title>Insert title here</title>
 </head>
 <body>
-<h1>아나운서 리스트</h1>
+	<h1>아나운서 리스트</h1>
 <%
 	//selectActorList() 메서드를 실행하기 위해 선행되어야 할 AnaunseoDao 객체를 먼저 생성하는 부분.
 	AnaunseoDao anaDao = new AnaunseoDao();

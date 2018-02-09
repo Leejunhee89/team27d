@@ -15,14 +15,20 @@
 <!-- SingerDao의 주소가 할당된 singerdao변수를 선언. Singer의 배열을 list로 선언 list를 통해 SingerDao.java 안의 selectSingerList()메서드 호출  -->
 
 <html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
+</head>
 <body>
-	<table border="1">
-		<tr>
-		<th>아이디</th>
-		<th>이름</th>
-		<th>나이</th>
-		</tr> 
-		
+
+<img src = "<%=request.getContextPath()%>/image/kong.jpg" title = "나윤주" width = "400" height = "400">
+
+<p>가수 리스트</p>
+<table border = "1">
+	<tr>
+		<td>가수 ID</td><td>가수 NAME</td><td>가수 AGE</td>
+	</tr>
+	
 		<%
 			for(Singer sin : list){
 		%>

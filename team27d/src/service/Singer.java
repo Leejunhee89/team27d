@@ -1,14 +1,14 @@
+/*team27d[³ªÀ±ÁÖ]*/
 package service;
 
 public class Singer { //³ªÀ±ÁÖ
-	private String singerId;
+	private int singerId;
 	private String singerName;
-	private String singerAge;
-	
-	public String getSingerId() {
+	private int singerAge;
+	public int getSingerId() {
 		return singerId;
 	}
-	public void setSingerId(String singerId) {
+	public void setSingerId(int singerId) {
 		this.singerId = singerId;
 	}
 	public String getSingerName() {
@@ -17,13 +17,15 @@ public class Singer { //³ªÀ±ÁÖ
 	public void setSingerName(String singerName) {
 		this.singerName = singerName;
 	}
-	public String getSingerAge() {
+	public int getSingerAge() {
 		return singerAge;
 	}
-	public void setSingerAge(String singerAge) {
+	public void setSingerAge(int singerAge) {
 		this.singerAge = singerAge;
 	}
-	
-	
+	@Override
+	public String toString() {
+		return "Singer [singerId=" + singerId + ", singerName=" + singerName + ", singerAge=" + singerAge + "]";
+	}
 
 }

@@ -24,7 +24,7 @@ public class Rapper {
 		this.rapperAge = rapperAge;
 	}
 	@Override
-	public String toString() {
+	public String toString() { //세팅값 확인을 위한 toString메서드 (Source - Generate toString() 클릭)
 		return "Rapper [rapperId=" + rapperId + ", rapperName=" + rapperName + ", rapperAge=" + rapperAge + "]";
 	}	
 }

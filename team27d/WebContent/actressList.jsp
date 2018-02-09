@@ -29,11 +29,9 @@
 		<td><%= actress.getActressId() %></td><td><%= actress.getActressName() %></td><td><%= actress.getActressAge() %></td>
 	</tr>
   
-
-
 <% 
 }
 %>
-
+</table>
 </body>
 </html>

@@ -1,12 +1,22 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<% request.setCharacterEncoding("euc-kr"); %>
+<%@ page import = "service.Comedian" %>
 
-</body>
-</html>
+<%
+Comedian comedian=null;
+%>
+
+<table border="1">
+	<tr>
+		<td>코미디언 아이디</td>
+		<td>코미디언 이름</td>
+		<td>코미디언 나이</td>
+	</tr>
+	<tr>
+		<td><%=comedian.getComedianId() %></td>
+		<td><%=comedian.getComedianName() %></td>
+		<td><%=comedian.getComedianAge() %></td>
+	</tr>
+
+</table>

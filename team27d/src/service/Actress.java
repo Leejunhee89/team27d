@@ -23,6 +23,10 @@ public class Actress {
 	public void setActressAge(int actressAge) {
 		this.actressAge = actressAge;
 	}
+	@Override
+	public String toString() {
+		return "Actress [actressId=" + actressId + ", actressName=" + actressName + ", actressAge=" + actressAge + "]";
+	}
 	
 	
 }

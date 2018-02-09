@@ -22,8 +22,6 @@ ArrayList<Anaunseo> list = anaDao.selectActorList();
 </head>
 <body>
 
-<img src = "<%=request.getContextPath()%>/image/tam.jpg" title = "이춘림" width = "400" height = "400">
-
 <p>아나운서 리스트</p>
 <table border = "1">
 	<tr>

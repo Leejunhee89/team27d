@@ -1,3 +1,4 @@
+<!-- team27d [이춘림] -->
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ page import = "service.AnaunseoDao" %>
 <%@ page import = "java.util.ArrayList" %>
@@ -5,13 +6,14 @@
 <!DOCTYPE html PUBLIC >
 
 <%
-
-AnaunseoDao ana = new AnaunseoDao();
-//selectActorList()매서드 결과로 반환된 ArrayList<Anaunseo>형 주소값을 arrAnaunseo로 받는다.
-ArrayList<Anaunseo> arrAnaunseo = ana.selectActorList();
+//selectActorList() 메서드를 실행하기 위해 선행되어야 할 AnaunseoDao 객체를 먼저 생성하는 부분.
+AnaunseoDao anaDao = new AnaunseoDao();
+//selectActorList()매서드 결과로 반환된 ArrayList<Anaunseo>형 주소값을 List로 받는다.
+//selectActorList()메서드 안에서 생성된 ArrayList<Anaunseo>형 객체의 주소를 리턴하여, 
+//주소를 담을 수 있는 객체참조변수인 list에 저장되었다.
+ArrayList<Anaunseo> list = anaDao.selectActorList();
 
 %>
-
 
 <html>
 <head>
@@ -26,21 +28,19 @@ ArrayList<Anaunseo> arrAnaunseo = ana.selectActorList();
 		<td>아나운서 ID</td><td>아나운서 NAME</td><td>아나운서 AGE</td>
 	</tr>
 	<%
-	//arrAnaunseo 리스트를 순차탐색하면서 리스트에 들어있는 Anaunseo를 하나하나 참조한다. 
+	// list를 순차탐색하면서 list에 들어있는 Anaunseo를 하나하나 참조한다. 
 	//그리고 get메서드를 통해서 ID, NAME, AGE 정보를 가져온다.
-	for(Anaunseo anaun : arrAnaunseo){
+	for(Anaunseo anaun : list){
 	%>
 		<tr>
-			<td><%=anaun.getAnaunseoId() %></td><td><%=anaun.getAnaunseoName() %></td><td><%=anaun.getAnaunseoAge() %></td>
+			<td><%=anaun.getAnaunseoId() %></td>
+			<td><%=anaun.getAnaunseoName() %></td>
+			<td><%=anaun.getAnaunseoAge() %></td>
 		</tr>
 	<%
 	}
 	%>
 </table>
-
-
-
-
 
 </body>
 </html>

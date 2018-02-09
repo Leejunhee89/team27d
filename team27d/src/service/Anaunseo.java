@@ -1,3 +1,4 @@
+// team27d [이춘림]
 package service;
 
 public class Anaunseo {
@@ -24,5 +25,10 @@ public class Anaunseo {
 		this.anaunseoAge = anaunseoAge;
 	}
 
-	
+	//단위 테스트를 하기 위해 toString()메서드를 오버라이딩 하였다.
+	@Override
+	public String toString() {
+		return "Anaunseo [anaunseoId=" + anaunseoId + ", anaunseoName=" + anaunseoName + ", anaunseoAge=" + anaunseoAge
+				+ "]";
+	}
 }

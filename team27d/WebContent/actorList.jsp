@@ -16,7 +16,6 @@
 </head>
 <body>
 
-<img src="<%= request.getContextPath() %>/image/niche.jpg" width="300" height="350">
 <h1>남배우 리스트</h1>
 
 <table border ="1">

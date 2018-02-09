@@ -16,7 +16,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+   
 <h1>여배우 리스트</h1>
 <table border ="1">
 	<tr>

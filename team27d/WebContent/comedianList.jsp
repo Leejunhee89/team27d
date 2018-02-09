@@ -1,6 +1,6 @@
 <!-- team27d [방민영] -->
 
-<!-- form으로 가는것, 아이디이름나이입력하고 post방식으로보내기 -->
+<!-- 과제: form으로 가는것, 아이디이름나이입력하고 post방식으로보내기 -->
 
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <% request.setCharacterEncoding("euc-kr"); %>
@@ -20,9 +20,7 @@ list=comedianDao.selectComedianList();
 <title>Insert title here</title>
 </head>
 <body>
-	<img src = "<%=request.getContextPath()%>/image/Minyoung.jpg" title = "방민영" width = "400" height = "400">
-	
-	<p>코미디언 리스트</p>
+	<h1>코미디언 리스트</h1>
 	<table border = "1">
 		<tr>
 			<td>코미디언 ID</td><td>코미디언 NAME</td><td>코미디언 AGE</td>

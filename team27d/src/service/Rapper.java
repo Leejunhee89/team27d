@@ -1,9 +1,6 @@
 package service;
 
-
-public class Rapper { //CRUD 유국화 1
-
-public class Rapper { //CRUD 유국화
+public class Rapper { 
 	private String rapperId;
 	private String rapperName;
 	private String rapperAge;
@@ -26,6 +23,4 @@ public class Rapper { //CRUD 유국화
 	public void setRapperAge(String rapperAge) {
 		this.rapperAge = rapperAge;
 	}
-
-
 }

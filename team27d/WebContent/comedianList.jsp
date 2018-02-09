@@ -22,9 +22,9 @@
 		<thead>
 			<tr>
 				<!-- th -->
-				<td>코미디언 ID</td>
-				<td>코미디언 NAME</td>
-				<td>코미디언 AGE</td>
+				<th>코미디언 ID</th>
+				<th>코미디언 NAME</th>
+				<th>코미디언 AGE</th>
 			</tr>
 		</thead>
 		<tbody>

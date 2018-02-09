@@ -19,28 +19,24 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 </head>
-<body>
-
-<img src = "<%=request.getContextPath()%>/image/kong.jpg" title = "나윤주" width = "400" height = "400">
-
-<p>가수 리스트</p>
-<table border = "1">
-	<tr>
-		<td>가수 ID</td><td>가수 NAME</td><td>가수 AGE</td>
-	</tr>
-	
-		<%
-			for(Singer sin : list){
-		%>
-		<tr>
-		<td><%=sin.getSingerId()%></td>
-		<td><%=sin.getSingerName()%></td>
-		<td><%=sin.getSingerAge()%></td>
-		</tr>
-		<!-- for절을 이용해 Singer list를 호출 -->
-		<%
-			}
-		%>
-	</table> 
-</body>
+	<body>
+		<h1>가수 리스트</h1>
+		<table border = "1">
+			<tr>
+				<th>아이디</th><th>이름</th><th>나이</th>
+			</tr>
+			<%
+				for(Singer sin : list){
+			%>
+			<tr>
+			<td><%=sin.getSingerId()%></td>
+			<td><%=sin.getSingerName()%></td>
+			<td><%=sin.getSingerAge()%></td>
+			</tr>
+			<!-- for절을 이용해 Singer list를 호출 -->
+			<%
+				}
+			%>
+			</table> 
+	</body>
 </html>

@@ -7,11 +7,8 @@
 <%
 
 AnaunseoDao ana = new AnaunseoDao();
-
-ArrayList<Anaunseo> arrAnaunseo = new ArrayList<Anaunseo>();
 //selectActorList()매서드 결과로 반환된 ArrayList<Anaunseo>형 주소값을 arrAnaunseo로 받는다.
-arrAnaunseo = ana.selectActorList();
-	
+ArrayList<Anaunseo> arrAnaunseo = ana.selectActorList();
 
 %>
 

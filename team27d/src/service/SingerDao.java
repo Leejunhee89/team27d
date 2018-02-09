@@ -28,7 +28,6 @@ public class SingerDao {
 		/* db 연결 및 실행을 위한 value값 설정 */
 
 		try {
-
 			Class.forName("com.mysql.jdbc.Driver");
 			/* db로딩 */
 

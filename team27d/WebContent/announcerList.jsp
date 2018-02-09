@@ -7,8 +7,11 @@
 <%
 
 AnaunseoDao ana = new AnaunseoDao();
+
 ArrayList<Anaunseo> arrAnaunseo = new ArrayList<Anaunseo>();
+//selectActorList()매서드 결과로 반환된 ArrayList<Anaunseo>형 주소값을 arrAnaunseo로 받는다.
 arrAnaunseo = ana.selectActorList();
+	
 
 %>
 
@@ -26,6 +29,8 @@ arrAnaunseo = ana.selectActorList();
 		<td>announcer_id</td><td>announcer_name</td><td>announcer_age</td>
 	</tr>
 	<%
+	//arrAnaunseo 리스트를 순차탐색하면서 리스트에 들어있는 Anaunseo를 하나하나 참조한다. 
+	//그리고 get메서드를 통해서 ID, NAME, AGE 정보를 가져온다.
 	for(Anaunseo anaun : arrAnaunseo){
 	%>
 		<tr>

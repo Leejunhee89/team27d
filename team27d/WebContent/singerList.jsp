@@ -8,18 +8,12 @@
 <%@ page import = "service.Singer" %>
 
 <% 		
-			SingerDao singerdao = new SingerDao();
-			ArrayList<Singer> list = singerdao.selectSingerList();			
+		SingerDao singerdao = new SingerDao();
+		ArrayList<Singer> list = singerdao.selectSingerList();			
 %>
-
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
-</head>
 <body>
-
-<table>
+	<table>
 		<tr>
 		<th>id</th><th>name</th><th>age</th>
 		</tr> 

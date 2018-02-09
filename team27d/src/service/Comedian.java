@@ -1,3 +1,5 @@
+//team27d [¹æ¹Î¿µ]
+
 package service;
 
 public class Comedian {
@@ -22,6 +24,10 @@ public class Comedian {
 	}
 	public void setComedianAge(int comedianAge) {
 		this.comedianAge = comedianAge;
+	}
+	@Override
+	public String toString() {
+		return "Comedian [comedianId=" + comedianId + ", comedianName=" + comedianName + ", comedianAge=" + comedianAge + "]";
 	}
 	
 }

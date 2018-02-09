@@ -23,7 +23,7 @@ ArrayList<Anaunseo> arrAnaunseo = ana.selectActorList();
 <p>아나운서 리스트</p>
 <table border = "1">
 	<tr>
-		<td>announcer_id</td><td>announcer_name</td><td>announcer_age</td>
+		<td>아나운서 ID</td><td>아나운서 NAME</td><td>아나운서 AGE</td>
 	</tr>
 	<%
 	//arrAnaunseo 리스트를 순차탐색하면서 리스트에 들어있는 Anaunseo를 하나하나 참조한다. 

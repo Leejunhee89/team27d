@@ -17,18 +17,24 @@
 		ArrayList<Actor> list = ado.selectActor();
 	%>
 	<table border ="1">
+		<tbody>
 		<tr>
 			<td>id</td>	<td>name</td> <td>age</td>
 		</tr>
+		</tbody>
+		
 		<%
 			for(Actor actor : list) {
 		%>	
+			<tfoot>
 				<tr>
 					<td><%= actor.getActorId() %></td><td><%= actor.getActorName() %></td><td><%= actor.getActorAge() %></td>
 				</tr>  
+			</tfoot>	
 		<% 
 		}
 		%>
+	<!-- 리스트 안에 insert링크 걸기 (폼으로이동?) ,  -->
 	</table>
 </body>
 </html>

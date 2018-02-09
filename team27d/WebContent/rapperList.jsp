@@ -21,12 +21,10 @@ rapperlist = rapperdao.selectRapperList();
 %>
 
 <body>
-	<img src=" <%=request.getContextPath()%>/image/Yadon.jpg " title = "유국화" width = "400" height = "400">
-	
-	<p>rapper list</p>
+	<h1>래퍼 리스트</h1>
 	<table border="1">
 		<tr>
-			<td>아이디</td><td>이름</td><td>나이</td>
+			<th>아이디</th><th>이름</th><th>나이</th>
 		<tr>
 		<%for(Rapper rap : rapperlist){ %>
 			<tr>

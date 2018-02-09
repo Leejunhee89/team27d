@@ -13,34 +13,34 @@
 		   </tr>
 		   <tr>
 		      <td>ÆÀÀå :ÀÌÁØÈñ ¿ªÇÒ: actor,actoress CRUD</td>
-		      <td><img src="<%= request.getContextPath() %>/image/niche.jpg" width="100" height="150"> </td>
+		      <td><img src="/team27d/image/niche.jpg" width="100" height="150"> </td>
 		   </tr>
 		   <tr>
 		      <td>ÆÀ¿ø :ÀÌÃá¸² ¿ªÇÒ: anaunseo CRUD</td>
-		      <td><img  src="<%= request.getContextPath() %>/image/tam.jpg" width="100" height="150"> </td>
+		      <td><img  src="/team27d/image/tam.jpg" width="100" height="150"> </td>
 		   </tr>
 		   <tr>
 		      <td>ÆÀ¿ø :¹æ¹Î¿µ ¿ªÇÒ: comedian CRUD</td>
-		      <td><img  src="<%= request.getContextPath() %>/image/rabbit.jpg" width="100" height="150"> </td>
+		      <td><img  src="/team27d/image/rabbit.jpg" width="100" height="150"> </td>
 		   </tr>
 		   <tr>
 		      <td>ÆÀ¿ø :À¯±¹È­ ¿ªÇÒ: rapper CRUD</td>
-		      <td><img  src="<%= request.getContextPath() %>/image/Yadon.jpg" width="100" height="150"> </td>
+		      <td><img  src="/team27d/image/Yadon.jpg" width="100" height="150"> </td>
 		   </tr>
 		   <tr>
 		      <td>ÆÀ¿ø :³ªÀ±ÁÖ ¿ªÇÒ: singer CRUD</td>
-		      <td><img  src="<%= request.getContextPath() %>/image/kong.JPG" width="100" height="150"> </td>
+		      <td><img  src="/team27d/image/kong.JPG" width="100" height="150"> </td>
 		   </tr>
 		</table>
    
 
    <ul>
-      <li><a href="<%= request.getContextPath() %>/actorList.jsp">actor list</a></li> 
-      <li><a href="<%= request.getContextPath() %>/actressList.jsp">actoress list</a></li> 
-      <li><a href="<%= request.getContextPath() %>/announcerList.jsp">anaunseo list</a></li> 
-      <li><a href="<%= request.getContextPath() %>/comedianList.jsp">comedian list</a></li>
-      <li><a href="<%= request.getContextPath() %>/rapperList.jsp">rapper list</a></li>
-      <li><a href="<%= request.getContextPath() %>/singerList.jsp">singer list</a></li>
+      <li><a href="/team27d/actorList.jsp">actor list</a></li> 
+      <li><a href="/team27d/actressList.jsp">actoress list</a></li> 
+      <li><a href="/team27d/announcerList.jsp">anaunseo list</a></li> 
+      <li><a href="/team27d/comedianList.jsp">comedian list</a></li>
+      <li><a href="/team27d/rapperList.jsp">rapper list</a></li>
+      <li><a href="/team27d/singerList.jsp">singer list</a></li>
    </ul>   
 
 </body>

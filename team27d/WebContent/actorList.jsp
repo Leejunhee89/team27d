@@ -27,7 +27,7 @@
 %>	
 	<tr>
 		<td><%= actor.getActorId() %></td><td><%= actor.getActorName() %></td><td><%= actor.getActorAge() %></td>
-	</tr>
+	</tr>  
 
 <% 
 }

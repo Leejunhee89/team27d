@@ -1,10 +1,11 @@
 /*team27d[³ªÀ±ÁÖ]*/
 package service;
 
-public class Singer { //³ªÀ±ÁÖ
+public class Singer { 
 	private int singerId;
 	private String singerName;
 	private int singerAge;
+		
 	public int getSingerId() {
 		return singerId;
 	}

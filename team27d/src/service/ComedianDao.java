@@ -38,6 +38,7 @@ public class ComedianDao {
 				
 			if(preparedStatement!=null) {preparedStatement.close();}
 			if(connection!=null) {connection.close();}
+			if(resultSet!=null) {resultSet.close();}
 			}
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

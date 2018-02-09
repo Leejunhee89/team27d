@@ -2,9 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ page import = "service.SingerDao" %>
 <%@ page import = "java.util.ArrayList" %>
-<%@ page import = "service.Singer" %><%@ page import = "service.SingerDao" %>
-<%@ page import = "java.util.ArrayList" %>
-<%@ page import = "service.Singer" %>  
+<%@ page import = "service.Singer" %>
 <!DOCTYPE html>
 <html>
 <head>

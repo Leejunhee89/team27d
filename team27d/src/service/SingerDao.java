@@ -62,25 +62,10 @@ public class SingerDao {
 			// SQLException 예외발생시 캐치절 매개변수로 넘겨준다.
 			e.printStackTrace();
 
-		} finally {
-			// result 객체종료
-			if (rs != null)
-				try {
-					rs.close();
-				} catch (SQLException ex) {
-				}
-			// PreparedStatement 객체 종료
-			if (pstmt != null)
-				try {
-					pstmt.close();
-				} catch (SQLException ex) {
-				}
-			// Connection 객체 종료
-			if (conn != null)
-				try {
-					conn.close();
-				} catch (SQLException ex) {
-				}
+		}finally {
+			if(pstmt!=null) {try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}}
+			if(conn!=null) {try {conn.close();} catch (SQLException e) {e.printStackTrace();}}
+			if(rs!=null) {try {rs.close();} catch (SQLException e) {e.printStackTrace();}}
 		}
 		// list 값을 리턴시켜준다.
 		return list;

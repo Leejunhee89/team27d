@@ -22,7 +22,7 @@ ArrayList<Anaunseo> list = anaDao.selectActorList();
 </head>
 <body>
 
-<img src = "<%=request.getContextPath()%>/image/ÅèÄí¸£Áî.jpg" title = "ÀÌÃá¸²">
+<img src = "<%=request.getContextPath()%>/image/ÅèÅ¥¸£Áî.jpg" title = "ÀÌÃá¸²">
 
 <p>¾Æ³ª¿î¼­ ¸®½ºÆ®</p>
 <table border = "1">

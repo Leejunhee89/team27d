@@ -10,7 +10,7 @@ import service.Anaunseo;
 
 public class AnaunseoDao {
 	
-	public int insertAnaunseo(Anaunseo anaunseo) throws ClassNotFoundException {
+	public int insertAnaunseo(Anaunseo anaunseo) throws ClassNotFoundException, SQLException {
 	
 		//단위테스트
 		System.out.println(anaunseo);
@@ -25,11 +25,17 @@ public class AnaunseoDao {
 				"useUnicode=true&characterEncoding=euckr";
 		String dbUser = "root";
 		String dbPass = "java0000";
-		String sql = "INSERT INTO anaunseo VALUSE(?, ?, ?)";
+		String sql = "INSERT INTO anaunseo VALUES(?, ?, ?)";
 		
+		connection = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
+		prepareStatement = connection.prepareStatement(sql);
+		prepareStatement.setInt(1, anaunseo.getAnaunseoId());
+		prepareStatement.setString(2, anaunseo.getAnaunseoName());
+		prepareStatement.setInt(3, anaunseo.getAnaunseoAge());
 		
+		int isUpdate =prepareStatement.executeUpdate();
 	
-		return 0;
+		return isUpdate;
 	}
 	
 	public ArrayList<Anaunseo> selectActorList() throws SQLException {

@@ -10,9 +10,25 @@ import service.Anaunseo;
 
 public class AnaunseoDao {
 	
-	public int insertAnaunseo(Anaunseo anaunseo) {
+	public int insertAnaunseo(Anaunseo anaunseo) throws ClassNotFoundException {
+	
 		//단위테스트
 		System.out.println(anaunseo);
+		
+		Connection connection = null;
+		PreparedStatement prepareStatement = null;
+		
+		//DB로딩
+		Class.forName("com.mysql.jdbc.Driver");
+		//DB연결
+		String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?" +
+				"useUnicode=true&characterEncoding=euckr";
+		String dbUser = "root";
+		String dbPass = "java0000";
+		String sql = "INSERT INTO anaunseo VALUSE(?, ?, ?)";
+		
+		
+	
 		return 0;
 	}
 	

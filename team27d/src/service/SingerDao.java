@@ -2,6 +2,7 @@
 package service;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement; 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -31,6 +32,8 @@ public class SingerDao {
  			String dbPass = "java0000";
 			
 			String sql = "select singer_id as singerId, singer_name as singerName, singer_age as singerAge from singer";
+			
+			conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();

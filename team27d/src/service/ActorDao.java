@@ -35,16 +35,16 @@ public class ActorDao {
 				String actorName = result.getString("actor_name");	
 				String actorAge = result.getString("actor_age");
 				
+				actor.setActorId(Integer.parseInt(actorId));
+				actor.setActorName(actorName);
+				actor.setActorAge(Integer.parseInt(actorAge));
+				arrayActor.add(actor);
+				
+								
 				
 				
 				
 			}
-			
-		
-			
-		
-		
-		
 		
 		
 		
@@ -52,7 +52,15 @@ public class ActorDao {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			if (result != null) try {result.close();} catch (SQLException ex) {}
+			if (pstmt != null) try {pstmt.close();} catch (SQLException ex) {}
+			if (conn != null) try {conn.close();} catch (SQLException ex) {}
 		}
+		
+		
+		
+		
 		return arrayActor;
 	}	
 }

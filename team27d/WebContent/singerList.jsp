@@ -7,6 +7,10 @@
 <%@ page import = "java.util.ArrayList" %>
 <%@ page import = "service.Singer" %>
 
+<% 		
+			SingerDao singerdao = new SingerDao();
+			ArrayList<Singer> list = singerdao.selectSingerList();			
+%>
 
 <html>
 <head>
@@ -15,19 +19,16 @@
 </head>
 <body>
 
-	<table>
-		<tr><th>SingerList</th></tr>
+<table>
 		<tr>
 		<th>id</th><th>name</th><th>age</th>
 		</tr> 
-		<% 		
-			SingerDao singerdao = new SingerDao();
-			ArrayList<Singer> singerlist = singerdao.selectSingerList();		
-			
-			for(Singer singer : singerlist){
+		
+		<%
+			for(Singer sin : list){
 		%>
 		<tr>
-		<td><%=singer.getSingerId()%></td><td><%=singer.getSingerName()%></td><td><%=singer.getSingerAge()%></td>
+		<td><%=sin.getSingerId()%></td><td><%=sin.getSingerName()%></td><td><%=sin.getSingerAge()%></td>
 		</tr>
 		<%
 			}

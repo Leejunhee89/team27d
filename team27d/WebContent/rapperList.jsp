@@ -11,6 +11,9 @@
 	<title>Insert title here</title>
 </head>
 <body>
+	<h1>래퍼 입력하기</h1>
+	<%@ include file = "insertRapperForm.jsp"%>
+	
 	<h1>래퍼 리스트</h1>
 	<%
 		RapperDao rapperdao = new RapperDao();

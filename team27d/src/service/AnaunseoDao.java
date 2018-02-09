@@ -2,13 +2,21 @@ package service;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import service.Anaunseo;
 
 public class AnaunseoDao {
 	
-	public Connection getConnection(Anaunseo ana) throws ClassNotFoundException, SQLException {
+	public ArrayList<Anaunseo> selectActorList() throws ClassNotFoundException, SQLException {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Anaunseo ana = null;
+		
+		ArrayList<Anaunseo> arrAnaunseo = new ArrayList<Anaunseo>();
+		
 		
 		Class.forName("com.mysql.jdbc.Driver");
 		
@@ -19,36 +27,22 @@ public class AnaunseoDao {
 		
 		conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 		
-		if (pstmt != null) { pstmt.close(); } 
+		pstmt = conn.prepareStatement("SELECT * FROM anaunseo");
+		rs = pstmt.executeQuery();
 		
-		return conn;
-	}
-	
-	public void AnaInsert(Anaunseo ana) throws ClassNotFoundException, SQLException {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		
-	
-		Class.forName("com.mysql.jdbc.Driver");
-		
-		String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?" +
-				"useUnicode=true&characterEncoding=euckr";
-		String dbUser = "root";
-		String dbPass = "java0000";
-		
-		conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
-		
-		pstmt = conn.prepareStatement("INSERT INTO Anaunseo VALUES(?, ?, ?)");
-		pstmt.setString(1, ana.getAnaunseoId());
-		pstmt.setString(2, ana.getAnaunseoName());
-		pstmt.setString(3, ana.getAnaunseoAge());
-		
-		pstmt.executeUpdate();
+		while(rs.next()) {
+			ana = new Anaunseo();
+			ana.setAnaunseoId( rs.getInt("announcer_id") );
+			ana.setAnaunseoName( rs.getString("announcer_name") );
+			ana.setAnaunseoAge( rs.getInt("announcer_age") );
+			
+			arrAnaunseo.add(ana);
+		}
 	
 		if (pstmt != null) { pstmt.close(); } 
 		if (conn != null) { conn.close(); }
+		
+		return arrAnaunseo;
 	}
-	
-	
 	
 }

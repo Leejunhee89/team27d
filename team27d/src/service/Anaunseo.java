@@ -1,14 +1,14 @@
 package service;
 
 public class Anaunseo {
-	private String anaunseoId;
+	private int anaunseoId;
 	private String anaunseoName;
-	private String anaunseoAge;
+	private int anaunseoAge;
 	
-	public String getAnaunseoId() {
+	public int getAnaunseoId() {
 		return anaunseoId;
 	}
-	public void setAnaunseoId(String anaunseoId) {
+	public void setAnaunseoId(int anaunseoId) {
 		this.anaunseoId = anaunseoId;
 	}
 	public String getAnaunseoName() {
@@ -17,10 +17,10 @@ public class Anaunseo {
 	public void setAnaunseoName(String anaunseoName) {
 		this.anaunseoName = anaunseoName;
 	}
-	public String getAnaunseoAge() {
+	public int getAnaunseoAge() {
 		return anaunseoAge;
 	}
-	public void setAnaunseoAge(String anaunseoAge) {
+	public void setAnaunseoAge(int anaunseoAge) {
 		this.anaunseoAge = anaunseoAge;
 	}
 

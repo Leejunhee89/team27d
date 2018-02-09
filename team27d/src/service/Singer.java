@@ -1,13 +1,14 @@
 package service;
 
 public class Singer { //³ªÀ±ÁÖ
-	private int singerId;
+	private String singerId;
 	private String singerName;
-	private int singerAge;
-	public int getSingerId() {
+	private String singerAge;
+	
+	public String getSingerId() {
 		return singerId;
 	}
-	public void setSingerId(int singerId) {
+	public void setSingerId(String singerId) {
 		this.singerId = singerId;
 	}
 	public String getSingerName() {
@@ -16,12 +17,13 @@ public class Singer { //³ªÀ±ÁÖ
 	public void setSingerName(String singerName) {
 		this.singerName = singerName;
 	}
-	public int getSingerAge() {
+	public String getSingerAge() {
 		return singerAge;
 	}
-	public void setSingerAge(int singerAge) {
+	public void setSingerAge(String singerAge) {
 		this.singerAge = singerAge;
 	}
+	
 	
 
 }

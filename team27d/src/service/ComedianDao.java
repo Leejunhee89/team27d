@@ -11,17 +11,23 @@ import java.util.ArrayList;
 
 public class ComedianDao {
 	
-	public int insertComedian(Comedian comedian) {
-		System.out.println(comedian);
-		return 0;
-	}
-	
+	/*ArrayList<Comedian>리턴타입으로 selectComedianList메서드 호출.
+	 *ArrayList<Comedian>데이터타입으로 list변수를 선언하고 동시에 ArrayList<Comedian>객체생성.
+	 *Connection데이터타입으로 connection변수를 선언하고 null값을 넣어줌.
+	 *PreparedStatement데이터타입으로 statement변수를 선언하고 null값을 넣어줌.
+	 *ResultSet데이터타입으로 resultSet변수를 선언하고 null값을 넣어줌.	 * 
+	 */
 	public ArrayList<Comedian> selectComedianList(){
 		ArrayList<Comedian> list = new ArrayList<Comedian>();
+		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
-		Connection connection = null;
 		
+		
+		/*try안에 드라이버로딩, DB연결, 쿼리실행준비, 쿼리실행, 객체종료를 넣어주고 catch를 통해 예외를 잡은 후 finally안에서 return값을 받음.*/
+		/*Class.forName메서드로 드라이버 로딩.
+		 *드라이버주소, 아이디, 패스워드를 String데이터타입으로 값을 넣어주고 getConnection메서드를 실행한 후 
+		 */
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			

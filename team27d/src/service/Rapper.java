@@ -1,3 +1,4 @@
+//team27d [À¯±¹È­]
 package service;
 
 public class Rapper { 
@@ -21,5 +22,9 @@ public class Rapper {
 	}
 	public void setRapperAge(int rapperAge) {
 		this.rapperAge = rapperAge;
+	}
+	@Override
+	public String toString() {
+		return "Rapper [rapperId=" + rapperId + ", rapperName=" + rapperName + ", rapperAge=" + rapperAge + "]";
 	}	
 }

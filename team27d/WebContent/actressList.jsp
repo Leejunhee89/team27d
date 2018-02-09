@@ -2,11 +2,14 @@
 
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC>
 <%@ page import = "service.ActressDao"  %>
 <%@ page import = "service.Actress"  %>
 <%@ page import = "java.util.ArrayList" %>
-
+<% 
+	ActressDao ado = new ActressDao();
+	ArrayList<Actress> list = ado.selectActress();
+%>
+<!DOCTYPE html PUBLIC>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
@@ -14,18 +17,10 @@
 </head>
 <body>
 
-
-<% 
-	ActressDao ado = new ActressDao();
-	ArrayList<Actress> list = ado.selectActress();
-
-%>
-
+<p>여배우 리스트</p>
 <table border ="1">
 	<tr>
-		<td>id</td>
-		<td>name</td>
-		<td>age</td>
+		<td>id</td>	<td>name</td> <td>age</td>
 	</tr>
 <%
 	for(Actress actress : list) {
@@ -39,8 +34,6 @@
 <% 
 }
 %>
-
-
 
 </body>
 </html>

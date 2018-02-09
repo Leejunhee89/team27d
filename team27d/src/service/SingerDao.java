@@ -11,7 +11,7 @@ import service.Singer;
 
 public class SingerDao {
 	
-	public ArrayList<Singer> selectSingerList() {
+	public ArrayList<Singer> selectSingerList() throws SQLException {
 		
 		ArrayList<Singer> list = new ArrayList<Singer>();
 
@@ -29,19 +29,16 @@ public class SingerDao {
 			String query = "Select * from singer";
 			rs = stmt.executeQuery(query);			
 			
-			While(rs.next()){
+		while(rs.next()){
 				Singer s = new Singer();
-				s.setSingerId(rs.getSingerId("singer_id"));
-				s.setSingerName(rs.getSingerName("singer_name"));
-				s.setSingerAge(rs.getSingerAge("singer_age"));
+				s.setSingerId("singer_id");
+				s.setSingerName("singer_name");
+				s.setSingerAge("singer_age");
 				list.add(s);
-		}		
-			
-			
-			
+		}	
 		}catch(ClassNotFoundException e){ 
 			//FileNotFoundException 예외발생시 캐치절 매개변수로 넘겨줌
-			System.out.println(e.getMessage());
+			System.out.println(e.getMessage	());
 			System.out.println("예외발생");			
 					
 		}finally {

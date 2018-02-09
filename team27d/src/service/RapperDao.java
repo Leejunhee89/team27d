@@ -1,3 +1,4 @@
+//team27d [유국화]
 package service;
 
 import java.sql.Connection;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 public class RapperDao {
 
 	public ArrayList<Rapper> selectRapperList() throws SQLException {
+		//ArrayList 래퍼클래스타입으로 객체생성
 		ArrayList<Rapper> rapperlist = new ArrayList<Rapper>();
 			
 		Connection conn = null;
@@ -21,7 +23,7 @@ public class RapperDao {
 			Class.forName("com.mysql.jdbc.Driver");
 			System.out.println("---드라이버로딩---");
 		
-			//디비연결
+			//디비연결(루트계정 접근)
 			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
 			String dbID = "root";
 			String dbPass = "java0000";
@@ -38,12 +40,13 @@ public class RapperDao {
 						
 			//쿼리실행결과 사용
 			while(rs.next()) {
-				Rapper rapper = new Rapper();
-				rapper.setRapperId(rs.getInt("rapper_id"));
+				Rapper rapper = new Rapper(); //래퍼객체생성
+				rapper.setRapperId(rs.getInt("rapper_id")); //디비의 래퍼아이디를 게팅해서 생성한 래퍼객체에 세팅
 				rapper.setRapperName(rs.getString("rapper_name"));
 				rapper.setRapperAge(rs.getInt("rapper_age"));
-				rapperlist.add(rapper);
+				rapperlist.add(rapper); //래퍼리스트에 래퍼객체(반복) 추가
 				System.out.println("---while문 반복---");
+				System.out.println(rapperlist.add(rapper));
 			}
 		}catch(ClassNotFoundException e){
 				System.out.println("catch-예외발생");

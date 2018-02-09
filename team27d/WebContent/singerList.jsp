@@ -4,15 +4,17 @@
 <%@ page import = "service.SingerDao" %>
 <%@ page import = "java.util.ArrayList" %>
 <%@ page import = "service.Singer" %>
-
-<% 
-		
+<!-- <table>
+<tr><th>SingerList</th></tr>
+<tr>
+<td>id</td><td>name</td><td>age</td>
+</tr> -->
+<% 		
 	SingerDao singerdao = new SingerDao();
-	ArrayList<Singer> get_list = singerdao.selectSingerList();
+	singerdao.selectSingerList();
 	
-	
-	
-
 %>
-		
-
+<%-- <tr>
+<td><%= s.getSingerId()%></td><td><%=s.getSingerName()%></td><td><%=s.getSingerAge()%></td>
+</tr>
+</table> --%>

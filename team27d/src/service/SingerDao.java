@@ -31,13 +31,13 @@ public class SingerDao {
 			
 		while(rs.next()){
 				Singer s = new Singer();
-				s.setSingerId("singer_id");
-				s.setSingerName("singer_name");
-				s.setSingerAge("singer_age");
+				s.setSingerId(rs.getString("singer_id"));
+				s.setSingerName(rs.getString("singer_name"));
+				s.setSingerAge(rs.getString("singer_age"));
 				list.add(s);
-		}	
+				}
 		}catch(ClassNotFoundException e){ 
-			//FileNotFoundException 예외발생시 캐치절 매개변수로 넘겨줌
+			//ClassNotFoundException 예외발생시 캐치절 매개변수로 넘겨줌
 			System.out.println(e.getMessage	());
 			System.out.println("예외발생");			
 					
@@ -46,9 +46,9 @@ public class SingerDao {
 			if(stmt!=null) try{ stmt.close();} catch(SQLException ex) {}
 			if(conn!=null) try{ conn.close();} catch(SQLException ex) {}
 			
+
 		}
 		return list;
-				
-			
+					
 	}
 }

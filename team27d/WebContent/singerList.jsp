@@ -37,7 +37,7 @@
 				}
 			%>
 			<tr>
-				<td colspan="4"><a href="">메인으로가기</a></td>
+				<td colspan="4"><a href="/team27d/index.jsp">메인으로가기</a></td>
 			</tr>
 			</table> 
 	</body>

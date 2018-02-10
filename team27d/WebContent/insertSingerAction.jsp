@@ -1,12 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page import="service.SingerDao" %>
+<%@ page import="service.Singer" %>
+
+
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<title>insertSingerAction.jsp</title>
 </head>
 <body>
+<%		
+	request.setCharacterEncoding("euc-kr");
+	
+	int singerId = Integer.parseInt("singer_id");
+	String singerName = request.getParameter("singer_name");
+	int singerAge = Integer.parseInt("Singer_age");
+	
+	Singer insert = new Singer();
+	insert.setSingerId(singerId);
+	insert.setSingerName(singerName);
+	insert.setSingerAge(singerAge);
+	
+	SingerDao singerdao = new SingerDao();
+	singerdao.insertSigner(insert);
+	
+	response.sendRedirect(request.getContextPath() + "/singerList.jsp");
 
+%>
 </body>
 </html>

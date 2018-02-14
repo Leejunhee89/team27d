@@ -19,9 +19,8 @@ public class AnaunseoDao {
 		PreparedStatement prepareStatement = null;
 		int isUpdate = 0;
 		try {
-			//DB로딩
 			Class.forName("com.mysql.jdbc.Driver");
-			//DB연결
+			
 			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
 			String dbUser = "root";
 			String dbPass = "java0000";
@@ -35,26 +34,36 @@ public class AnaunseoDao {
 			
 			isUpdate = prepareStatement.executeUpdate();
 			
-		} catch(ClassNotFoundException e){
-			e.printStackTrace();
-			System.out.println(e.getMessage	());
+		} catch(ClassNotFoundException exception){
+			exception.printStackTrace();
+			System.out.println(exception.getMessage	());
 			System.out.println("예외발생");
-		}catch(SQLException e) {
-			e.printStackTrace();
-			System.out.println(e.getMessage	());
+		}catch(SQLException exception) {
+			exception.printStackTrace();
+			System.out.println(exception.getMessage	());
 			System.out.println("예외발생");
 		}finally {
-			//DB에 연결하여 DB에서 필요한 정보를 모두  Anaunseo객체 마다에 세팅한 후,
-			//세팅이 끝난 Anaunseo객체를 ArrayList<Anaunseo> list에 넣어주었으므로 
-			//DB단위에서 할 일은 모두 끝났다. 따라서 DB단위에서 사용된 개체를 모두 반환시켜주어야한다.
-			// Connection, PreparedStatement 객체순으로 생성되었으므로 
-			// close()메서드를 통한 메모리 반환 순서는 PreparedStatement, Connection 순서가 되어야 한다.
-			// close()메서드 뒤에 prepareStatement, connection 의 객체참조변수를 null값으로 초기화하는 이유는
-			// 혹시나 모를 잘못된 주소참조를 방지하기 위하여 null값으로 초기화시켜 두었다.
-			if(prepareStatement != null) try{ prepareStatement.close(); prepareStatement = null; } catch(SQLException ex) {}
-			if(connection != null) try{ connection.close(); connection = null; } catch(SQLException ex) {}
+			if(prepareStatement != null) {
+				try{
+					prepareStatement.close();
+					prepareStatement = null;
+				} catch(SQLException exception) {
+					exception.printStackTrace();
+					System.out.println(exception.getMessage());
+					System.out.println("예외발생");
+				}
+			}
+			if(connection != null) {
+				try{
+					connection.close();
+					connection = null;
+				} catch(SQLException exception) {
+					exception.printStackTrace();
+					System.out.println(exception.getMessage());
+					System.out.println("예외발생");
+				}
+			}
 		}
-		
 		return isUpdate;
 	}
 	

@@ -8,8 +8,36 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class RapperDao {
-	// 예외는 전부 try-catch 처리
+public class RapperDao {// 예외는 전부 try-catch 처리
+	// 래퍼 입력 메서드
+	public Rapper insertRapper(int id, String name, int age) {
+		Rapper rapper = new Rapper();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
+			String dbID = "root";
+			String dbPass = "java0000";
+			String sql = "INSERT INTO rapper VALUES(?, ?, ?)";
+			conn = DriverManager.getConnection(jdbcDriver, dbID, dbPass);
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, id);
+			pstmt.setString(2, name);
+			pstmt.setInt(3, age);
+			
+			pstmt.executeUpdate();
+		
+			pstmt.close();
+			conn.close();			
+		}
+		catch (ClassNotFoundException e) {e.printStackTrace();}
+		catch (SQLException e) {e.printStackTrace();}		
+		return rapper;
+	}
+	
+	// 모든 래퍼 리스트 메서드
 	public ArrayList<Rapper> selectRapperList() {
 		// ArrayList 래퍼클래스타입으로 객체생성 - 참조변수명은 보통 list로 쓴다
 		// rapperlist -> list로 일괄변경하려면! 변수명 블럭-Refactor-Rename클릭
@@ -20,10 +48,7 @@ public class RapperDao {
 		ResultSet rs = null;
 
 		try {
-			// 드라이버로딩
 			Class.forName("com.mysql.jdbc.Driver");
-			
-			// 디비연결(루트계정 접근)
 			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
 			String dbID = "root";
 			String dbPass = "java0000";
@@ -33,16 +58,11 @@ public class RapperDao {
 			String sql = "SELECT rapper_id as rapperId, rapper_name as rapperName, rapper_age as rapperAge FROM rapper ORDER BY rapper_id ASC";
 			conn = DriverManager.getConnection(jdbcDriver, dbID, dbPass);
 			
-			// 쿼리실행준비
 			pstmt = conn.prepareStatement(sql);
-			
-			// 쿼리실행
 			rs = pstmt.executeQuery();
-			
-			// 쿼리실행결과 사용
 			while (rs.next()) {
-				Rapper rapper = new Rapper(); // 래퍼객체생성
-				rapper.setRapperId(rs.getInt("rapperId")); // 디비의 래퍼아이디를 게팅해서 생성한 래퍼객체에 세팅
+				Rapper rapper = new Rapper(); 
+				rapper.setRapperId(rs.getInt("rapperId")); 
 				rapper.setRapperName(rs.getString("rapperName"));
 				rapper.setRapperAge(rs.getInt("rapperAge"));
 				rapperlist.add(rapper); // 래퍼리스트에 래퍼객체(반복) 추가 -> 리턴값으로 담을 데이터***

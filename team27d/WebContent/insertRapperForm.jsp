@@ -9,11 +9,11 @@
 <%
 	request.setCharacterEncoding("euc-kr");
 %>
-	<form action="<%=request.getContextPath()%>/insertRapperAction.jsp" method="post">
-		아이디 :	<input type="text" name="id" ><br>
+	<form name="insertRapper" action="<%=request.getContextPath()%>/insertRapperAction.jsp" method="post">
+		아이디 :	<input type="text" name="id" placeholder="리스트와 중복되지 않은 숫자만 입력해주세요" ><br>
 		이름 :	<input type="text" name="name" ><br>
 		나이 :	<input type="text" name="age" ><br>
-	<input type="submit" value="입력완료"><br>
-</form>
+				<input type="submit" value="입력완료"><br>
+	</form>
 </body>
 </html>

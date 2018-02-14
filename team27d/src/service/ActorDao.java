@@ -12,7 +12,34 @@ import java.util.ArrayList;
 import java.sql.DriverManager;
 
 public class ActorDao {
+	public void InsertActor(int id, String name, int age)  {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
 		
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
+			String dbUser = "root";
+			String dbPass = "java0000";
+			conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
+			String sql = "insert into tb_user values(?,?,?)";
+			
+			pstmt.setInt(1, id);
+			pstmt.setString(2, name);
+			pstmt.setInt(3, age);
+			
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.executeQuery();
+			pstmt.close();
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
 	public ArrayList<Actor> selectActor() {
 		ArrayList<Actor> list = new ArrayList<Actor>();
 		

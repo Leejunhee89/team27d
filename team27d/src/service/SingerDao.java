@@ -23,7 +23,7 @@ public class SingerDao {
 		String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
 		String dbUser = "root";
 		String dbPass = "java0000";
-		String sql = "INSERT INTO singer VALUES (?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO singer VALUES (?, ?, ?)";
 		
 		connection = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 		preparedstatement = connection.prepareStatement(sql);

@@ -3,7 +3,6 @@
 <%@ page import="service.SingerDao" %>
 <%@ page import="service.Singer" %>
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,21 +12,15 @@
 <body>
 <%		
 	request.setCharacterEncoding("euc-kr");
-	
-	int singerId = Integer.parseInt("singer_id");
-	String singerName = request.getParameter("singer_name");
-	int singerAge = Integer.parseInt("Singer_age");
-	
-	Singer insert = new Singer();
-	insert.setSingerId(singerId);
-	insert.setSingerName(singerName);
-	insert.setSingerAge(singerAge);
-	
+		
+	int id = Integer.parseInt(request.getParameter("id"));
+	String name = request.getParameter("name");
+	int age = Integer.parseInt(request.getParameter("age"));
+		
 	SingerDao singerdao = new SingerDao();
-	singerdao.insertSigner(insert);
+	singerdao.insertSigner(id, name, age);
 	
 	response.sendRedirect(request.getContextPath() + "/singerList.jsp");
-
 %>
 </body>
 </html>

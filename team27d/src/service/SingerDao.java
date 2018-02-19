@@ -11,11 +11,12 @@ import java.util.ArrayList;
 import service.Singer;
 
 public class SingerDao {
+		
+/*	public void insertSigner(Singer insert) {*/
 	
-	Connection connection = null;
-	PreparedStatement preparedstatement = null;
-	
-	public void insertSigner(Singer insert) {
+	public void insertSigner(int id,String name,int age) {
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
 		
 		try {
 		Class.forName("com.mysql.jdbc.Driver");
@@ -27,10 +28,10 @@ public class SingerDao {
 		
 		connection = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 		preparedstatement = connection.prepareStatement(sql);
-
-		preparedstatement.setInt(1, insert.getSingerId());
-		preparedstatement.setString(2, insert.getSingerName());
-		preparedstatement.setInt(3, insert.getSingerAge());
+		
+		preparedstatement.setInt(1, id);
+		preparedstatement.setString(2, name);
+		preparedstatement.setInt(3, age);
 	
 		} catch (ClassNotFoundException e) {
 			// ClassNotFoundException 예외발생시 캐치절 매개변수로 넘겨준다.
@@ -41,6 +42,7 @@ public class SingerDao {
 			e.printStackTrace();
 
 		}finally {
+			
 			if(preparedstatement!=null) {try {preparedstatement.close();} catch (SQLException e) {e.printStackTrace();}}
 			if(connection!=null) {try {connection.close();} catch (SQLException e) {e.printStackTrace();}}
 		}
@@ -48,9 +50,11 @@ public class SingerDao {
 
 	public ArrayList<Singer> selectSingerList() {
 		
+		ArrayList<Singer> singerlist = new ArrayList<Singer>();
 		ResultSet resultset = null;
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
 
-		ArrayList<Singer> list = new ArrayList<Singer>();
 		/* ArrayList<Singer> 주소값을 담고있는 객체참조변수 list를 할당. */
 
 		/* db 연결 및 실행을 위한 value값 설정 */
@@ -62,7 +66,7 @@ public class SingerDao {
 			String dbUser = "root";
 			String dbPass = "java0000";
 			// SQL쿼리 키워드 대문자 사용
-			String sql = "SELECT singer_id AS singerId, singer_name AS singerName, singer_age AS singerAge FROM singer ORDER BY ASC";
+			String sql = "SELECT singer_id AS singerId, singer_name AS singerName, singer_age AS singerAge FROM singer ORDER BY singer_id ASC";
 			connection = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			preparedstatement = connection.prepareStatement(sql);
 
@@ -78,7 +82,7 @@ public class SingerDao {
 				sing.setSingerId(resultset.getInt("singerId"));
 				sing.setSingerName(resultset.getString("singerName"));
 				sing.setSingerAge(resultset.getInt("singerAge"));
-				list.add(sing);
+				singerlist.add(sing);
 			}
 		} catch (ClassNotFoundException e) {
 			// ClassNotFoundException 예외발생시 캐치절 매개변수로 넘겨준다.
@@ -89,12 +93,12 @@ public class SingerDao {
 			e.printStackTrace();
 
 		}finally {
+			if(resultset!=null) {try {resultset.close();} catch (SQLException e) {e.printStackTrace();}}
 			if(preparedstatement!=null) {try {preparedstatement.close();} catch (SQLException e) {e.printStackTrace();}}
 			if(connection!=null) {try {connection.close();} catch (SQLException e) {e.printStackTrace();}}
-			if(resultset!=null) {try {resultset.close();} catch (SQLException e) {e.printStackTrace();}}
-		}
+			}
 		// list 값을 리턴시켜준다.
-		return list;
+		return singerlist;
 
 	}
 }

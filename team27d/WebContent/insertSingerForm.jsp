@@ -14,15 +14,15 @@
 		<table border="1">
 			<tr>
 				<th>아이디</th>
-				<td><input type="text" name="singer_id" size="20"></td>
+				<td><input type="text" name="id" size="20"></td>
 			</tr>
 			<tr>
 				<th>이름</th>
-				<td><input type="text" name="singer_name" size="20"></td>
+				<td><input type="text" name="name" size="20"></td>
 			</tr>
 			<tr>
 				<th>나이</th>
-				<td><input type="text" name="singer_age" size="20"></td>
+				<td><input type="text" name="age" size="20"></td>
 			</tr>
 			<tr>
 				<td colspan="4"><input type="submit" value="입력완료"></td>

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.sql.DriverManager;
 
 public class ActorDao {
-	public void InsertActor(int id, String name, int age)  {
+	public void InsertActor(Actor actor)  {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		
@@ -22,15 +22,14 @@ public class ActorDao {
 			String dbUser = "root";
 			String dbPass = "java0000";
 			conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
-			String sql = "insert into tb_user values(?,?,?)";
-			
-			pstmt.setInt(1, id);
-			pstmt.setString(2, name);
-			pstmt.setInt(3, age);
-			
+			String sql = "insert into actor(actor_name, actor_age) values(?, ?)";
 			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.executeQuery();
+			/*pstmt.setInt(1, actor.getActorId());*/
+			pstmt.setString(1, actor.getActorName());
+			pstmt.setInt(2, actor.getActorAge());
+						
+			pstmt.executeUpdate();
 			pstmt.close();
 			conn.close();
 		} catch (ClassNotFoundException e) {

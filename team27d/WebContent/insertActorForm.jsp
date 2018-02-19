@@ -10,10 +10,10 @@
  
  <form action="<%=request.getContextPath() %>/insertActorAction.jsp" method= "post">
  <table border="1">
- 	<tr>
- 		<td>아이디:</td> <td><input type="text" name="id"></td>
+ 	<!-- <tr>
+ 		<td>아이디:</td> <td><input type="hidden" name="id"></td>
  	</tr>
- 	<tr>
+ 	 --><tr>
  		<td>이름:</td> <td><input type="text" name="name"></td>
  	</tr>
  	<tr>

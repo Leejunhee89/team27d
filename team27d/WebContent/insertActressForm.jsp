@@ -1,19 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<!DOCTYPE html PUBLIC>
-
+<%@ page language="java" contentType="text/html; charset=utf-8"  pageEncoding="utf-8"%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=uft-8">
 </head>
 <body>
  
- <form action="<%=request.getContextPath() %>/insertActorAction.jsp" method= "post">
+ <form action="<%=request.getContextPath() %>/insertActressAction.jsp" method= "post">
  <table border="1">
  	<!-- <tr>
  		<td>아이디:</td> <td><input type="hidden" name="id"></td>
- 	</tr>
- 	 --><tr>
+ 		</tr>-->
+ 	<tr>
  		<td>이름:</td> <td><input type="text" name="name"></td>
  	</tr>
  	<tr>
@@ -22,18 +19,9 @@
  	<tr>
 		<td colspan="4"><input type="submit" value="가입버튼"></td>
 	</tr>
- 
- 
- 
- 
- 
+  
  </table>
  </form>
 
-
-
-
-
-
 </body>
-</html>  
+</html>

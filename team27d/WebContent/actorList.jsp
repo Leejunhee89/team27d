@@ -30,10 +30,13 @@
 				<tr>
 					<td><%= actor.getActorId() %></td><td><%= actor.getActorName() %></td><td><%= actor.getActorAge() %></td>
 				</tr>  
-			</tfoot>	
+			</tfoot>
+			
 		<% 
-		}
+		} 
 		%>
+		<a href= "<%= request.getContextPath() %>/insertActorForm.jsp">배우등록</a>
+		
 	<!-- 리스트 안에 insert링크 걸기 (폼으로이동?) ,  -->
 	</table>
 </body>

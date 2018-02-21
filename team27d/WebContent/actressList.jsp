@@ -13,25 +13,24 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
 </head>
 <body>
-   
-<h1>여배우 리스트</h1>
-<table border ="1">
-	<tr>
-		<td>id</td>	<td>name</td> <td>age</td>
-	</tr>
-<%
-	for(Actress actress : list) {
-%>	
-	<tr>
-		<td><%= actress.getActressId() %></td><td><%= actress.getActressName() %></td><td><%= actress.getActressAge() %></td>
-	</tr>
-  
-<% 
-}
-%>
+	<h1>여배우 리스트</h1>
+	<table border ="1">
+		<tr>
+			<td>id</td>	<td>name</td> <td>age</td>
+		</tr>
+	<%
+		for(Actress actress : list) {
+	%>	
+		<tr>
+			<td><%= actress.getActressId() %></td><td><%= actress.getActressName() %></td><td><%= actress.getActressAge() %></td>
+		</tr>
+	  
+	<% 
+	}
+	%>
+	<a href= "<%= request.getContextPath() %>/insertActressForm.jsp">배우등록</a>
 </table>
 </body>
 </html>

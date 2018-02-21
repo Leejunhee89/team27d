@@ -13,7 +13,34 @@ import java.sql.DriverManager;
 
 public class ActressDao {
 	
-	
+	public void InsertActress(Actress actress)  {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=utf8";
+			String dbUser = "root";
+			String dbPass = "java0000";
+			conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
+			String sql = "insert into actress(actress_name, actress_age) values(?, ?)";
+			
+			pstmt = conn.prepareStatement(sql);
+			/*pstmt.setInt(1, actress.getActressId());*/
+			pstmt.setString(1, actress.getActressName());
+			pstmt.setInt(2, actress.getActressAge());
+						
+			pstmt.executeUpdate();
+			pstmt.close();
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+			
 	public ArrayList<Actress> selectActress() {
 		ArrayList<Actress> list = new ArrayList<Actress>();
 		/*<1>DB연결을 위해 Connection 을 초기화 한다.

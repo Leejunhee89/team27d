@@ -33,6 +33,15 @@
 		<%
 			}
 		%>
+		<tr>
+			<td>
+				<a href = "<%= request.getContextPath() %>/index.jsp">home</a>
+			</td>
+			<td>
+				<a href = "<%= request.getContextPath() %>/insertAnnouncerForm.jsp">아나운서 추가</a>
+			</td>
+		</tr>
 	</table>
+	
 </body>
 </html>

@@ -17,22 +17,28 @@
 <body>
 	<h1>여배우 리스트</h1>
 	<table border ="1">
-	<thead>	
-		<th>id</th>	
-		<th>name</th> 
-		<th>age</th>
+	<thead>
+		<tr>	
+			<th>여배우 ID</th>	
+			<th>여배우 NAME</th> 
+			<th>여배우 AGE</th>
+		</tr>
 	</thead>	
+	
 	<%
 		for(Actress actress : list) {
 	%>	
+	<tbody>	
 		<tr>
-			<td><%= actress.getActressId() %></td><td><%= actress.getActressName() %></td><td><%= actress.getActressAge() %></td>
+			<td><%= actress.getActressId() %></td>
+			<td><%= actress.getActressName() %></td>
+			<td><%= actress.getActressAge() %></td>
 		</tr>
-	  
+	</tbody>  
 	<% 
 	}
 	%>
-	<a href= "<%= request.getContextPath() %>/insertActressForm.jsp">배우등록</a>
+		<a href= "<%= request.getContextPath() %>/insertActressForm.jsp">배우등록</a>
 </table>
 </body>
 </html>

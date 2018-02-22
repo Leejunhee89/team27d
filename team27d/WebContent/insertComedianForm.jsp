@@ -8,7 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h3>코메디언 등록</h3>
 	<form action="<%=request.getContextPath() %>/insertComedianAction.jsp" method="post">
+		<hr>
 		<table border="1">
 			<thead>
 				<tr>
@@ -17,7 +19,6 @@
 				</tr>
 			</thead>
 			<tbody>				
-				
 				<tr>
 					<td>이름 </td>
 					<td><input type="text" name="name"></td>
@@ -27,7 +28,7 @@
 					<td><input type="text" name="age"></td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="submit" value="가입버튼"></td>
+					<td colspan="2"><input type="submit" value="등록버튼"></td>
 				</tr>
 			</tbody>
 		</table>

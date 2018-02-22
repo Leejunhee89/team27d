@@ -14,7 +14,7 @@ public class SingerDao {
 		
 /*	public void insertSigner(Singer insert) {*/
 	
-	public void insertSigner(int id,String name,int age) {
+	public void insertSigner(Singer singer) {
 		Connection connection = null;
 		PreparedStatement preparedstatement = null;
 		
@@ -24,14 +24,13 @@ public class SingerDao {
 		String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
 		String dbUser = "root";
 		String dbPass = "java0000";
-		String sql = "INSERT INTO singer VALUES (?, ?, ?)";
-		
+		String sql = "INSERT INTO `singer` (`singer_name`, `singer_age`) VALUES (?, ?);";
 		connection = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 		preparedstatement = connection.prepareStatement(sql);
 		
-		preparedstatement.setInt(1, id);
-		preparedstatement.setString(2, name);
-		preparedstatement.setInt(3, age);
+/*		preparedstatement.setInt(1, id);*/
+		preparedstatement.setString(1, singer.getSingerName());
+		preparedstatement.setInt(2, singer.getSingerAge());
 	
 		} catch (ClassNotFoundException e) {
 			// ClassNotFoundException 예외발생시 캐치절 매개변수로 넘겨준다.

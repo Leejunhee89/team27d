@@ -21,6 +21,7 @@
 		ArrayList<Comedian> list = new ArrayList<Comedian>();
 		list=comedianDao.selectComedianList();
 	%>
+	<a href = "<%= request.getContextPath() %>/insertComedianForm.jsp">코메디언 등록</a>
 	<table border = "1">
 		<thead>
 			<tr>
@@ -41,7 +42,6 @@
 			<%
 				}
 			%>
-			<a href = "<%= request.getContextPath() %>/insertComedianForm.jsp">코메디언 추가</a>
 		</tbody>
 	</table>
 </body>

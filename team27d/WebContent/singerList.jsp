@@ -11,18 +11,23 @@
 </head>	
 <body>
 	<h1>가수 리스트</h1>
-	<% 		
+	<% 	
 		SingerDao singerdao = new SingerDao();
 		ArrayList<Singer> singerlist = new ArrayList<Singer>();
 		singerlist = singerdao.selectSingerList();
 	%>
 	<a href = "<%= request.getContextPath() %>/insertSingerForm.jsp">가수 추가</a>
 	<table border = "1">
+	<thead>
 		<tr>
-			<th>아이디</th>
-			<th>이름</th>
-			<th>나이</th>
+			<th>가수 ID</th>
+			<th>가수 NAME</th>
+			<th>가수 AGE</th>
+			<th>가수 UPDATE</th>
+			<th>가수 DELETE</th>
 		<tr>
+	</thead>
+	<tbody>
 	<%
 		for(Singer sin : singerlist){
 	%>
@@ -30,13 +35,19 @@
 			<td><%=sin.getSingerId()%></td>
 			<td><%=sin.getSingerName()%></td>
 			<td><%=sin.getSingerAge()%></td>
-		<tr>
 	<%
 		}
 	%>
-		<tr>
-		<td colspan="4"><a href="/team27d/index.jsp">메인으로가기</a></td>
-		</tr>
+			<!-- request.getParameter("singerId") -->
+
+			
+			<!-- 
+			수정폼 선택 > 액션 업데이트
+			 -->
+<%-- 			<td><a href = "<%= request.getContextPath() %>/updateSingerForm.jsp?singerId=<%=singer.getsingerId()%>">수정</a></td>
+			<td><a href = "<%= request.getContextPath() %>/deleteSingerAction.jsp?singerId=<%=singer.getsingerId()%>">삭제</a></td>
+ --%>		<tr>
+	</tbody>
 	</table> 
 </body>
 </html>

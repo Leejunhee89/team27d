@@ -16,25 +16,30 @@
 		RapperDao rapperdao = new RapperDao();
 		ArrayList<Rapper> rapperlist = rapperdao.selectRapperList();
 	%>
-	<a href= "<%= request.getContextPath() %>/insertRapperForm.jsp">래퍼등록</a>
+		<a href= "<%= request.getContextPath() %>/index.jsp">홈</a> &nbsp;
+		<a href= "<%= request.getContextPath() %>/insertRapperForm.jsp">래퍼등록</a> <br><br>
 	<table border="1">
 		<thead>
 			<tr>
 				<th>래퍼 ID</th>
 				<th>래퍼 NAME</th>
 				<th>래퍼 AGE</th>
+				<th>수정</th>
 				<th>삭제</th>
 			<tr>
 		</thead>
 		<tbody>
 		<%
-			for(Rapper rap : rapperlist){ 
+			for(Rapper rap : rapperlist){
 		%>
 			<tr>
 				<td><%=rap.getRapperId()%></td>
 				<td><%=rap.getRapperName()%></td>
 				<td><%=rap.getRapperAge()%></td>
-				<td>삭제버튼</td>
+				<td>수정</td>
+				<td>
+					<a href = "<%= request.getContextPath() %>/deleteRapperAction.jsp?rapperId=<%= rap.getRapperId() %>">삭제</a>
+				</td>
 			</tr>
 		<%
 			}

@@ -12,7 +12,7 @@
 	rapper.setRapperAge(rapper_age);
 	
 	RapperDao rapdao = new RapperDao();
-	rapdao.InsertRapper(rapper);
+	rapdao.insertRapper(rapper);
 	
 	response.sendRedirect(request.getContextPath()+"/rapperList.jsp");
 %>

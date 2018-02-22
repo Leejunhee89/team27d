@@ -11,9 +11,30 @@ import java.util.ArrayList;
 public class RapperDao {// 예외는 전부 try-catch 처리
 	Connection conn = null;
 	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	Rapper rapper = null;
+	
+	// 래퍼 삭제 메서드
+	public void deleteRapper(int rapperID) {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
+			String dbID = "root";
+			String dbPass = "java0000";
+			String sql = "DELETE FROM `rapper` WHERE  `rapper_id`=?";
+			conn = DriverManager.getConnection(jdbcDriver, dbID, dbPass);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, rapperID);
+			pstmt.executeUpdate();
+			pstmt.close();
+			conn.close();
+		}
+		catch (ClassNotFoundException e) {e.printStackTrace();}
+		catch (SQLException e) {e.printStackTrace();}
+	}
 	
 	// 래퍼 입력 메서드
-	public void InsertRapper(Rapper rapper) {
+	public void insertRapper(Rapper rapper) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
@@ -27,12 +48,11 @@ public class RapperDao {// 예외는 전부 try-catch 처리
 			pstmt.setInt(2, rapper.getRapperAge());
 			
 			pstmt.executeUpdate();
-		
 			pstmt.close();
-			conn.close();			
+			conn.close();
 		}
 		catch (ClassNotFoundException e) {e.printStackTrace();}
-		catch (SQLException e) {e.printStackTrace();}		
+		catch (SQLException e) {e.printStackTrace();}
 	}
 	
 	// 모든 래퍼 리스트 메서드
@@ -40,11 +60,6 @@ public class RapperDao {// 예외는 전부 try-catch 처리
 		// ArrayList 래퍼클래스타입으로 객체생성 - 참조변수명은 보통 list로 쓴다
 		// rapperlist -> list로 일괄변경하려면! 변수명 블럭-Refactor-Rename클릭
 		ArrayList<Rapper> rapperlist = new ArrayList<Rapper>();
-
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
@@ -65,16 +80,14 @@ public class RapperDao {// 예외는 전부 try-catch 처리
 				rapper.setRapperAge(rs.getInt("rapperAge"));
 				rapperlist.add(rapper); // 래퍼리스트에 래퍼객체(반복) 추가 -> 리턴값으로 담을 데이터***
 			}
+			rs.close();
+			pstmt.close();
+			conn.close();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			// 닫기
-			if (rs != null)	try {rs.close(); rs = null;} catch (SQLException ex) {}
-			if (pstmt != null) try {pstmt.close(); pstmt = null;} catch (SQLException ex) {}
-			if (conn != null) try {conn.close();conn = null;} catch (SQLException ex) {}
-		}
+		} 
 		return rapperlist; // ***추가한 리스트들을 반환
 	}
 }

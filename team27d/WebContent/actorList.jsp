@@ -17,11 +17,11 @@
 		ArrayList<Actor> list = ado.selectActor();
 	%>
 	<table border ="1">
-		<tbody>
-		<tr>
-			<td>id</td>	<td>name</td> <td>age</td>
-		</tr>
-		</tbody>
+		<thead>
+			<th>id</th>
+			<th>name</th>
+			<th>age</th>
+		</thead>
 		
 		<%
 			for(Actor actor : list) {

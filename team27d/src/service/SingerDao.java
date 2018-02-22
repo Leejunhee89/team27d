@@ -11,12 +11,76 @@ import java.util.ArrayList;
 import service.Singer;
 
 public class SingerDao {
+	
+	ResultSet resultset = null;
+	Connection connection = null;
+	PreparedStatement preparedstatement = null;
+	
+	public void updateSinger(Singer singer, Connection conn) {
 		
-/*	public void insertSigner(Singer insert) {*/
+		try {
+		Class.forName("com.mysql.jdbc.Driver");
+		
+		String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
+		String dbUser = "root";
+		String dbPass = "java0000";
+		String sql = "UPDATE singer SET singer_name=?,singer_age=? WHERE singer_id = ?";
+		connection = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
+		
+		preparedstatement = connection.prepareStatement(sql);
+		
+		preparedstatement.setInt(1, singer.getSingerId());
+		preparedstatement.setString(2, singer.getSingerName());
+		preparedstatement.setInt(3, singer.getSingerAge());
+	
+		preparedstatement.executeUpdate();
+		
+		} catch (ClassNotFoundException e) {
+			// ClassNotFoundException 예외발생시 캐치절 매개변수로 넘겨준다.
+			e.printStackTrace();
+
+		} catch (SQLException e) {
+			// SQLException 예외발생시 캐치절 매개변수로 넘겨준다.
+			e.printStackTrace();
+
+		}finally {
+			
+			if(preparedstatement!=null) {try {preparedstatement.close();} catch (SQLException e) {e.printStackTrace();}}
+			if(connection!=null) {try {connection.close();} catch (SQLException e) {e.printStackTrace();}}
+		}
+	}
+
+	public void deleteSigner(String singerid) {
+
+		try {
+		Class.forName("com.mysql.jdbc.Driver");
+		
+		String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
+		String dbUser = "root";
+		String dbPass = "java0000";
+		String sql = "DELETE FROM tb_user WHERE u_id=?";
+		connection = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
+		
+		preparedstatement = connection.prepareStatement(sql);
+		
+		preparedstatement.setString(1, singerid);
+		
+		} catch (ClassNotFoundException e) {
+			// ClassNotFoundException 예외발생시 캐치절 매개변수로 넘겨준다.
+			e.printStackTrace();
+
+		} catch (SQLException e) {
+			// SQLException 예외발생시 캐치절 매개변수로 넘겨준다.
+			e.printStackTrace();
+
+		}finally {
+			
+			if(preparedstatement!=null) {try {preparedstatement.close();} catch (SQLException e) {e.printStackTrace();}}
+			if(connection!=null) {try {connection.close();} catch (SQLException e) {e.printStackTrace();}}
+		}
+	}
 	
 	public void insertSigner(Singer singer) {
-		Connection connection = null;
-		PreparedStatement preparedstatement = null;
 		
 		try {
 		Class.forName("com.mysql.jdbc.Driver");
@@ -50,10 +114,7 @@ public class SingerDao {
 	public ArrayList<Singer> selectSingerList() {
 		
 		ArrayList<Singer> singerlist = new ArrayList<Singer>();
-		ResultSet resultset = null;
-		Connection connection = null;
-		PreparedStatement preparedstatement = null;
-
+		
 		/* ArrayList<Singer> 주소값을 담고있는 객체참조변수 list를 할당. */
 
 		/* db 연결 및 실행을 위한 value값 설정 */

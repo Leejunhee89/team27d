@@ -11,14 +11,10 @@
 	<title>Insert title here</title>
 </head>
 <body>
-	<h1>래퍼 입력하기</h1>
-	<%@ include file = "insertRapperForm.jsp"%>
-	
 	<h1>래퍼 리스트</h1>
 	<%
 		RapperDao rapperdao = new RapperDao();
-		ArrayList<Rapper> rapperlist = new ArrayList<Rapper>();
-		rapperlist = rapperdao.selectRapperList();
+		ArrayList<Rapper> rapperlist = rapperdao.selectRapperList();
 	%>
 	<table border="1">
 		<thead>
@@ -40,6 +36,7 @@
 		<%
 			}
 		%>
+		<a href= "<%= request.getContextPath() %>/insertRapperForm.jsp">래퍼등록</a>
 		</tbody>
 	</table>
 </body>

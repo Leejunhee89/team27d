@@ -2,13 +2,11 @@
 <%@ page import = "service.RapperDao" %>
 <!DOCTYPE html>
 <%
-	int id = Integer.parseInt(request.getParameter("id"));
-	String name = request.getParameter("name");
-	int age = Integer.parseInt(request.getParameter("age"));
-	System.out.println(id + ", " + name + ", " + age);
+	String name = request.getParameter("rapper_name");
+	int age = Integer.parseInt(request.getParameter("rapper_age"));
 	
 	RapperDao rapdao = new RapperDao();
-	rapdao.insertRapper(id, name, age);
+	rapdao.insertRapper(name, age);
 	
 	response.sendRedirect(request.getContextPath()+"/rapperList.jsp");
 %>

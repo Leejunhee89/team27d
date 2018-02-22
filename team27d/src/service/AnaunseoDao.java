@@ -10,6 +10,50 @@ import service.Anaunseo;
 
 public class AnaunseoDao {
 	
+	public int deleteAnaunseo(int anaunseoId) {
+		int result = 0;
+		System.out.println("anunseoId : " + anaunseoId);
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			
+			String url = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
+			String id = "root";
+			String pw = "java0000";
+			connection = DriverManager.getConnection(url, id, pw);
+			preparedStatement = connection.prepareStatement("DELETE FROM anaunseo WHERE anaunseo_id = ?");
+			preparedStatement.setInt(1, anaunseoId);
+			preparedStatement.toString();
+			result = preparedStatement.executeUpdate();
+			
+		}catch(SQLException exception) {
+			exception.printStackTrace();
+		}catch(ClassNotFoundException exception) {
+			exception.printStackTrace();
+		}finally {
+			if(preparedStatement != null) {
+				try {
+					preparedStatement.close();
+					preparedStatement = null;
+				}catch(SQLException exception) {
+					exception.printStackTrace();
+				}
+			}
+			if(connection != null) {
+				try {
+					connection.close();
+					connection = null;
+				}catch(SQLException exception) {
+					exception.printStackTrace();
+				}
+			}
+		}
+		return result;
+	}
+	
 	public int insertAnaunseo(Anaunseo anaunseo) {
 	
 		//단위테스트

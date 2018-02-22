@@ -3,7 +3,7 @@
 <%@ page import = "service.AnaunseoDao" %>
 <%@ page import = "java.util.ArrayList" %>
 <%@ page import = "service.Anaunseo" %>
-<!DOCTYPE html PUBLIC >
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -21,19 +21,43 @@
 	<table border = "1">
 		<thead>
 			<tr>
-				<th>아나운서 ID</th>
-				<th>아나운서 NAME</th>
-				<th>아나운서 AGE</th>
+				<th>
+					아나운서 ID
+				</th>
+				<th>
+					아나운서 NAME
+				</th>
+				<th>
+					아나운서 AGE
+				</th>
+				<th>
+					수정
+				</th>
+				<th>
+					삭제
+				</th>
 			</tr>
 		<thead>
 		<tbody>
 		<%
-			for(Anaunseo anaun : list){
+			for(Anaunseo anaunseo : list){
 		%>
 				<tr>
-					<td><%=anaun.getAnaunseoId() %></td>
-					<td><%=anaun.getAnaunseoName() %></td>
-					<td><%=anaun.getAnaunseoAge() %></td>
+					<td>
+						<%= anaunseo.getAnaunseoId() %>
+					</td>
+					<td>
+						<%= anaunseo.getAnaunseoName() %>
+					</td>
+					<td>
+						<%= anaunseo.getAnaunseoAge() %>
+					</td>
+					<td>
+						<a href = "<%= request.getContextPath() %>/updateAnaunseoForm.jsp?anaunseoId=<%= anaunseo.getAnaunseoId() %>">수정</a>
+					</td>
+					<td>
+						<a href = "<%= request.getContextPath() %>/deleteAnaunseoAction.jsp?anaunseoId=<%= anaunseo.getAnaunseoId() %>">삭제</a>
+					</td>
 				</tr>
 		<%
 			}

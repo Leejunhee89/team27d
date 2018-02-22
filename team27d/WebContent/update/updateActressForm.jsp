@@ -7,7 +7,7 @@
 	int actressId = Integer.parseInt(actressId1);
 	System.out.println(actressId + "---------------");
 	ActressDao actressdao = new ActressDao();
-	Actress actress = actressdao.updateSelectActress(actressId);
+	Actress actress = actressdao.updateActressOne(actressId);
 	int dbid = actress.getActressId();
 	String dbname = actress.getActressName();
 	int dbage = actress.getActressAge();
@@ -18,7 +18,7 @@
 </head>
 <body>
 	<h3>여배우 수정화면</h3>
- <form action="<%=request.getContextPath() %>/updateActressAction.jsp" method= "post">
+ <form action="<%=request.getContextPath() %>/update/updateActressAction.jsp" method= "post">
  <table border="1">
  	
  	<tbody>

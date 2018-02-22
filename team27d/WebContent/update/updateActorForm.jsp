@@ -6,7 +6,7 @@
 	String actorId1 = request.getParameter("actorId");
 	int actorId = Integer.parseInt(actorId1);
 	ActorDao actor = new ActorDao();
-	Actor act = actor.updateSelectActor(actorId);
+	Actor act = actor.updateActorOne(actorId);
 	System.out.println(act + "무엇이? act");
 	int dbid = act.getActorId();
 	String dbname = act.getActorName();
@@ -20,7 +20,7 @@
 </head>
 <body>
  <h3>남배우 수정화면</h3>
- <form action="<%=request.getContextPath() %>/updateActorAction.jsp" method= "post">
+ <form action="<%=request.getContextPath() %>/update/updateActorAction.jsp" method= "post">
  <table border="1">
  	
  	<tbody>

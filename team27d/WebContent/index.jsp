@@ -39,12 +39,12 @@
 
 	<ul>
 	   <!-- request.getContextPath() -->
-	   <li><a href="/team27d/actorList.jsp">actor list</a></li> 
-	   <li><a href="/team27d/actressList.jsp">actress list</a></li> 
-	   <li><a href="/team27d/announcerList.jsp">announcer list</a></li> 
-	   <li><a href="/team27d/comedianList.jsp">comedian list</a></li>
-	   <li><a href="/team27d/rapperList.jsp">rapper list</a></li>
-	   <li><a href="/team27d/singerList.jsp">singer list</a></li>
+	   <li><a href="<%= request.getContextPath() %>/list/actorList.jsp">actor list</a></li> 
+	   <li><a href="<%= request.getContextPath() %>/list/actressList.jsp">actress list</a></li> 
+	   <li><a href="<%= request.getContextPath() %>/list/announcerList.jsp">announcer list</a></li> 
+	   <li><a href="<%= request.getContextPath() %>/list/comedianList.jsp">comedian list</a></li>
+	   <li><a href="<%= request.getContextPath() %>/list/rapperList.jsp">rapper list</a></li>
+	   <li><a href="<%= request.getContextPath() %>/list/singerList.jsp">singer list</a></li>
 	</ul>   
 
 </body>

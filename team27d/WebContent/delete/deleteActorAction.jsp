@@ -7,7 +7,7 @@
 	int actorId = Integer.parseInt(actorId1);
 	System.out.println(actorId + "¹«¾ùÀÌ? actorId" );
 	ActorDao actor = new ActorDao();
-	actor.DeleteActor(actorId);
+	actor.deleteActor(actorId);
 	
-	response.sendRedirect(request.getContextPath() +"/actorList.jsp");
+	response.sendRedirect(request.getContextPath() +"/list/actorList.jsp");
 %>

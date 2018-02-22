@@ -5,7 +5,7 @@
 </head>
 <body>
  <h3>여배우 등록화면</h3>
- <form action="<%=request.getContextPath() %>/insertActressAction.jsp" method= "post">
+ <form action="<%=request.getContextPath() %>/insert/insertActressAction.jsp" method= "post">
  <table border="1">
  	<thead>
  		<tr>	

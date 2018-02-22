@@ -17,7 +17,7 @@ public class ActressDao {
 	ResultSet result = null;
 	Actress actress = null;
 	
-	public Actress updateSelectActress(int actressId) {
+	public Actress updateActressOne(int actressId) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=utf8";
@@ -72,7 +72,7 @@ public class ActressDao {
 		}
 	}
 	
-	public void DeleteActress(int actressId) {
+	public void deleteActress(int actressId) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=utf8";
@@ -95,7 +95,7 @@ public class ActressDao {
 		}
 	}
 	
-	public void InsertActress(Actress actress)  {
+	public void insertActress(Actress actress)  {
 		
 		try{
 			Class.forName("com.mysql.jdbc.Driver");

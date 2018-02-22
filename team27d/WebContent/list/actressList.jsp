@@ -16,7 +16,7 @@
 	ArrayList<Actress> list = ado.selectActress();
 %>	
 	<a href= "<%= request.getContextPath() %>/index.jsp">홈</a> &nbsp;
-	<a href= "<%= request.getContextPath() %>/insertActressForm.jsp">배우등록</a> <br><br>
+	<a href= "<%= request.getContextPath() %>/insert/insertActressForm.jsp">배우등록</a> <br><br>
 	<table border ="1">
 	<thead>
 		<tr>	
@@ -36,8 +36,8 @@
 			<td><%= actress.getActressId() %></td>
 			<td><%= actress.getActressName() %></td>
 			<td><%= actress.getActressAge() %></td>
-			<td><a href="updateActressForm.jsp?actressId=<%=actress.getActressId() %>">수정</a></td>
-			<td><a href="deleteActressAction.jsp?actressId=<%=actress.getActressId() %>">삭제</a></td>
+			<td><a href="<%=request.getContextPath()%>/update/updateActressForm.jsp?actressId=<%=actress.getActressId() %>">수정</a></td>
+			<td><a href="<%=request.getContextPath()%>/delete/deleteActressAction.jsp?actressId=<%=actress.getActressId() %>">삭제</a></td>
 		</tr>
 	</tbody>  
 	<% 

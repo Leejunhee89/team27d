@@ -16,6 +16,7 @@
 		ArrayList<Singer> singerlist = new ArrayList<Singer>();
 		singerlist = singerdao.selectSingerList();
 	%>
+	<a href = "<%= request.getContextPath() %>/insertSingerForm.jsp">가수 추가</a>
 	<table border = "1">
 		<tr>
 			<th>아이디</th>

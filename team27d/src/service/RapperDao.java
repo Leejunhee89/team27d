@@ -15,7 +15,7 @@ public class RapperDao {// 예외는 전부 try-catch 처리
 	Rapper rapper = null;
 	
 	// 래퍼 수정처리 메서드
-	public void updateRapper(int id, String name, int age) {
+	public void updateRapper(Rapper rapper) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
@@ -24,9 +24,9 @@ public class RapperDao {// 예외는 전부 try-catch 처리
 			String sql = "UPDATE `rapper` SET `rapper_name`=?, `rapper_age`=? WHERE  `rapper_id`=?";
 			conn = DriverManager.getConnection(jdbcDriver, dbID, dbPass);
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, name);
-			pstmt.setInt(2, age);
-			pstmt.setInt(3, id);
+			pstmt.setString(1, rapper.getRapperName());
+			pstmt.setInt(2, rapper.getRapperAge());
+			pstmt.setInt(3, rapper.getRapperId());
 			pstmt.executeUpdate();
 			pstmt.close();
 			conn.close();			

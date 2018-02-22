@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <% request.setCharacterEncoding("euc-kr"); %>
 <%@ page import = "service.RapperDao" %>
+<%@ page import = "service.Rapper" %>
 <!DOCTYPE html>
 <%
-	int rapper_id = Integer.parseInt(request.getParameter("rapper_id"));
-	String rapper_name = request.getParameter("rapper_name");
-	int rapper_age = Integer.parseInt(request.getParameter("rapper_age"));
+	Rapper rapper = new Rapper();
+	rapper.setRapperId(Integer.parseInt(request.getParameter("rapper_id")));
+	rapper.setRapperName(request.getParameter("rapper_name"));
+	rapper.setRapperAge(Integer.parseInt(request.getParameter("rapper_age")));
+	
 	RapperDao rapdao = new RapperDao();
-	rapdao.updateRapper(rapper_id, rapper_name, rapper_age);
+	rapdao.updateRapper(rapper);
 	response.sendRedirect(request.getContextPath() + "/rapperList.jsp");
 %>

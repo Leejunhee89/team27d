@@ -13,6 +13,7 @@
 <body>
 	<h1>아나운서 리스트</h1>
 <%
+	request.setCharacterEncoding("euc-kr");
 	AnaunseoDao anaDao = new AnaunseoDao();
 	ArrayList<Anaunseo> list = anaDao.selectActorList();
 %>

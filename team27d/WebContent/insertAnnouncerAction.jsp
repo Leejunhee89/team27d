@@ -5,6 +5,7 @@
 <%@ page import = "java.sql.PreparedStatement" %>
 <!DOCTYPE html>
 <%
+	request.setCharacterEncoding("euc-kr");
 	String anaunseo_name = request.getParameter("anaunseo_name");
 	int anaunseo_age = Integer.parseInt(request.getParameter("anaunseo_age"));
 	

@@ -12,10 +12,38 @@ import java.util.ArrayList;
 import java.sql.DriverManager;
 
 public class ActorDao {
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	ResultSet result = null;
+	
+	public void DeleteActor(int actorId) {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=utf8";
+			String dbUser = "root";
+			String dbPass = "java0000";
+			conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
+			String sql = "DELETE FROM actor WHERE actor_id=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, actorId);
+			pstmt.executeUpdate();
+			
+			pstmt.close();
+			conn.close();
+				
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	
 	public void InsertActor(Actor actor)  {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		
+				
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=utf8";
@@ -47,10 +75,7 @@ public class ActorDao {
 		 *<2>DB를 연결하고 쿼리문을 실행시키기 위해 PreparedStatement 을 초기화 한다.
 		 *<3>쿼리문을 실행 시킬 ResultSet 을 초기화 한다.
 		 */		
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet result = null;
-				
+						
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			/*드라이버로딩을 위해 Class.forName 을 트라이 캐치문으로 감싼다. 이유) 정보가 틀릴 예외를 잡아준다.

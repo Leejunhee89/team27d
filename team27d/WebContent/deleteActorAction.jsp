@@ -10,6 +10,4 @@
 	actor.DeleteActor(actorId);
 	
 	response.sendRedirect(request.getContextPath() +"/actorList.jsp");
-
-
 %>

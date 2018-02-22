@@ -38,10 +38,7 @@ public class ActorDao {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
-	
+		
 	public void InsertActor(Actor actor)  {
 				
 		try{

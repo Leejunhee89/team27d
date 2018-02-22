@@ -16,6 +16,44 @@ public class SingerDao {
 	Connection connection = null;
 	PreparedStatement preparedstatement = null;
 	
+/*	public Singer uSelectforUpdate(String singerid) {
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			
+			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
+			String dbUser = "root";
+			String dbPass = "java0000";
+			String sql = "SELECT * FROM tb_user WHERE u_id=?";
+			connection = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
+			
+			preparedstatement = connection.prepareStatement(sql);
+
+			preparedstatement.setString(1, singerid);
+			resultset = preparedstatement.executeQuery();
+			if(resultset.next()) {
+				System.out.println("쿼리 실행 결과 있나? mSelectforUpdate Mdao.java");
+				Singer singerreturn = new Singer();
+				singerreturn.setSingerId(resultset.getInt("singer_id"));
+				singerreturn.setSingerName(resultset.getString("singer_name"));
+				singerreturn.setSingerAge(resultset.getInt("singer_age"));
+			}
+		} catch (ClassNotFoundException e) {
+			// ClassNotFoundException 예외발생시 캐치절 매개변수로 넘겨준다.
+			e.printStackTrace();
+
+		} catch (SQLException e) {
+			// SQLException 예외발생시 캐치절 매개변수로 넘겨준다.
+			e.printStackTrace();
+
+		}finally {
+			
+			if(preparedstatement!=null) {try {preparedstatement.close();} catch (SQLException e) {e.printStackTrace();}}
+			if(connection!=null) {try {connection.close();} catch (SQLException e) {e.printStackTrace();}}
+		}
+		return singerreturn;
+	}*/
+	
 	public void updateSinger(Singer singer, Connection conn) {
 		
 		try {

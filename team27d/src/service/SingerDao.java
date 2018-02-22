@@ -16,7 +16,6 @@ public class SingerDao {
 	Connection connection = null;
 	PreparedStatement preparedstatement = null;
 
-	
 	public Singer singerforupdate(int singerid) {
 		Singer singer = null;
 		

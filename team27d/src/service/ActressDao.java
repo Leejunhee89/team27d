@@ -15,6 +15,62 @@ public class ActressDao {
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet result = null;
+	Actress actress = null;
+	
+	public Actress updateSelectActress(int actressId) {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=utf8";
+			String dbUser = "root";
+			String dbPass = "java0000";
+			conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
+			String sql = "SELECT * FROM actress WHERE actress_id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, actressId);
+			result = pstmt.executeQuery();
+			
+			if(result.next()) {
+				actress = new Actress();
+				actress.setActressId(result.getInt("actress_id"));
+				actress.setActressName(result.getString("actress_name"));
+				actress.setActressAge(result.getInt("actress_age"));
+			}
+			
+			pstmt.close();
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return actress;
+	}
+	
+	public void updateActress (Actress actress) {
+		try {
+		
+			Class.forName("com.mysql.jdbc.Driver");
+		
+			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=utf8";
+			String dbUser = "root";
+			String dbPass = "java0000";
+			conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
+			String sql = "UPDATE actress SET actress_name=?, actress_age=? WHERE actress_id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, actress.getActressName());
+			pstmt.setInt(2, actress.getActressAge());
+			pstmt.setInt(3, actress.getActressId());
+			pstmt.executeUpdate();
+			
+			pstmt.close();
+			conn.close();
+					
+		} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+		} catch (SQLException e) {
+				e.printStackTrace();
+		}
+	}
 	
 	public void DeleteActress(int actressId) {
 		try {

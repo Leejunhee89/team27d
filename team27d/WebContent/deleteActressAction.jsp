@@ -5,7 +5,7 @@
 <%
 	String actressId1 = request.getParameter("actressId");
 	int actressId = Integer.parseInt(actressId1);
-	System.out.println(actressId + "公均捞? actorId" );
+	System.out.println(actressId + "公均捞? actressId" );
 	ActressDao actress = new ActressDao();
 	actress.DeleteActress(actressId);
 	

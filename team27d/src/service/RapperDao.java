@@ -9,22 +9,22 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class RapperDao {// 예외는 전부 try-catch 처리
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	
 	// 래퍼 입력 메서드
-	public Rapper insertRapper(String name, int age) {
-		Rapper rapper = new Rapper();
-		Connection conn = null;
-		PreparedStatement pstmt = null;
+	public void InsertRapper(Rapper rapper) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
 			String dbID = "root";
 			String dbPass = "java0000";
-			String sql = "INSERT INTO rapper VALUES(?, ?)";
+			String sql = "INSERT INTO `rapper` (`rapper_name`, `rapper_age`) VALUES (?, ?);";
 			conn = DriverManager.getConnection(jdbcDriver, dbID, dbPass);
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, name);
-			pstmt.setInt(2, age);
+			pstmt.setString(1, rapper.getRapperName());
+			pstmt.setInt(2, rapper.getRapperAge());
 			
 			pstmt.executeUpdate();
 		
@@ -33,7 +33,6 @@ public class RapperDao {// 예외는 전부 try-catch 처리
 		}
 		catch (ClassNotFoundException e) {e.printStackTrace();}
 		catch (SQLException e) {e.printStackTrace();}		
-		return rapper;
 	}
 	
 	// 모든 래퍼 리스트 메서드

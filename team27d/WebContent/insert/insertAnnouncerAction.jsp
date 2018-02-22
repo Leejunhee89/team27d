@@ -18,5 +18,5 @@
 	AnaunseoDao anaunseoDao = new AnaunseoDao();
 	anaunseoDao.insertAnaunseo(anaunseo);
 		
-	response.sendRedirect(request.getContextPath() + "/announcerList.jsp");
+	response.sendRedirect(request.getContextPath() + "/list/announcerList.jsp");
 %>

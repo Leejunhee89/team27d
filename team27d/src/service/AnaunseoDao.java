@@ -13,9 +13,7 @@ public class AnaunseoDao {
 	PreparedStatement preparedStatement;
 	ResultSet resultSet;
 	
-	public int updateAnaunseo(Anaunseo anaunseo) {
-		int result = 0;
-		
+	public void updateAnaunseo(Anaunseo anaunseo) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			String url = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
@@ -27,7 +25,7 @@ public class AnaunseoDao {
 			preparedStatement.setInt(2, anaunseo.getAnaunseoAge());
 			preparedStatement.setInt(3, anaunseo.getAnaunseoId());
 			
-			result = preparedStatement.executeUpdate();
+			preparedStatement.executeUpdate();
 			
 		}catch(SQLException exception) {
 			exception.printStackTrace();
@@ -51,10 +49,9 @@ public class AnaunseoDao {
 				}
 			}
 		}
-		return result;
 	}
 	
-	public Anaunseo anaunseoForUpdate(int anaunseoId) {
+	public Anaunseo updateAnaunseoOne(int anaunseoId) {
 		Anaunseo anaunseo = null;
 		
 		try {
@@ -107,12 +104,8 @@ public class AnaunseoDao {
 		return anaunseo;
 	}
 	
-	public int deleteAnaunseo(int anaunseoId) {
-		int result = 0;
+	public void deleteAnaunseo(int anaunseoId) {
 		System.out.println("anunseoId : " + anaunseoId);
-		
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -124,7 +117,7 @@ public class AnaunseoDao {
 			preparedStatement = connection.prepareStatement("DELETE FROM anaunseo WHERE anaunseo_id = ?");
 			preparedStatement.setInt(1, anaunseoId);
 			preparedStatement.toString();
-			result = preparedStatement.executeUpdate();
+			preparedStatement.executeUpdate();
 			
 		}catch(SQLException exception) {
 			exception.printStackTrace();
@@ -148,17 +141,12 @@ public class AnaunseoDao {
 				}
 			}
 		}
-		return result;
 	}
 	
-	public int insertAnaunseo(Anaunseo anaunseo) {
-	
+	public void insertAnaunseo(Anaunseo anaunseo) {
 		//단위테스트
 		System.out.println(anaunseo);
 		
-		Connection connection = null;
-		PreparedStatement prepareStatement = null;
-		int isUpdate = 0;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			
@@ -168,11 +156,11 @@ public class AnaunseoDao {
 			String sql = "INSERT INTO anaunseo(anaunseo_name, anaunseo_age) VALUES(?, ?)";
 			
 			connection = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
-			prepareStatement = connection.prepareStatement(sql);
-			prepareStatement.setString(1, anaunseo.getAnaunseoName());
-			prepareStatement.setInt(2, anaunseo.getAnaunseoAge());
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, anaunseo.getAnaunseoName());
+			preparedStatement.setInt(2, anaunseo.getAnaunseoAge());
 			
-			isUpdate = prepareStatement.executeUpdate();
+			preparedStatement.executeUpdate();
 			
 		}catch(ClassNotFoundException exception){
 			exception.printStackTrace();
@@ -183,10 +171,10 @@ public class AnaunseoDao {
 			System.out.println(exception.getMessage	());
 			System.out.println("예외발생");
 		}finally {
-			if(prepareStatement != null) {
+			if(preparedStatement != null) {
 				try{
-					prepareStatement.close();
-					prepareStatement = null;
+					preparedStatement.close();
+					preparedStatement = null;
 				} catch(SQLException exception) {
 					exception.printStackTrace();
 					System.out.println(exception.getMessage());
@@ -204,14 +192,9 @@ public class AnaunseoDao {
 				}
 			}
 		}
-		return isUpdate;
 	}
 	
-	public ArrayList<Anaunseo> selectActorList() {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
+	public ArrayList<Anaunseo> selectAnaunseo() {
 		//아나운서를 넣을수 있는 어레이 리스트 생성
 		ArrayList<Anaunseo> list = new ArrayList<Anaunseo>();
 		
@@ -229,17 +212,17 @@ public class AnaunseoDao {
 			// 쿼리 한줄로....<ok>
 			String sql = "SELECT anaunseo_id AS anaunseoId, anaunseo_name AS anaunseoName, anaunseo_age AS anaunseoAge FROM anaunseo ORDER BY anaunseo_id ASC";
 			
-			conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
+			connection = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			//쿼리 준비
-			pstmt = conn.prepareStatement(sql);
+			preparedStatement = connection.prepareStatement(sql);
 			//쿼리 실행후 레코드 ResultSet rs에 저장
-			rs = pstmt.executeQuery();
+			resultSet = preparedStatement.executeQuery();
 			//rs에  레코드 없을때까지 DB에 저장된 값 ana에 세팅 후 세팅된 ana를 어레이리스트에 저장
-			while(rs.next()) {
+			while(resultSet.next()) {
 				Anaunseo anaunseo = new Anaunseo();
-				anaunseo.setAnaunseoId( rs.getInt("anaunseoId") );
-				anaunseo.setAnaunseoName( rs.getString("anaunseoName") );
-				anaunseo.setAnaunseoAge( rs.getInt("anaunseoAge") );
+				anaunseo.setAnaunseoId( resultSet.getInt("anaunseoId") );
+				anaunseo.setAnaunseoName( resultSet.getString("anaunseoName") );
+				anaunseo.setAnaunseoAge( resultSet.getInt("anaunseoAge") );
 				
 				list.add(anaunseo);
 			}
@@ -262,9 +245,30 @@ public class AnaunseoDao {
 			// close()메서드를 통한 메모리 반환 순서는 ResultSet, PreparedStatement, Connection 순서가 되어야 한다.
 			// close()메서드 뒤에 rs, pstmt, conn 의 객체참조변수를 null값으로 초기화하는 이유는
 			// 혹시나 모를 잘못된 주소참조를 방지하기 위하여 null값으로 초기화시켜 두었다.
-			if(rs != null) try{ rs.close(); rs = null; } catch(SQLException ex) {}
-			if(pstmt != null) try{ pstmt.close(); pstmt = null; } catch(SQLException ex) {}
-			if(conn != null) try{ conn.close(); conn = null; } catch(SQLException ex) {}
+			if(resultSet != null) {
+				try {
+					resultSet.close();
+					resultSet = null;
+				}catch(SQLException exception) {
+					exception.printStackTrace();
+				}
+			}
+			if(preparedStatement != null) {
+				try {
+					preparedStatement.close();
+					preparedStatement = null;
+				}catch(SQLException exception) {
+					exception.printStackTrace();
+				}
+			}
+			if(connection != null) {
+				try {
+					connection.close();
+					connection = null;
+				}catch(SQLException exception) {
+					exception.printStackTrace();
+				}
+			}
 		}
 		//세팅된 어레이 리스트의 주소를 리턴
 		return list;

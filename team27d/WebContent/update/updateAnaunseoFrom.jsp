@@ -21,9 +21,9 @@
 				String strId = request.getParameter("anaunseoId");
 				int anaunseoId = Integer.parseInt(strId);
 				AnaunseoDao anaunseoDao = new AnaunseoDao();
-				Anaunseo anaunseo = anaunseoDao.anaunseoForUpdate(anaunseoId);
+				Anaunseo anaunseo = anaunseoDao.updateAnaunseoOne(anaunseoId);
 			%>
-			<form action = "<%= request.getContextPath() %>/updateAnaunseoAction.jsp" method = "post">
+			<form action = "<%= request.getContextPath() %>/update/updateAnaunseoAction.jsp" method = "post">
 				<tbody>
 					<tr>
 						<td>¾ÆÀÌµð</td>

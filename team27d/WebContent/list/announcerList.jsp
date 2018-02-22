@@ -15,10 +15,10 @@
 <%
 	request.setCharacterEncoding("euc-kr");
 	AnaunseoDao anaDao = new AnaunseoDao();
-	ArrayList<Anaunseo> list = anaDao.selectActorList();
+	ArrayList<Anaunseo> list = anaDao.selectAnaunseo();
 %>
 	<a href = "<%= request.getContextPath() %>/index.jsp">홈</a> &nbsp;
-	<a href = "<%= request.getContextPath() %>/insertAnnouncerForm.jsp">아나운서 등록</a><br><br>
+	<a href = "<%= request.getContextPath() %>/insert/insertAnnouncerForm.jsp">아나운서 등록</a><br><br>
 	<table border = "1">
 		<thead>
 			<tr>
@@ -37,8 +37,8 @@
 					<td><%= anaunseo.getAnaunseoId() %></td>
 					<td><%= anaunseo.getAnaunseoName() %></td>
 					<td><%= anaunseo.getAnaunseoAge() %></td>
-					<td><a href = "<%= request.getContextPath() %>/updateAnaunseoFrom.jsp?anaunseoId=<%= anaunseo.getAnaunseoId() %>">수정</a></td>
-					<td><a href = "<%= request.getContextPath() %>/deleteAnaunseoAction.jsp?anaunseoId=<%= anaunseo.getAnaunseoId() %>">삭제</a></td>
+					<td><a href = "<%= request.getContextPath() %>/update/updateAnaunseoFrom.jsp?anaunseoId=<%= anaunseo.getAnaunseoId() %>">수정</a></td>
+					<td><a href = "<%= request.getContextPath() %>/delete/deleteAnaunseoAction.jsp?anaunseoId=<%= anaunseo.getAnaunseoId() %>">삭제</a></td>
 				</tr>
 		<%
 			}

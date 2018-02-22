@@ -17,64 +17,75 @@ public class SingerDao {
 	PreparedStatement preparedstatement = null;
 
 	
-	public Singer selectforupdate(String singerid) {
+	public Singer singerforupdate(int singerid) {
+		Singer singer = null;
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			
-			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
-			String dbUser = "root";
-			String dbPass = "java0000";
-			String sql = "SELECT * FROM singer WHERE singer_id=?";
-			connection = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
-			
-			preparedstatement = connection.prepareStatement(sql);
-
-			preparedstatement.setString(1, singerid);
-			
+			String url = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
+			String id = "root";
+			String pw = "java0000";
+			connection = DriverManager.getConnection(url, id, pw);
+			preparedstatement = connection.prepareStatement("SELECT * FROM anaunseo WHERE anaunseo_id = ?");
+			preparedstatement.setInt(1, singerid);
 			resultset = preparedstatement.executeQuery();
 			
 			if(resultset.next()) {
-				Singer singerreturn = new Singer();
-				singerreturn.setSingerId(resultset.getInt("singerId"));
-				singerreturn.setSingerName(resultset.getString("singerName"));
-				singerreturn.setSingerAge(resultset.getInt("singerAge"));
+				singer = new Singer();
+				singer.setSingerId(resultset.getInt("singer_id"));
+				singer.setSingerName(resultset.getString("singer_name"));
+				singer.setSingerAge(resultset.getInt("singer_age"));
 			}
-		} catch (ClassNotFoundException e) {
-			// ClassNotFoundException 예외발생시 캐치절 매개변수로 넘겨준다.
-			e.printStackTrace();
-
-		} catch (SQLException e) {
-			// SQLException 예외발생시 캐치절 매개변수로 넘겨준다.
-			e.printStackTrace();
-
-		}finally {
 			
-			if(preparedstatement!=null) {try {preparedstatement.close();} catch (SQLException e) {e.printStackTrace();}}
-			if(connection!=null) {try {connection.close();} catch (SQLException e) {e.printStackTrace();}}
+		}catch(SQLException exception) {
+			exception.printStackTrace();
+		}catch(ClassNotFoundException exception) {
+			exception.printStackTrace();
+		}finally {
+			if(resultset != null) {
+				try {
+					resultset.close();
+					resultset = null;
+				}catch(SQLException exception) {
+					exception.printStackTrace();
+				}
+			}
+			if(preparedstatement != null) {
+				try {
+					preparedstatement.close();
+					preparedstatement = null;
+				}catch(SQLException exception) {
+					exception.printStackTrace();
+				}
+			}
+			if(connection != null) {
+				try {
+					connection.close();
+					connection = null;
+				}catch(SQLException exception) {
+					exception.printStackTrace();
+				}
+			}
 		}
-		return singerreturn;
+		return singer;
 	}
 	
-	public void updateSinger(Singer singer, Connection conn) {
+	public int updateSinger(Singer singer) {
+		int result = 0;
 		
 		try {
-		Class.forName("com.mysql.jdbc.Driver");
-		
-		String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
-		String dbUser = "root";
-		String dbPass = "java0000";
-		String sql = "UPDATE singer SET singer_name=?,singer_age=? WHERE singer_id = ?";
-		connection = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
-		
-		preparedstatement = connection.prepareStatement(sql);
-		
-		preparedstatement.setInt(1, singer.getSingerId());
-		preparedstatement.setString(2, singer.getSingerName());
-		preparedstatement.setInt(3, singer.getSingerAge());
-	
-		preparedstatement.executeUpdate();
-		
+			Class.forName("com.mysql.jdbc.Driver");
+			String url = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
+			String id = "root";
+			String pw = "java0000";
+			connection = DriverManager.getConnection(url, id, pw);
+			preparedstatement = connection.prepareStatement("UPDATE singer SET singer_name = ?, singer_age = ? WHERE singer_id = ?");
+			preparedstatement.setString(1, singer.getSingerName());
+			preparedstatement.setInt(2, singer.getSingerAge());
+			preparedstatement.setInt(3, singer.getSingerId());
+			
+			result = preparedstatement.executeUpdate();
+			
 		}catch(SQLException exception) {
 			exception.printStackTrace();
 		}catch(ClassNotFoundException exception) {
@@ -96,11 +107,12 @@ public class SingerDao {
 					exception.printStackTrace();
 				}
 			}
+		}
 		return result;
 	}
 
-	public void deleteSigner(String singerid) {
-
+	public int deleteSigner(String singerid) {
+		int result = 0;
 		try {
 		Class.forName("com.mysql.jdbc.Driver");
 		
@@ -135,11 +147,12 @@ public class SingerDao {
 					exception.printStackTrace();
 				}
 			}
+		}
 		return result;
 	}
 	
-	public void insertSigner(Singer singer) {
-		
+	public int insertSigner(Singer singer) {
+		int isUpdate = 0;
 		try {
 		Class.forName("com.mysql.jdbc.Driver");
 		
@@ -154,28 +167,37 @@ public class SingerDao {
 		preparedstatement.setString(1, singer.getSingerName());
 		preparedstatement.setInt(2, singer.getSingerAge());
 	
+		}catch(ClassNotFoundException exception){
+			exception.printStackTrace();
+			System.out.println(exception.getMessage	());
+			System.out.println("예외발생");
 		}catch(SQLException exception) {
 			exception.printStackTrace();
-		}catch(ClassNotFoundException exception) {
-			exception.printStackTrace();
+			System.out.println(exception.getMessage	());
+			System.out.println("예외발생");
 		}finally {
 			if(preparedstatement != null) {
-				try {
+				try{
 					preparedstatement.close();
 					preparedstatement = null;
-				}catch(SQLException exception) {
+				} catch(SQLException exception) {
 					exception.printStackTrace();
+					System.out.println(exception.getMessage());
+					System.out.println("예외발생");
 				}
 			}
 			if(connection != null) {
-				try {
+				try{
 					connection.close();
 					connection = null;
-				}catch(SQLException exception) {
+				} catch(SQLException exception) {
 					exception.printStackTrace();
+					System.out.println(exception.getMessage());
+					System.out.println("예외발생");
 				}
 			}
-		return result;
+		}
+		return isUpdate;
 	}
 
 	public ArrayList<Singer> selectSingerList() {

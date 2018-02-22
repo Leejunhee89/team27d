@@ -1,4 +1,4 @@
-<!-- team27d[³ªÀ±ÁÖ] -->
+<%-- <!-- team27d[³ªÀ±ÁÖ] -->
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -46,4 +46,4 @@
 			</tr>
 		</tbody>
 	</table>
-</form>
+</form> --%>

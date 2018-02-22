@@ -13,15 +13,17 @@
 <body>
 	<h1>래퍼 리스트</h1>
 	<%
+		request.setCharacterEncoding("euc-kr");
 		RapperDao rapperdao = new RapperDao();
 		ArrayList<Rapper> rapperlist = rapperdao.selectRapperList();
 	%>
+	<a href= "<%= request.getContextPath() %>/insertRapperForm.jsp">래퍼등록</a>
 	<table border="1">
 		<thead>
 			<tr>
-				<th>아이디</th>
-				<th>이름</th>
-				<th>나이</th>
+				<th>래퍼 ID</th>
+				<th>래퍼 NAME</th>
+				<th>래퍼 AGE</th>
 			<tr>
 		</thead>
 		<tbody>
@@ -36,7 +38,6 @@
 		<%
 			}
 		%>
-		<a href= "<%= request.getContextPath() %>/insertRapperForm.jsp">래퍼등록</a>
 		</tbody>
 	</table>
 </body>

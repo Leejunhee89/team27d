@@ -22,20 +22,20 @@ public class ComedianDao {
 	PreparedStatement statement = null;
 	ResultSet resultSet = null;
 	
-	public void insertComedian(int id, String name, int age) {
+	public Comedian insertComedian(String name, int age) {
+		Comedian comedian = new Comedian();
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		
 		String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
 		String dbUser = "root";
 		String dbPass = "java0000";
-		String sql = "INSERT INTO tb_user VALUES(?,?,?)";
+		String sql = "INSERT INTO tb_user VALUES(?,?)";
 		
 		connection = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 
 		statement= connection.prepareStatement(sql);
-		statement.setInt(1, id);
-		statement.setString(2, name);
+		statement.setString(1, name);
 		statement.setInt(3, age);
 		statement.executeUpdate();
 		
@@ -52,6 +52,7 @@ public class ComedianDao {
 				e.printStackTrace();
 			}
 		}
+		return comedian;
 	}
 		
 	

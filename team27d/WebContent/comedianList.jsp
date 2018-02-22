@@ -24,7 +24,6 @@
 	<table border = "1">
 		<thead>
 			<tr>
-				<!-- th -->
 				<th>코미디언 ID</th>
 				<th>코미디언 NAME</th>
 				<th>코미디언 AGE</th>
@@ -42,10 +41,7 @@
 			<%
 				}
 			%>
-				<tr>
-					<td><a href = "<%= request.getContextPath() %>/index.jsp">home</a></td>
-					<td><a href = "<%= request.getContextPath() %>/insertComedianForm.jsp">코미디언 추가</a></td>
-				</tr>
+			<a href = "<%= request.getContextPath() %>/insertComedianForm.jsp">코메디언 추가</a>
 		</tbody>
 	</table>
 </body>

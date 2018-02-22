@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ page import="service.SingerDao" %>
+<%@ page import="service.Singer" %>
 <!DOCTYPE html>
 
 <%
 	request.setCharacterEncoding("euc-kr");
 
-	String send_id = request.getParameter("send_id");
-	SingerDao singerdao = new SingerDao();
-	singerdao.deleteSigner(send_id);
 	
-	response.sendRedirect(request.getContextPath() + "/SingerList.jsp");
+	int singerid = Integer.parseInt(request.getParameter("singerId"));
+	System.out.print(singerid);
+	SingerDao singerdao = new SingerDao();
+	singerdao.deleteSinger(singerid);
+	
+	response.sendRedirect(request.getContextPath() + "/list/singerList.jsp");
 %>

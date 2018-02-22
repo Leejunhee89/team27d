@@ -11,7 +11,7 @@
 	int comId = Integer.parseInt(id);
 	
 	ComedianDao comedianDao = new ComedianDao();
-	Comedian comedian = comedianDao.forUpdateComedian(comId);
+	Comedian comedian = comedianDao.updateComedianOne(comId);
 	
 	int dbid = comedian.getComedianId();
 	String dbname = comedian.getComedianName();

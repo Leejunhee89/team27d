@@ -13,7 +13,7 @@
 		ArrayList<Singer> singerlist = singerdao.selectSingerList();
 	%>
 		<a href= "<%= request.getContextPath() %>/index.jsp">홈</a> &nbsp;
-		<a href= "<%= request.getContextPath() %>/insertSingerForm.jsp">가수등록</a> <br><br>
+		<a href= "<%= request.getContextPath() %>/insert/insertSingerForm.jsp">가수등록</a> <br><br>
 	<table border = "1">
 	<thead>
 		<tr>
@@ -32,8 +32,8 @@
 			<td><%=sin.getSingerId()%></td>
 			<td><%=sin.getSingerName()%></td>
 			<td><%=sin.getSingerAge()%></td>
-			<td><a href = "updateSingerForm.jsp?singerId=<%=sin.getSingerId()%>">수정</a></td>
-			<td><a href = "deleteSingerAction.jsp?singerId=<%=sin.getSingerId()%>">삭제</a></td>
+			<td><a href = "<%= request.getContextPath() %>/update/updateSingerForm.jsp?singerId = <%= sin.getSingerId() %>">수정</a></td>
+			<td><a href = "<%= request.getContextPath() %>/delete/deleteSingerAction.jsp?singerId = <%= sin.getSingerId() %>">삭제</a></td>
 		<tr>
 	<%
 		}

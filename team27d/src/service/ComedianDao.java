@@ -18,7 +18,7 @@ public class ComedianDao {
 	ResultSet resultSet = null;
 	Comedian comedian = null;
 	
-	public Comedian forUpdateComedian(int id) {
+	public Comedian updateComedianOne(int id) {
 		comedian = new Comedian();
 		try {
 			Class.forName("com.mysql.jdbc.Driver");

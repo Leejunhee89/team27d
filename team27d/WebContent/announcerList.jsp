@@ -17,7 +17,8 @@
 	AnaunseoDao anaDao = new AnaunseoDao();
 	ArrayList<Anaunseo> list = anaDao.selectActorList();
 %>
-	<a href = "<%= request.getContextPath() %>/insertAnnouncerForm.jsp">아나운서 등록</a>
+	<a href = "<%= request.getContextPath() %>/index.jsp">홈</a> &nbsp;
+	<a href = "<%= request.getContextPath() %>/insertAnnouncerForm.jsp">아나운서 등록</a><br/>
 	<table border = "1">
 		<thead>
 			<tr>
@@ -53,7 +54,7 @@
 						<%= anaunseo.getAnaunseoAge() %>
 					</td>
 					<td>
-						<a href = "<%= request.getContextPath() %>/updateAnaunseoForm.jsp?anaunseoId=<%= anaunseo.getAnaunseoId() %>">수정</a>
+						<a href = "<%= request.getContextPath() %>/updateAnaunseoFrom.jsp?anaunseoId=<%= anaunseo.getAnaunseoId() %>">수정</a>
 					</td>
 					<td>
 						<a href = "<%= request.getContextPath() %>/deleteAnaunseoAction.jsp?anaunseoId=<%= anaunseo.getAnaunseoId() %>">삭제</a>

@@ -7,6 +7,7 @@
 
 	<h3>가수 등록</h3>
 	<hr>
+	<form action="<%=request.getContextPath()%>/insertSingerAction.jsp"	method="post">
 		<table border="1">
 			<thead>
 				<tr>
@@ -18,7 +19,6 @@
 					</th>
 				</tr>	
 			</thead>
-			<form action="<%=request.getContextPath()%>/insertSingerAction.jsp"	method="post">
 			<tbody>
 			<tr>
 				<th>이름</th>
@@ -40,4 +40,3 @@
 			</tbody>
 		</table>
 	</form>
-

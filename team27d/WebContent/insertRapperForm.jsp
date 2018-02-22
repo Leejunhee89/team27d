@@ -14,31 +14,20 @@
 		<table border = "1">
 			<thead>
 				<tr>
-					<th>
-						속성
-					</th>
-					<th>
-						입력란
-					</th>
+					<th>속성</th>
+					<th>입력란</th>
 				</tr>	
 			</thead>
 			<tbody>
 				<form action = "<%= request.getContextPath() %>/insertRapperAction.jsp" method = "post">
 					<tr>
-						<td>
-							이름
-						</td>
-						<td>
-							<input type = "text" name = "rapper_name">
-						</td>
+						<tr>
+						<td>이름</td>
+						<td><input type = "text" name = "rapper_name"></td>
 					</tr>
 					<tr>
-						<td>
-							나이
-						</td>
-						<td>
-							<input type = "text" name = "rapper_age">
-						</td>
+						<td>나이</td>
+						<td><input type = "text" name = "rapper_age"></td>
 					</tr>
 					<tr>
 						<td colspan = "2">

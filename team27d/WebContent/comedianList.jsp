@@ -42,6 +42,10 @@
 			<%
 				}
 			%>
+				<tr>
+					<td><a href = "<%= request.getContextPath() %>/index.jsp">home</a></td>
+					<td><a href = "<%= request.getContextPath() %>/insertComedianForm.jsp">코미디언 추가</a></td>
+				</tr>
 		</tbody>
 	</table>
 </body>

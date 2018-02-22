@@ -12,12 +12,8 @@
 		<table border = "1">
 			<thead>
 				<tr>
-					<th>
-						속성
-					</th>
-					<th>
-						입력란
-					</th>
+					<th>속성</th>
+					<th>입력란</th>
 				</tr>
 			</thead>
 			<%
@@ -30,33 +26,19 @@
 			<form action = "<%= request.getContextPath() %>/updateAnaunseoAction.jsp" method = "post">
 				<tbody>
 					<tr>
-						<td>
-							아이디
-						</td>
-						<td>
-							<input type = "text" name = "anaunseo_id" value = "<%= anaunseo.getAnaunseoId() %>" readonly>	
-						</td>	
+						<td>아이디</td>
+						<td><input type = "text" name = "anaunseo_id" value = "<%= anaunseo.getAnaunseoId() %>" readonly></td>	
 					</tr>
 					<tr>
-						<td>
-							이름
-						</td>
-						<td>
-							<input type = "text" name = "anaunseo_name" value = "<%= anaunseo.getAnaunseoName() %>">
-						</td>
+						<td>이름</td>
+						<td><input type = "text" name = "anaunseo_name" value = "<%= anaunseo.getAnaunseoName() %>"></td>
 					</tr>
 					<tr>
-						<td>
-							나이
-						</td>
-						<td>
-							<input type = "text" name = "anaunseo_age" value = "<%= anaunseo.getAnaunseoAge() %>">
-						</td>
+						<td>나이</td>
+						<td><input type = "text" name = "anaunseo_age" value = "<%= anaunseo.getAnaunseoAge() %>"></td>
 					</tr>
 					<tr>
-						<td colspan = "2">
-							<input type = "submit" value = "수정버튼">
-						</td>
+						<td colspan = "2"><input type = "submit" value = "수정버튼"></td>
 					</tr>
 				</tbody>
 			</form>

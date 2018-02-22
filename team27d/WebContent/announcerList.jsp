@@ -17,7 +17,7 @@
 	AnaunseoDao anaDao = new AnaunseoDao();
 	ArrayList<Anaunseo> list = anaDao.selectActorList();
 %>
-	<a href = "<%= request.getContextPath() %>/insertAnnouncerForm.jsp">아나운서 추가</a>
+	<a href = "<%= request.getContextPath() %>/insertAnnouncerForm.jsp">아나운서 등록</a>
 	<table border = "1">
 		<tr>
 			<th>아나운서 ID</th>

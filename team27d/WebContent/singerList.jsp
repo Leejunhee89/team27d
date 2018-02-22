@@ -13,7 +13,7 @@
 		ArrayList<Singer> singerlist = singerdao.selectSingerList();
 	%>
 		<a href= "<%= request.getContextPath() %>/index.jsp">홈</a> &nbsp;
-		<a href= "<%= request.getContextPath() %>/insertActorForm.jsp">가수등록</a> <br><br>
+		<a href= "<%= request.getContextPath() %>/insertSingerForm.jsp">가수등록</a> <br><br>
 	<table border = "1">
 	<thead>
 		<tr>

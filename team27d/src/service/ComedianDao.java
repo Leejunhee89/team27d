@@ -31,7 +31,7 @@ public class ComedianDao {
 			statement.setInt(1, id);
 			resultSet = statement.executeQuery();
 			if(resultSet.next()) {
-				comedian.setComedianAge(resultSet.getInt("comedian_id"));
+				comedian.setComedianId(resultSet.getInt("comedian_id"));
 				comedian.setComedianName(resultSet.getString("comedian_name"));
 				comedian.setComedianAge(resultSet.getInt("comedian_age"));
 			}
@@ -52,7 +52,6 @@ public class ComedianDao {
 	}
 	
 	public void updateComedian(Comedian comedian) {
-		comedian = new Comedian();
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
@@ -61,10 +60,12 @@ public class ComedianDao {
 			String sql = "UPDATE comedian SET comedian_name=?, comedian_age=? WHERE comedian_id=?";
 			connection = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			statement = connection.prepareStatement(sql);
+			
 			statement.setString(1, comedian.getComedianName());
 			statement.setInt(2, comedian.getComedianAge());
 			statement.setInt(3, comedian.getComedianId());
 			statement.executeUpdate();
+			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -106,20 +107,19 @@ public class ComedianDao {
 	}
 	
 	public void insertComedian(Comedian comedian) {
-		comedian = new Comedian();
-		try {
+			try {
 			Class.forName("com.mysql.jdbc.Driver");
 		
 			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
 			String dbUser = "root";
 			String dbPass = "java0000";
-			String sql = "INSERT INTO comedian VALUES(?,?)";
+			String sql = "INSERT INTO comedian(comedian_name, comedian_age) VALUES (?, ?)";
 			
 			connection = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 	
 			statement= connection.prepareStatement(sql);
 			statement.setString(1, comedian.getComedianName());
-			statement.setInt(3, comedian.getComedianAge());
+			statement.setInt(2, comedian.getComedianAge());
 			statement.executeUpdate();
 		
 		} catch (ClassNotFoundException e1) {

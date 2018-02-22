@@ -6,7 +6,12 @@
 
 <!DOCTYPE html>
 <%
+	String name = request.getParameter("name");
+	int age = Integer.parseInt(request.getParameter("age"));
+	
 	Comedian comedian = new Comedian();
+	comedian.setComedianName(name);
+	comedian.setComedianAge(age);
 
 	ComedianDao comediandao = new ComedianDao();
 	comediandao.insertComedian(comedian);

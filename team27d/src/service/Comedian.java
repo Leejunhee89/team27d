@@ -7,6 +7,7 @@ public class Comedian {
 	private int comedianId;
 	private String comedianName;
 	private int comedianAge;
+	
 	public int getComedianId() {
 		return comedianId;
 	}

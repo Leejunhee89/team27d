@@ -17,8 +17,9 @@
 		 *Comedian형 ArrayList 클래스를 통해 새로운 객체를 생성한 후 주소를 list에 담는다.
 		 *ComedianDao클래스 내 selectComedianList메소드를 실행한 후 주소를 list에 담는다.
 		 */
+		request.setCharacterEncoding("euc-kr");
 		ComedianDao comedianDao = new ComedianDao();
-		ArrayList<Comedian> list = new ArrayList<Comedian>();
+		ArrayList<Comedian> list = comedianDao.selectComedianList();
 	%>
 	<a href = "<%= request.getContextPath() %>/index.jsp">홈</a> &nbsp;
 	<a href = "<%= request.getContextPath() %>/insertComedianForm.jsp">코메디언 등록</a><br><br>

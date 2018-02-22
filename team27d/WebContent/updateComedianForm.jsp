@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 
 <%
+	request.setCharacterEncoding("euc-kr");
 	String id = request.getParameter("comedianId");
 	int comId = Integer.parseInt(id);
 	

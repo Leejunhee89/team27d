@@ -3,7 +3,6 @@
 <%@ page import = "service.RapperDao" %>
 <%@ page import = "service.Rapper" %>
 <%@ page import = "java.util.ArrayList" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,6 +23,7 @@
 				<th>래퍼 ID</th>
 				<th>래퍼 NAME</th>
 				<th>래퍼 AGE</th>
+				<th>삭제</th>
 			<tr>
 		</thead>
 		<tbody>
@@ -34,6 +34,7 @@
 				<td><%=rap.getRapperId()%></td>
 				<td><%=rap.getRapperName()%></td>
 				<td><%=rap.getRapperAge()%></td>
+				<td>삭제버튼</td>
 			</tr>
 		<%
 			}

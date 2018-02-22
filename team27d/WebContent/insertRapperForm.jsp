@@ -42,7 +42,7 @@
 					</tr>
 					<tr>
 						<td colspan = "2">
-							<input type = "submit" value = "가입버튼" >
+							<input type = "submit" value = "등록버튼" >
 						</td>
 					</tr>
 				</form>

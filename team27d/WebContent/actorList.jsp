@@ -16,6 +16,8 @@
 		ActorDao ado = new ActorDao();
 		ArrayList<Actor> list = ado.selectActor();
 	%>
+		<a href= "<%= request.getContextPath() %>/index.jsp">홈</a> &nbsp;
+		<a href= "<%= request.getContextPath() %>/insertActorForm.jsp">배우등록</a> <br><br>
 	<table border ="1">
 		<thead>
 			<tr>
@@ -43,7 +45,7 @@
 		<% 
 		} 
 		%>
-		<a href= "<%= request.getContextPath() %>/insertActorForm.jsp">배우등록</a>
+		
 		
 	<!-- 리스트 안에 insert링크 걸기 (폼으로이동?) ,  -->
 	</table>

@@ -18,7 +18,7 @@
 	ArrayList<Anaunseo> list = anaDao.selectActorList();
 %>
 	<a href = "<%= request.getContextPath() %>/index.jsp">홈</a> &nbsp;
-	<a href = "<%= request.getContextPath() %>/insertAnnouncerForm.jsp">아나운서 등록</a><br/>
+	<a href = "<%= request.getContextPath() %>/insertAnnouncerForm.jsp">아나운서 등록</a><br><br>
 	<table border = "1">
 		<thead>
 			<tr>

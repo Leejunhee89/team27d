@@ -9,19 +9,19 @@
 	<body>
 		<h3>회원 가입</h3>
 		<hr>
-		<table border = "1">
-			<thead>
-				<tr>
-					<th>
-						속성
-					</th>
-					<th>
-						입력란
-					</th>
-				</tr>	
-			</thead>
-			<tbody>
-				<form action = "<%= request.getContextPath() %>/insertAnnouncerAction.jsp" method = "post">
+		<form action = "<%= request.getContextPath() %>/insertAnnouncerAction.jsp" method = "post">
+			<table border = "1">
+				<thead>
+					<tr>
+						<th>
+							속성
+						</th>
+						<th>
+							입력란
+						</th>
+					</tr>	
+				</thead>
+				<tbody>
 					<tr>
 						<td>
 							이름
@@ -43,9 +43,9 @@
 							<input type = "submit" value = "가입버튼" >
 						</td>
 					</tr>
-				</form>
-			</tbody>
-		</table>
+				</tbody>
+			</table>
+		</form>
 	</body>
 </html>
 

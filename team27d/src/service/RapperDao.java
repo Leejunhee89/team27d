@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class RapperDao {// 예외는 전부 try-catch 처리
 	// 래퍼 입력 메서드
-	public Rapper insertRapper(int id, String name, int age) {
+	public Rapper insertRapper(String name, int age) {
 		Rapper rapper = new Rapper();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -19,13 +19,12 @@ public class RapperDao {// 예외는 전부 try-catch 처리
 			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
 			String dbID = "root";
 			String dbPass = "java0000";
-			String sql = "INSERT INTO rapper VALUES(?, ?, ?)";
+			String sql = "INSERT INTO rapper VALUES(?, ?)";
 			conn = DriverManager.getConnection(jdbcDriver, dbID, dbPass);
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, id);
-			pstmt.setString(2, name);
-			pstmt.setInt(3, age);
+			pstmt.setString(1, name);
+			pstmt.setInt(2, age);
 			
 			pstmt.executeUpdate();
 		
@@ -55,7 +54,7 @@ public class RapperDao {// 예외는 전부 try-catch 처리
 			// sql에서 쿼리문은 대문자로 구분해주고. 디비칼럼명은 언더바를 많이 쓰고 클래스명은 대문자로 구분이기때문에 일치시켜주려고 as를 쓰면
 			// 좋다.
 			// select + order by
-			String sql = "SELECT rapper_id as rapperId, rapper_name as rapperName, rapper_age as rapperAge FROM rapper ORDER BY rapper_id ASC";
+			String sql = "SELECT rapper_id AS rapperId, rapper_name AS rapperName, rapper_age AS rapperAge FROM rapper ORDER BY rapper_id ASC";
 			conn = DriverManager.getConnection(jdbcDriver, dbID, dbPass);
 			
 			pstmt = conn.prepareStatement(sql);

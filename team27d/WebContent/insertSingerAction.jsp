@@ -2,25 +2,18 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ page import="service.SingerDao" %>
 <%@ page import="service.Singer" %>
-
+<% 	request.setCharacterEncoding("euc-kr"); %>
 <!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>insertSingerAction.jsp</title>
-</head>
-<body>
 <%		
-	request.setCharacterEncoding("euc-kr");
-		
-	int id = Integer.parseInt(request.getParameter("id"));
-	String name = request.getParameter("name");
-	int age = Integer.parseInt(request.getParameter("age"));
-		
+	String singer_name = request.getParameter("singer_name");
+	int singer_age = Integer.parseInt(request.getParameter("singer_age"));
+	
+	Singer singer = new Singer();
+	singer.setSingerName(singer_name);
+	singer.setSingerAge(singer_age);
+	
 	SingerDao singerdao = new SingerDao();
-	singerdao.insertSigner(id, name, age);
+	singerdao.insertSigner(singer);
 	
 	response.sendRedirect(request.getContextPath() + "/singerList.jsp");
 %>
-</body>
-</html>

@@ -5,9 +5,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>InsertSingerForm.jsp</title>
 
-	<h3>회원가입</h3>
+	<h3>가수 등록</h3>
 	<hr>
-	<form action="<%=request.getContextPath()%>/insertSingerAction.jsp"	method="post">
 		<table border="1">
 			<thead>
 				<tr>
@@ -19,21 +18,26 @@
 					</th>
 				</tr>	
 			</thead>
-			<tr>
-				<th>아이디</th>
-				<td><input type="text" name="id" size="20"></td>
-			</tr>
+			<form action="<%=request.getContextPath()%>/insertSingerAction.jsp"	method="post">
+			<tbody>
 			<tr>
 				<th>이름</th>
-				<td><input type="text" name="name" size="20"></td>
+				<td>
+				<input type="text" name="singer_name" size="20">
+				</td>
 			</tr>
 			<tr>
 				<th>나이</th>
-				<td><input type="text" name="age" size="20"></td>
+				<td>
+				<input type="text" name="singer_age" size="20">
+				</td>
 			</tr>
 			<tr>
-				<td colspan="4"><input type="submit" value="입력완료"></td>
+				<td colspan="4">
+				<input type="submit" value="등록버튼">
+				</td>
 			</tr>
+			</tbody>
 		</table>
 	</form>
 

@@ -18,19 +18,27 @@
 	%>
 	<table border ="1">
 		<thead>
-			<th>id</th>
-			<th>name</th>
-			<th>age</th>
+			<tr>
+				<th>남배우 ID</th>
+				<th>남배우 NAME</th>
+				<th>남배우 AGE</th>
+				<th>수정</th>
+				<th>삭제</th>
+			</tr>
 		</thead>
 		
 		<%
 			for(Actor actor : list) {
 		%>	
-			<tfoot>
+			<tbody>
 				<tr>
-					<td><%= actor.getActorId() %></td><td><%= actor.getActorName() %></td><td><%= actor.getActorAge() %></td>
+					<td><%= actor.getActorId() %></td>
+					<td><%= actor.getActorName() %></td>
+					<td><%= actor.getActorAge() %></td>
+					<td><a href="updateActorForm.jsp?actorId=<%=actor.getActorId()%>">수정</a></td>
+					<td><a href="deleteActorAction.jsp?actorId=<%=actor.getActorId()%>">삭제</a></td>
 				</tr>  
-			</tfoot>
+			</tbody>
 			
 		<% 
 		} 

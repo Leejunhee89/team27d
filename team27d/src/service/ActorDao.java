@@ -17,7 +17,7 @@ public class ActorDao {
 	ResultSet result = null;
 	Actor actor = null;
 	
-	public Actor updateSelectActor(int actorId) {
+	public Actor updateActorOne(int actorId) {
 				
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -77,7 +77,7 @@ public class ActorDao {
 		}
 	}
 	
-	public void DeleteActor(int actorId) {
+	public void deleteActor(int actorId) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=utf8";
@@ -100,7 +100,7 @@ public class ActorDao {
 		}
 	}
 		
-	public void InsertActor(Actor actor)  {
+	public void insertActor(Actor actor)  {
 				
 		try{
 			Class.forName("com.mysql.jdbc.Driver");

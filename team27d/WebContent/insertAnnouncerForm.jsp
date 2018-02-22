@@ -7,13 +7,13 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
-		<h3>회원 가입</h3>
+		<h3>아나운서 등록</h3>
 		<hr>
 		<form action = "<%= request.getContextPath() %>/insertAnnouncerAction.jsp" method = "post">
 			<table border = "1">
 				<thead>
 					<tr>
-						<th>
+						<th> 
 							속성
 						</th>
 						<th>
@@ -40,7 +40,7 @@
 					</tr>
 					<tr>
 						<td colspan = "2">
-							<input type = "submit" value = "가입버튼" >
+							<input type = "submit" value = "등록버튼" >
 						</td>
 					</tr>
 				</tbody>

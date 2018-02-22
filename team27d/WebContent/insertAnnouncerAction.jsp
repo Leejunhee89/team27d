@@ -3,23 +3,20 @@
 <%@ page import = "java.sql.DriverManager" %>
 <%@ page import = "java.sql.Connection" %>
 <%@ page import = "java.sql.PreparedStatement" %>
+<%@ page import = "service.Anaunseo" %>
+<%@ page import = "service.AnaunseoDao" %>
 <!DOCTYPE html>
 <%
 	request.setCharacterEncoding("euc-kr");
 	String anaunseo_name = request.getParameter("anaunseo_name");
 	int anaunseo_age = Integer.parseInt(request.getParameter("anaunseo_age"));
 	
-	Class.forName("com.mysql.jdbc.Driver");
+	Anaunseo anaunseo = new Anaunseo();
+	anaunseo.setAnaunseoName(anaunseo_name);
+	anaunseo.setAnaunseoAge(anaunseo_age);
 	
-	String dbUrl = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
-	String dbId = "root";
-	String dbPw = "java0000";
-	Connection connection = DriverManager.getConnection(dbUrl, dbId, dbPw);
-
-	PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO anaunseo(anaunseo_name, anaunseo_age) VALUES(?, ?)");
-	preparedStatement.setString(1, anaunseo_name);
-	preparedStatement.setInt(2, anaunseo_age);
-	preparedStatement.executeUpdate();
-	
+	AnaunseoDao anaunseoDao = new AnaunseoDao();
+	anaunseoDao.insertAnaunseo(anaunseo);
+		
 	response.sendRedirect(request.getContextPath() + "/announcerList.jsp");
 %>

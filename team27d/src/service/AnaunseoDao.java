@@ -24,17 +24,16 @@ public class AnaunseoDao {
 			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
 			String dbUser = "root";
 			String dbPass = "java0000";
-			String sql = "INSERT INTO anaunseo VALUES(?, ?, ?)";
+			String sql = "INSERT INTO anaunseo(anaunseo_name, anaunseo_age) VALUES(?, ?)";
 			
 			connection = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			prepareStatement = connection.prepareStatement(sql);
-			prepareStatement.setInt(1, anaunseo.getAnaunseoId());
-			prepareStatement.setString(2, anaunseo.getAnaunseoName());
-			prepareStatement.setInt(3, anaunseo.getAnaunseoAge());
+			prepareStatement.setString(1, anaunseo.getAnaunseoName());
+			prepareStatement.setInt(2, anaunseo.getAnaunseoAge());
 			
 			isUpdate = prepareStatement.executeUpdate();
 			
-		} catch(ClassNotFoundException exception){
+		}catch(ClassNotFoundException exception){
 			exception.printStackTrace();
 			System.out.println(exception.getMessage	());
 			System.out.println("예외발생");

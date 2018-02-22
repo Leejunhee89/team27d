@@ -19,11 +19,14 @@
 %>
 	<a href = "<%= request.getContextPath() %>/insertAnnouncerForm.jsp">아나운서 등록</a>
 	<table border = "1">
-		<tr>
-			<th>아나운서 ID</th>
-			<th>아나운서 NAME</th>
-			<th>아나운서 AGE</th>
-		</tr>
+		<thead>
+			<tr>
+				<th>아나운서 ID</th>
+				<th>아나운서 NAME</th>
+				<th>아나운서 AGE</th>
+			</tr>
+		<thead>
+		<tbody>
 		<%
 			for(Anaunseo anaun : list){
 		%>
@@ -35,8 +38,7 @@
 		<%
 			}
 		%>
+		</tbody>
 	</table>
-	
-	
 </body>
 </html>

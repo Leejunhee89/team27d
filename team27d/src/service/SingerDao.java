@@ -16,7 +16,7 @@ public class SingerDao {
 	Connection connection = null;
 	PreparedStatement preparedstatement = null;
 
-	public Singer singerforupdate(int singerid) {
+	public Singer singerupdate(int singerid) {
 		Singer singer = null;
 		
 		try {
@@ -25,7 +25,7 @@ public class SingerDao {
 			String id = "root";
 			String pw = "java0000";
 			connection = DriverManager.getConnection(url, id, pw);
-			preparedstatement = connection.prepareStatement("SELECT * FROM anaunseo WHERE anaunseo_id = ?");
+			preparedstatement = connection.prepareStatement("SELECT * FROM singer WHERE singer_id = ?");
 			preparedstatement.setInt(1, singerid);
 			resultset = preparedstatement.executeQuery();
 			
@@ -110,33 +110,28 @@ public class SingerDao {
 		return result;
 	}
 
-	public int deleteSigner(String singerid) {
-		int result = 0;
-		try {
-		Class.forName("com.mysql.jdbc.Driver");
-		
+	public void deleteSinger(int singerid) throws ClassNotFoundException, SQLException {		
+		//try {
+		Class.forName("com.mysql.jdbc.Driver");		
 		String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
 		String dbUser = "root";
 		String dbPass = "java0000";
-		String sql = "DELETE FROM singer WHERE singer_id=?";
+		String sql = "DELETE FROM `singer` WHERE  `singer_id`=?";
 		connection = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
-		
-		preparedstatement = connection.prepareStatement(sql);
-		
-		preparedstatement.setString(1, singerid);
-		
-		}catch(SQLException exception) {
+		preparedstatement = connection.prepareStatement(sql);	
+	
+		preparedstatement.setInt(1, singerid);	
+	
+		preparedstatement.executeUpdate();		
+		/*}catch(SQLException exception) {
 			exception.printStackTrace();
 		}catch(ClassNotFoundException exception) {
 			exception.printStackTrace();
 		}finally {
 			if(preparedstatement != null) {
-				try {
-					preparedstatement.close();
+				try {preparedstatement.close();
 					preparedstatement = null;
-				}catch(SQLException exception) {
-					exception.printStackTrace();
-				}
+				}catch(SQLException exception) {exception.printStackTrace();}
 			}
 			if(connection != null) {
 				try {
@@ -146,8 +141,7 @@ public class SingerDao {
 					exception.printStackTrace();
 				}
 			}
-		}
-		return result;
+		}		*/
 	}
 	
 	public int insertSigner(Singer singer) {

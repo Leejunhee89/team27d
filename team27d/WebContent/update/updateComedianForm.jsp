@@ -17,7 +17,7 @@
 	String dbname = comedian.getComedianName();
 	int dbage = comedian.getComedianAge();
 %>
-	<form action="<%=request.getContextPath() %>/updateComedianAction.jsp" method="post">
+<form action="<%=request.getContextPath() %>/update/updateComedianAction.jsp" method="post">
 	<hr>
 	<table border="1">
 		<thead>
@@ -29,7 +29,8 @@
 		<tbody>		
 			<tr>
 				<td>아이디</td>
-				<td><input type="text" name="id" value="<%=dbid%>" readonly></td>		
+				<td><input type="text" name="id" value="<%=dbid%>" readonly></td>	
+			</tr>	
 			<tr>
 				<td>이름 </td>
 				<td><input type="text" name="name" value="<%=dbname%>"></td>

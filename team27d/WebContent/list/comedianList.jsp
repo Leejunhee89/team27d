@@ -22,7 +22,7 @@
 		ArrayList<Comedian> list = comedianDao.selectComedianList();
 	%>
 	<a href = "<%= request.getContextPath() %>/index.jsp">홈</a> &nbsp;
-	<a href = "<%= request.getContextPath() %>/insertComedianForm.jsp">코메디언 등록</a><br><br>
+	<a href = "<%= request.getContextPath() %>/insert/insertComedianForm.jsp">코메디언 등록</a><br><br>
 	<table border = "1">
 		<thead>
 			<tr>
@@ -41,8 +41,8 @@
 					<td><%=comedian.getComedianId()%></td>
 					<td><%=comedian.getComedianName() %></td>
 					<td><%=comedian.getComedianAge() %></td>
-					<td><a href="<%=request.getContextPath()%>/updateComedianForm.jsp?comedianId=<%=comedian.getComedianId()%>">수정</a></td>
-					<td><a href="<%=request.getContextPath()%>/deleteComedianAction.jsp?comedianId=<%=comedian.getComedianId()%>">삭제</a></td>
+					<td><a href="<%=request.getContextPath()%>/update/updateComedianForm.jsp?comedianId=<%=comedian.getComedianId()%>">수정</a></td>
+					<td><a href="<%=request.getContextPath()%>/delete/deleteComedianAction.jsp?comedianId=<%=comedian.getComedianId()%>">삭제</a></td>
 				</tr>
 			<%
 				}

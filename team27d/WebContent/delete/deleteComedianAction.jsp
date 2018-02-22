@@ -9,6 +9,6 @@
 	int comId = Integer.parseInt(id);
 	ComedianDao comediandao = new ComedianDao();
 	comediandao.deleteComedian(comId);
-	response.sendRedirect(request.getContextPath() + "/comedianList.jsp");
+	response.sendRedirect(request.getContextPath() + "/list/comedianList.jsp");
 %>
  

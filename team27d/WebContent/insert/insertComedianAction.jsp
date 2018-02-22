@@ -16,6 +16,6 @@
 	ComedianDao comediandao = new ComedianDao();
 	comediandao.insertComedian(comedian);
 	
-	response.sendRedirect(request.getContextPath()+"/comedianList.jsp");
+	response.sendRedirect(request.getContextPath()+"/list/comedianList.jsp");
 
 %>

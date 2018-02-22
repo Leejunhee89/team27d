@@ -8,19 +8,76 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import service.Comedian;
 
 public class ComedianDao {
 	
-	/*ArrayList<Comedian>리턴타입으로 selectComedianList메서드를 정의.
-	 *ArrayList<Comedian>데이터타입으로 list변수를 선언하고 동시에 ArrayList<Comedian>객체생성.
-	 *Connection데이터타입으로 connection변수를 선언하고 null값을 넣어줌.
-	 *PreparedStatement데이터타입으로 statement변수를 선언하고 null값을 넣어줌.
-	 *ResultSet데이터타입으로 resultSet변수를 선언하고 null값을 넣어줌.
-	 */
 	ArrayList<Comedian> list = null;
 	Connection connection = null;
 	PreparedStatement statement = null;
 	ResultSet resultSet = null;
+	Comedian comedian = null;
+	
+	public Comedian forUpdateComedian(int id) {
+		comedian = new Comedian();
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
+			String dbUser = "root";
+			String dbPass = "java0000";
+			String sql = "SELECT * FROM comedian WHERE comedian_id=?";
+			connection = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
+			statement = connection.prepareStatement(sql);
+			statement.setInt(1, id);
+			resultSet = statement.executeQuery();
+			if(resultSet.next()) {
+				comedian.setComedianAge(resultSet.getInt("comedian_id"));
+				comedian.setComedianName(resultSet.getString("comedian_name"));
+				comedian.setComedianAge(resultSet.getInt("comedian_age"));
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				resultSet.close();
+				statement.close();
+				connection.close();
+			} catch (SQLException e) {
+			e.printStackTrace();
+			}
+		}
+		return comedian;
+	}
+	
+	public void updateComedian(Comedian comedian) {
+		comedian = new Comedian();
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
+			String dbUser = "root";
+			String dbPass = "java0000";
+			String sql = "UPDATE comedian SET comedian_name=?, comedian_age=? WHERE comedian_id=?";
+			connection = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
+			statement = connection.prepareStatement(sql);
+			statement.setString(1, comedian.getComedianName());
+			statement.setInt(2, comedian.getComedianAge());
+			statement.setInt(3, comedian.getComedianId());
+			statement.executeUpdate();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				statement.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	
 	public void deleteComedian(int id) {
 		try {
@@ -29,7 +86,7 @@ public class ComedianDao {
 			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
 			String dbUser = "root";
 			String dbPass = "java0000";
-			String sql = "DELETE FROM comedian where id=?";
+			String sql = "DELETE FROM comedian where comedian_id=?";
 			connection = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			statement=connection.prepareStatement(sql);
 			statement.setInt(1, id);
@@ -49,6 +106,7 @@ public class ComedianDao {
 	}
 	
 	public void insertComedian(Comedian comedian) {
+		comedian = new Comedian();
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		

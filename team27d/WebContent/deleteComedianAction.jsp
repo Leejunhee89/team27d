@@ -1,3 +1,5 @@
+<!-- team27d [¹æ¹Î¿µ] -->
+
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ page import = "service.ComedianDao"%>
 <!DOCTYPE html>

@@ -12,7 +12,7 @@
 	request.setCharacterEncoding("euc-kr");
 	int rapperId = Integer.parseInt(request.getParameter("rapperId"));
 	RapperDao rapdao = new RapperDao();
-	Rapper rapper = rapdao.updateRapperSelect(rapperId);
+	Rapper rapper = rapdao.updateRapperOne(rapperId);
 %>
 	<h3>래퍼 수정</h3>
 		<hr>
@@ -24,7 +24,7 @@
 				</tr>	
 			</thead>
 			<tbody>
-				<form action = "<%= request.getContextPath() %>/updateRapperAction.jsp" method = "post">
+				<form action = "<%= request.getContextPath() %>/update/updateRapperAction.jsp" method = "post">
 					<tr>
 						<td>아이디</td>
 						<td><input type = "text" name = rapper_id value = <%= rapper.getRapperId() %> readonly></td>

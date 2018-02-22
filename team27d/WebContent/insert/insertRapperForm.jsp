@@ -19,7 +19,7 @@
 				</tr>	
 			</thead>
 			<tbody>
-				<form action = "<%= request.getContextPath() %>/insertRapperAction.jsp" method = "post">
+				<form action = "<%= request.getContextPath() %>/insert/insertRapperAction.jsp" method = "post">
 					<tr>
 						<tr>
 						<td>¿Ã∏ß</td>

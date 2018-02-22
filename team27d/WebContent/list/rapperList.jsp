@@ -14,10 +14,10 @@
 	<%
 		request.setCharacterEncoding("euc-kr");
 		RapperDao rapperdao = new RapperDao();
-		ArrayList<Rapper> rapperlist = rapperdao.selectRapperList();
+		ArrayList<Rapper> rapperlist = rapperdao.selectRapper();
 	%>
 		<a href= "<%= request.getContextPath() %>/index.jsp">홈</a> &nbsp;
-		<a href= "<%= request.getContextPath() %>/insertRapperForm.jsp">래퍼등록</a> <br><br>
+		<a href= "<%= request.getContextPath() %>/insert/insertRapperForm.jsp">래퍼등록</a> <br><br>
 	<table border="1">
 		<thead>
 			<tr>
@@ -36,8 +36,8 @@
 				<td><%=rap.getRapperId()%></td>
 				<td><%=rap.getRapperName()%></td>
 				<td><%=rap.getRapperAge()%></td>
-				<td><a href = "<%= request.getContextPath() %>/updateRapperForm.jsp?rapperId=<%= rap.getRapperId() %>">수정</a></td>
-				<td><a href = "<%= request.getContextPath() %>/deleteRapperAction.jsp?rapperId=<%= rap.getRapperId() %>">삭제</a>	</td>
+				<td><a href = "<%= request.getContextPath() %>/update/updateRapperForm.jsp?rapperId=<%= rap.getRapperId() %>">수정</a></td>
+				<td><a href = "<%= request.getContextPath() %>/delete/deleteRapperAction.jsp?rapperId=<%= rap.getRapperId() %>">삭제</a>	</td>
 			</tr>
 		<%
 			}

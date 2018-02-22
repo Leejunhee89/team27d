@@ -11,12 +11,8 @@
 		<table border="1">
 			<thead>
 				<tr>
-					<th>
-						속성
-					</th>
-					<th>
-						입력란
-					</th>
+					<th>속성</th>
+					<th>입력란</th>
 				</tr>	
 			</thead>
 			<tbody>

@@ -13,36 +13,20 @@
 			<table border = "1">
 				<thead>
 					<tr>
-						<th> 
-							속성
-						</th>
-						<th>
-							입력란
-						</th>
+						<th>속성</th>
+						<th>입력란</th>
 					</tr>	
 				</thead>
 				<tbody>
 					<tr>
-						<td>
-							이름
-						</td>
-						<td>
-							<input type = "text" name = "anaunseo_name">
-						</td>
+						<td>이름</td>
+						<td><input type = "text" name = "anaunseo_name"></td>
 					</tr>
 					<tr>
-						<td>
-							나이
-						</td>
-						<td>
-							<input type = "text" name = "anaunseo_age">
-						</td>
+						<td>나이</td>
+						<td><input type = "text" name = "anaunseo_age"></td>
 					</tr>
-					<tr>
-						<td colspan = "2">
-							<input type = "submit" value = "등록버튼" >
-						</td>
-					</tr>
+					<tr><td colspan = "2"><input type = "submit" value = "등록버튼" ></td></tr>
 				</tbody>
 			</table>
 		</form>

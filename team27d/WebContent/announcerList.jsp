@@ -13,9 +13,11 @@
 <body>
 	<h1>아나운서 리스트</h1>
 <%
+	request.setCharacterEncoding("euc-kr");
 	AnaunseoDao anaDao = new AnaunseoDao();
 	ArrayList<Anaunseo> list = anaDao.selectActorList();
 %>
+	<a href = "<%= request.getContextPath() %>/insertAnnouncerForm.jsp">아나운서 등록</a>
 	<table border = "1">
 		<tr>
 			<th>아나운서 ID</th>
@@ -33,15 +35,8 @@
 		<%
 			}
 		%>
-		<tr>
-			<td>
-				<a href = "<%= request.getContextPath() %>/index.jsp">home</a>
-			</td>
-			<td>
-				<a href = "<%= request.getContextPath() %>/insertAnnouncerForm.jsp">아나운서 추가</a>
-			</td>
-		</tr>
 	</table>
+	
 	
 </body>
 </html>

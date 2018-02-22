@@ -10,7 +10,7 @@ import service.Anaunseo;
 
 public class AnaunseoDao {
 	
-	public int insertAnaunseo(Anaunseo anaunseo) throws ClassNotFoundException, SQLException {
+	public int insertAnaunseo(Anaunseo anaunseo) {
 	
 		//단위테스트
 		System.out.println(anaunseo);

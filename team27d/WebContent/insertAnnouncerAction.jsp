@@ -1,9 +1,11 @@
+<!-- team27d [ÀÌÃá¸²] -->
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ page import = "java.sql.DriverManager" %>
 <%@ page import = "java.sql.Connection" %>
 <%@ page import = "java.sql.PreparedStatement" %>
 <!DOCTYPE html>
 <%
+	request.setCharacterEncoding("euc-kr");
 	String anaunseo_name = request.getParameter("anaunseo_name");
 	int anaunseo_age = Integer.parseInt(request.getParameter("anaunseo_age"));
 	

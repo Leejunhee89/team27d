@@ -19,15 +19,17 @@
 		 */
 		ComedianDao comedianDao = new ComedianDao();
 		ArrayList<Comedian> list = new ArrayList<Comedian>();
-		list=comedianDao.selectComedianList();
 	%>
-	<a href = "<%= request.getContextPath() %>/insertComedianForm.jsp">코메디언 등록</a>
+	<a href = "<%= request.getContextPath() %>/index.jsp">홈</a> &nbsp;
+	<a href = "<%= request.getContextPath() %>/insertComedianForm.jsp">코메디언 등록</a><br><br>
 	<table border = "1">
 		<thead>
 			<tr>
 				<th>코미디언 ID</th>
 				<th>코미디언 NAME</th>
 				<th>코미디언 AGE</th>
+				<th>수정</th>
+				<th>삭제</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -38,6 +40,8 @@
 					<td><%=comedian.getComedianId()%></td>
 					<td><%=comedian.getComedianName() %></td>
 					<td><%=comedian.getComedianAge() %></td>
+					<td><a href="<%=request.getContextPath()%>/updateComedianForm.jsp?comedianId=<%=comedian.getComedianId()%>">수정</a></td>
+					<td><a href="<%=request.getContextPath()%>/deleteComedianAction.jsp?comedianId=<%=comedian.getComedianId()%>">삭제</a></td>
 				</tr>
 			<%
 				}

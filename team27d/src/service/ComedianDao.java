@@ -17,27 +17,52 @@ public class ComedianDao {
 	 *PreparedStatement데이터타입으로 statement변수를 선언하고 null값을 넣어줌.
 	 *ResultSet데이터타입으로 resultSet변수를 선언하고 null값을 넣어줌.
 	 */
-	ArrayList<Comedian> list = new ArrayList<Comedian>();
+	ArrayList<Comedian> list = null;
 	Connection connection = null;
 	PreparedStatement statement = null;
 	ResultSet resultSet = null;
 	
-	public Comedian insertComedian(String name, int age) {
-		Comedian comedian = new Comedian();
+	public void deleteComedian(int id) {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			
+			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
+			String dbUser = "root";
+			String dbPass = "java0000";
+			String sql = "DELETE FROM comedian where id=?";
+			connection = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
+			statement=connection.prepareStatement(sql);
+			statement.setInt(1, id);
+			statement.executeUpdate();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				statement.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void insertComedian(Comedian comedian) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		
-		String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
-		String dbUser = "root";
-		String dbPass = "java0000";
-		String sql = "INSERT INTO tb_user VALUES(?,?)";
-		
-		connection = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
-
-		statement= connection.prepareStatement(sql);
-		statement.setString(1, name);
-		statement.setInt(3, age);
-		statement.executeUpdate();
+			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
+			String dbUser = "root";
+			String dbPass = "java0000";
+			String sql = "INSERT INTO comedian VALUES(?,?)";
+			
+			connection = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
+	
+			statement= connection.prepareStatement(sql);
+			statement.setString(1, comedian.getComedianName());
+			statement.setInt(3, comedian.getComedianAge());
+			statement.executeUpdate();
 		
 		} catch (ClassNotFoundException e1) {
 			e1.printStackTrace();
@@ -52,11 +77,12 @@ public class ComedianDao {
 				e.printStackTrace();
 			}
 		}
-		return comedian;
 	}
 		
 	
 	public ArrayList<Comedian> selectComedianList(){
+		
+		list = new ArrayList<Comedian>();
 		
 		/*try안에 드라이버로딩, DB연결, 쿼리실행준비, 쿼리실행, 객체종료를 넣어주고 catch를 통해 예외를 잡은 후 finally안에서 return값을 받음.*/
 		/*Class.forName메서드로 드라이버 로딩.

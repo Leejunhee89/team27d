@@ -14,6 +14,53 @@ public class RapperDao {// 예외는 전부 try-catch 처리
 	ResultSet rs = null;
 	Rapper rapper = null;
 	
+	// 래퍼 수정처리 메서드
+	public void updateRapper(int id, String name, int age) {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
+			String dbID = "root";
+			String dbPass = "java0000";
+			String sql = "UPDATE `rapper` SET `rapper_name`=?, `rapper_age`=? WHERE  `rapper_id`=?";
+			conn = DriverManager.getConnection(jdbcDriver, dbID, dbPass);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setInt(2, age);
+			pstmt.setInt(3, id);
+			pstmt.executeUpdate();
+			pstmt.close();
+			conn.close();			
+		}
+		catch (ClassNotFoundException e) {e.printStackTrace();}
+		catch (SQLException e) {e.printStackTrace();}
+	}
+	
+	// 래퍼 수정화면 메서드
+	public Rapper updateRapperSelect(int id) {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
+			String dbID = "root";
+			String dbPass = "java0000";
+			String sql = "SELECT * FROM rapper WHERE rapper_id=?";
+			conn = DriverManager.getConnection(jdbcDriver, dbID, dbPass);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, id);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {		
+				rapper = new Rapper();
+				rapper.setRapperId(rs.getInt("rapper_id"));
+				rapper.setRapperName(rs.getString("rapper_name"));
+				rapper.setRapperAge(rs.getInt("rapper_age"));
+			}
+			pstmt.close();
+			conn.close();
+		}
+		catch (ClassNotFoundException e) {e.printStackTrace();}
+		catch (SQLException e) {e.printStackTrace();}
+		return rapper;
+	}
+	
 	// 래퍼 삭제 메서드
 	public void deleteRapper(int rapperID) {
 		try {

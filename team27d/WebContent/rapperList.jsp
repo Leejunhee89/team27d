@@ -36,10 +36,8 @@
 				<td><%=rap.getRapperId()%></td>
 				<td><%=rap.getRapperName()%></td>
 				<td><%=rap.getRapperAge()%></td>
-				<td>수정</td>
-				<td>
-					<a href = "<%= request.getContextPath() %>/deleteRapperAction.jsp?rapperId=<%= rap.getRapperId() %>">삭제</a>
-				</td>
+				<td><a href = "<%= request.getContextPath() %>/updateRapperForm.jsp?rapperId=<%= rap.getRapperId() %>">수정</a></td>
+				<td><a href = "<%= request.getContextPath() %>/deleteRapperAction.jsp?rapperId=<%= rap.getRapperId() %>">삭제</a>	</td>
 			</tr>
 		<%
 			}

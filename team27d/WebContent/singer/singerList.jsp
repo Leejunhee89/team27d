@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ page import = "service.SingerDao" %>
 <%@ page import = "service.Singer" %>
+<%@ page import = "service.Member" %>
 <%@ page import = "java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
@@ -15,7 +16,17 @@
 		request.setCharacterEncoding("euc-kr");
 		SingerDao rapperdao = new SingerDao();
 		ArrayList<Singer> singerlist = rapperdao.selectSinger();
+		Member member = (Member)session.getAttribute("loginMember");		
 	%>
+		<a href= "<%= request.getContextPath() %>/index.jsp">홈</a> &nbsp;
+	<%
+		if(member != null) {	
+	%>
+		<a href= "<%= request.getContextPath() %>/singer/insertSingerForm.jsp">가수등록</a>
+	<%
+		}
+	%>
+		 <br><br>		
 		<a href= "<%= request.getContextPath() %>/index.jsp">홈</a> &nbsp;
 		<a href= "<%= request.getContextPath() %>/singer/insertSingerForm.jsp">가수등록</a> <br><br>
 	<table border="1">
@@ -29,19 +40,25 @@
 			<tr>
 		</thead>
 		<tbody>
-		<%
+	<%
 			for(Singer sing : singerlist){
-		%>
+	%>
 			<tr>
 				<td><%= sing.getSingerId() %></td>
 				<td><%= sing.getSingerName() %></td>
 				<td><%= sing.getSingerAge() %></td>
+	<%
+				if(member != null) {	
+	%>
 				<td><a href = "<%= request.getContextPath() %>/singer/updateSingerForm.jsp?singerId=<%= sing.getSingerId() %>">수정</a></td>
 				<td><a href = "<%= request.getContextPath() %>/singer/deleteSingerAction.jsp?singerId=<%= sing.getSingerId() %>">삭제</a>	</td>
+	<%
+				}
+	%>
 			</tr>
-		<%
+	<%
 			}
-		%>
+	%>
 		</tbody>
 	</table>
 </body>

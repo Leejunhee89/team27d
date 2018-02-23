@@ -6,9 +6,9 @@
 	<title>Insert title here</title>
 </head>
 <body>
-<%
-	request.setCharacterEncoding("euc-kr");
-%>
+	<%
+		request.setCharacterEncoding("euc-kr");
+	%>
 	<h3>래퍼 등록화면</h3>
 		<hr>
 		<table border = "1">

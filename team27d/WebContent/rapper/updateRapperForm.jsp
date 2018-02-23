@@ -8,12 +8,12 @@
 	<title>Insert title here</title>
 </head>
 <body>
-<%
-	request.setCharacterEncoding("euc-kr");
-	int rapperId = Integer.parseInt(request.getParameter("rapperId"));
-	RapperDao rapdao = new RapperDao();
-	Rapper rapper = rapdao.updateRapperOne(rapperId);
-%>
+	<%
+		request.setCharacterEncoding("euc-kr");
+		int rapperId = Integer.parseInt(request.getParameter("rapperId"));
+		RapperDao rapdao = new RapperDao();
+		Rapper rapper = rapdao.updateRapperOne(rapperId);
+	%>
 	<h3>래퍼 수정</h3>
 		<hr>
 		<table border = "1">

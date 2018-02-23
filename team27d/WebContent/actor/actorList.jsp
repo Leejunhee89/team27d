@@ -3,7 +3,7 @@
 <%@ page import = "service.ActorDao"  %>
 <%@ page import = "service.Actor"  %>
 <%@ page import = "java.util.ArrayList" %>
-
+<%@ page import = "service.Member" %>
 <!DOCTYPE html PUBLIC >
 <html>
 <head>
@@ -15,10 +15,18 @@
 	<% 
 		ActorDao ado = new ActorDao();
 		ArrayList<Actor> list = ado.selectActor();
-			
+		Member member = (Member)session.getAttribute("loginMember");
+		
 	%>
-		<a href= "<%= request.getContextPath() %>/index.jsp">홈</a> &nbsp;
+		<a href= "<%= request.getContextPath() %>/index.jsp">홈</a>
+	<% 
+		if (member != null) {
+	%>
 		<a href= "<%= request.getContextPath() %>/actor/insertActorForm.jsp">배우등록</a> <br><br>
+	 
+	<% 
+	}
+	%>
 	<table border ="1">
 		<thead>
 			<tr>
@@ -38,13 +46,18 @@
 					<td><%= actor.getActorId() %></td>
 					<td><%= actor.getActorName() %></td>
 					<td><%= actor.getActorAge() %></td>
+		<% 
+				if (member != null)	{	
+		%>		
 					<td><a href="<%=request.getContextPath()%>/actor/updateActorForm.jsp?actorId=<%=actor.getActorId()%>">수정</a></td>
 					<td><a href="<%=request.getContextPath()%>/actor/deleteActorAction.jsp?actorId=<%=actor.getActorId()%>">삭제</a></td>
 				</tr>  
 			</tbody>
-			
+		<%
+				}
+		%>	
 		<% 
-		} 
+			} 
 		%>
 		
 		

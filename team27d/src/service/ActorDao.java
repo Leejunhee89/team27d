@@ -112,7 +112,7 @@ public class ActorDao {
 			String dbUser = "root";
 			String dbPass = "java0000";
 			conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
-			String sql = "insert into actor(actor_name, actor_age) values(?, ?)";
+			String sql = "insert into actor (actor_name, actor_age) values(?, ?)";
 			// 배우이름과 나이를 등록하기 위해 insert 쿼리문장을 썻다. 
 			// 배우 아이디에 해당되는 값은 오토값으로 셋팅되게 설정 해놨기에 아이디 값은 뺏다. 
 			

@@ -4,6 +4,7 @@
 <%@ page import = "service.ActressDao"  %>
 <%@ page import = "service.Actress"  %>
 <%@ page import = "java.util.ArrayList" %>
+<%@ page import = "service.Member" %>
 <!DOCTYPE html PUBLIC>
 <html>
 <head>
@@ -14,9 +15,17 @@
 <% 
 	ActressDao ado = new ActressDao();
 	ArrayList<Actress> list = ado.selectActress();
+	Member member = (Member)session.getAttribute("loginMember");
 %>	
 	<a href= "<%= request.getContextPath() %>/index.jsp">홈</a> &nbsp;
+<% 
+	if (member != null) {
+%>	
 	<a href= "<%= request.getContextPath() %>/actress/insertActressForm.jsp">배우등록</a> <br><br>
+<%
+	}
+%>	
+	
 	<table border ="1">
 	<thead>
 		<tr>	
@@ -36,9 +45,15 @@
 			<td><%= actress.getActressId() %></td>
 			<td><%= actress.getActressName() %></td>
 			<td><%= actress.getActressAge() %></td>
+	<%
+		if (member != null) {
+	%>		
 			<td><a href="<%=request.getContextPath()%>/actress/updateActressForm.jsp?actressId=<%=actress.getActressId() %>">수정</a></td>
 			<td><a href="<%=request.getContextPath()%>/actress/deleteActressAction.jsp?actressId=<%=actress.getActressId() %>">삭제</a></td>
-		</tr>
+	<%
+		}
+	%>	
+		</tr>		
 	</tbody>  
 	<% 
 	}

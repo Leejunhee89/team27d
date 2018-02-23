@@ -11,5 +11,5 @@
 	
 	SingerDao singerdao = new SingerDao();	
 	singerdao.updateSinger(singer);
-	response.sendRedirect(request.getContextPath() + "/list/singerList.jsp");
+	response.sendRedirect(request.getContextPath() + "/singer/singerList.jsp");
 %>

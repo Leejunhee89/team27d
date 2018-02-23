@@ -24,7 +24,7 @@
 				</tr>	
 			</thead>
 			<tbody>
-				<form action = "<%= request.getContextPath() %>/update/updateRapperAction.jsp" method = "post">
+				<form action = "<%= request.getContextPath() %>/rapper/updateRapperAction.jsp" method = "post">
 					<tr>
 						<td>¾ÆÀÌµð</td>
 						<td><input type = "text" name = rapper_id value = <%= rapper.getRapperId() %> readonly></td>

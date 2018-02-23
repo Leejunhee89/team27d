@@ -11,5 +11,5 @@
 	
 	RapperDao rapdao = new RapperDao();
 	rapdao.updateRapper(rapper);
-	response.sendRedirect(request.getContextPath() + "/list/rapperList.jsp");
+	response.sendRedirect(request.getContextPath() + "/rapper/rapperList.jsp");
 %>

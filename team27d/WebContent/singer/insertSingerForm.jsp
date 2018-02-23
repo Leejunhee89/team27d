@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h3>가수 등록화면</h3>
-	<form action="<%=request.getContextPath()%>/insert/insertSingerAction.jsp"	method="post">
+	<form action="<%=request.getContextPath()%>/singer/insertSingerAction.jsp"	method="post">
 		<table border="1">
 			<thead>
 				<tr>

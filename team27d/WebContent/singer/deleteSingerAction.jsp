@@ -6,5 +6,5 @@
 	int singerId = Integer.parseInt(request.getParameter("singerId"));
 	SingerDao singerdao = new SingerDao();
 	singerdao.deleteSinger(singerId);	
-	response.sendRedirect(request.getContextPath() + "/list/singerList.jsp");
+	response.sendRedirect(request.getContextPath() + "/singer/singerList.jsp");
 %>

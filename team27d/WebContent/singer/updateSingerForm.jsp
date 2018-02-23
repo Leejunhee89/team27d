@@ -16,7 +16,7 @@
 		Singer singer = singerdao.updateSingerOne(singerId);
 	%>
 	<h3>가수 수정화면</h3>
-	<form action="<%=request.getContextPath()%>/update/updateSingerAction.jsp" method="post">
+	<form action="<%=request.getContextPath()%>/singer/updateSingerAction.jsp" method="post">
 		<table border="1">
 			<thead>
 				<tr>

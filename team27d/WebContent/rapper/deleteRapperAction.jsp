@@ -5,5 +5,5 @@
 	int rapperId = Integer.parseInt(request.getParameter("rapperId"));	
 	RapperDao rapdao = new RapperDao();
 	rapdao.deleteRapper(rapperId);	
-	response.sendRedirect(request.getContextPath() + "/list/rapperList.jsp");
+	response.sendRedirect(request.getContextPath() + "/rapper/rapperList.jsp");
 %>

@@ -20,5 +20,5 @@
 	
 	anaunseoDao.updateAnaunseo(anaunseo);
 	
-	response.sendRedirect(request.getContextPath() + "/list/announcerList.jsp");
+	response.sendRedirect(request.getContextPath() + "/anaunseo/announcerList.jsp");
 %>

@@ -1,10 +1,9 @@
+<!-- team27d [ÀÌÃá¸²] -->
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ page import = "service.Member" %>
 <%@ page import = "service.LoginDao" %>
 <%@ page import = "java.util.HashMap" %>
 <!DOCTYPE html>
-
-
 <%
 	Member member = new Member();
 	member.setMember_id(request.getParameter("memberId"));

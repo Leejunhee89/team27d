@@ -1,11 +1,10 @@
+// team27d [이춘림]
 package service;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import javax.websocket.Session;
 
 public class LoginDao {
 	Connection connection;
@@ -28,6 +27,7 @@ public class LoginDao {
 				System.out.println("아이디 일치");
 				if(member.getMember_pw().equals(resultSet.getString("member_pw"))) {
 					System.out.println("패스워드 일치 : 로그인 성공");
+					//no를 세팅하는 부분은 추후에 삭제해야됨.
 					member.setMember_no(resultSet.getInt("member_no"));
 					result = 1;
 				}else {

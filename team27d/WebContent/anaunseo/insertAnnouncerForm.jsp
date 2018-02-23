@@ -9,7 +9,7 @@
 	<body>
 		<h3>아나운서 등록</h3>
 		<hr>
-		<form action = "<%= request.getContextPath() %>/insert/insertAnnouncerAction.jsp" method = "post">
+		<form action = "<%= request.getContextPath() %>/anaunseo/insertAnnouncerAction.jsp" method = "post">
 			<table border = "1">
 				<thead>
 					<tr>

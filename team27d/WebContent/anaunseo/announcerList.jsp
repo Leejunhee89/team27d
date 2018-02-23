@@ -18,7 +18,7 @@
 	ArrayList<Anaunseo> list = anaDao.selectAnaunseo();
 %>
 	<a href = "<%= request.getContextPath() %>/index.jsp">홈</a> &nbsp;
-	<a href = "<%= request.getContextPath() %>/insert/insertAnnouncerForm.jsp">아나운서 등록</a><br><br>
+	<a href = "<%= request.getContextPath() %>/anaunseo/insertAnnouncerForm.jsp">아나운서 등록</a><br><br>
 	<table border = "1">
 		<thead>
 			<tr>
@@ -41,8 +41,8 @@
 						a테그를 통해 get방식으로 anaunseo 객체의 맴버변수 중에 key값에 해당하는 변수 anaunseoId 값을 get방식으로 anaunseoId라는 변수에 담아 
 						updatedAnaunseoForm.jsp 파일로 값이 담긴 anaunseoId 변수를 넘긴다. 이때, get방식으로 넘어간다.
 					-->
-					<td><a href = "<%= request.getContextPath() %>/update/updateAnaunseoFrom.jsp?anaunseoId=<%= anaunseo.getAnaunseoId() %>">수정</a></td>
-					<td><a href = "<%= request.getContextPath() %>/delete/deleteAnaunseoAction.jsp?anaunseoId=<%= anaunseo.getAnaunseoId() %>">삭제</a></td>
+					<td><a href = "<%= request.getContextPath() %>/anaunseo/updateAnaunseoFrom.jsp?anaunseoId=<%= anaunseo.getAnaunseoId() %>">수정</a></td>
+					<td><a href = "<%= request.getContextPath() %>/anaunseo/deleteAnaunseoAction.jsp?anaunseoId=<%= anaunseo.getAnaunseoId() %>">삭제</a></td>
 				</tr>
 		<%
 			}

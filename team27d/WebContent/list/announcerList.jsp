@@ -37,6 +37,10 @@
 					<td><%= anaunseo.getAnaunseoId() %></td>
 					<td><%= anaunseo.getAnaunseoName() %></td>
 					<td><%= anaunseo.getAnaunseoAge() %></td>
+					<!--
+						a테그를 통해 get방식으로 anaunseo 객체의 맴버변수 중에 key값에 해당하는 변수 anaunseoId 값을 get방식으로 anaunseoId라는 변수에 담아 
+						updatedAnaunseoForm.jsp 파일로 값이 담긴 anaunseoId 변수를 넘긴다. 이때, get방식으로 넘어간다.
+					-->
 					<td><a href = "<%= request.getContextPath() %>/update/updateAnaunseoFrom.jsp?anaunseoId=<%= anaunseo.getAnaunseoId() %>">수정</a></td>
 					<td><a href = "<%= request.getContextPath() %>/delete/deleteAnaunseoAction.jsp?anaunseoId=<%= anaunseo.getAnaunseoId() %>">삭제</a></td>
 				</tr>

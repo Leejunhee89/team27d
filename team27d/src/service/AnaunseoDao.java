@@ -213,11 +213,9 @@ public class AnaunseoDao {
 			String sql = "SELECT anaunseo_id AS anaunseoId, anaunseo_name AS anaunseoName, anaunseo_age AS anaunseoAge FROM anaunseo ORDER BY anaunseo_id ASC";
 			
 			connection = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
-			//쿼리 준비
 			preparedStatement = connection.prepareStatement(sql);
-			//쿼리 실행후 레코드 ResultSet rs에 저장
 			resultSet = preparedStatement.executeQuery();
-			//rs에  레코드 없을때까지 DB에 저장된 값 ana에 세팅 후 세팅된 ana를 어레이리스트에 저장
+			
 			while(resultSet.next()) {
 				Anaunseo anaunseo = new Anaunseo();
 				anaunseo.setAnaunseoId( resultSet.getInt("anaunseoId") );
@@ -226,31 +224,25 @@ public class AnaunseoDao {
 				
 				list.add(anaunseo);
 			}
-			//단위테스트 코드
-			System.out.println(list.size() + "<=== 단위테스트 코드");
+			System.out.println("AnaunseoDao.selectAnaunseo()/list.size() : " + list.size());
 			
-		}catch(ClassNotFoundException e){
-			e.printStackTrace();
-			System.out.println(e.getMessage	());
-			System.out.println("예외발생");
-		}catch(SQLException e) {
-			e.printStackTrace();
-			System.out.println(e.getMessage	());
-			System.out.println("예외발생");
+		}catch(ClassNotFoundException exception){
+			exception.printStackTrace();
+			System.out.println(exception.getMessage());
+			System.out.println("ClassNotFoundException 예외 발생");
+		}catch(SQLException exception) {
+			exception.printStackTrace();
+			System.out.println(exception.getMessage());
+			System.out.println("SQLException 예외 발생");
 		}finally {
-			//DB에 연결하여 DB에서 필요한 정보를 모두  Anaunseo객체 마다에 세팅한 후,
-			//세팅이 끝난 Anaunseo객체를 ArrayList<Anaunseo> list에 넣어주었으므로 
-			//DB단위에서 할 일은 모두 끝났다. 따라서 DB단위에서 사용된 개체를 모두 반환시켜주어야한다.
-			// Connection, PreparedStatement, ResultSet 객체순으로 생성되었으므로 
-			// close()메서드를 통한 메모리 반환 순서는 ResultSet, PreparedStatement, Connection 순서가 되어야 한다.
-			// close()메서드 뒤에 rs, pstmt, conn 의 객체참조변수를 null값으로 초기화하는 이유는
-			// 혹시나 모를 잘못된 주소참조를 방지하기 위하여 null값으로 초기화시켜 두었다.
 			if(resultSet != null) {
 				try {
 					resultSet.close();
 					resultSet = null;
 				}catch(SQLException exception) {
 					exception.printStackTrace();
+					System.out.println(exception.getMessage());
+					System.out.println("result 객체 소멸시 예외발생");
 				}
 			}
 			if(preparedStatement != null) {
@@ -259,6 +251,8 @@ public class AnaunseoDao {
 					preparedStatement = null;
 				}catch(SQLException exception) {
 					exception.printStackTrace();
+					System.out.println(exception.getMessage());
+					System.out.println("preparedStatement 객체 소멸시 예외 발생");
 				}
 			}
 			if(connection != null) {
@@ -267,10 +261,11 @@ public class AnaunseoDao {
 					connection = null;
 				}catch(SQLException exception) {
 					exception.printStackTrace();
+					System.out.println(exception.getMessage());
+					System.out.println("connection 객체 소멸시 예외 발생");
 				}
 			}
 		}
-		//세팅된 어레이 리스트의 주소를 리턴
 		return list;
 	}
 }

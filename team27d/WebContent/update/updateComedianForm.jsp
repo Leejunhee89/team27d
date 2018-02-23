@@ -7,15 +7,19 @@
 
 <%
 	request.setCharacterEncoding("euc-kr");
-	String id = request.getParameter("comedianId");
-	int comId = Integer.parseInt(id);
+	
+	Comedian comedian = new Comedian();
+	comedian.setComedianId(Integer.parseInt(request.getParameter("comedianId")));
 	
 	ComedianDao comedianDao = new ComedianDao();
-	Comedian comedian = comedianDao.updateComedianOne(comId);
+	comedianDao.updateComedianOne(comedian);
 	
 	int dbid = comedian.getComedianId();
 	String dbname = comedian.getComedianName();
 	int dbage = comedian.getComedianAge();
+	System.out.println(dbid+"==========dbid========");
+	System.out.println(dbname+"========dbname======");
+	System.out.println(dbage+"=========dbage=======");
 %>
 <form action="<%=request.getContextPath() %>/update/updateComedianAction.jsp" method="post">
 	<hr>

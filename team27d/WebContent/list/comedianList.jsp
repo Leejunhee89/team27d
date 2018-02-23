@@ -13,9 +13,11 @@
 <body>
 	<h1>코미디언 리스트</h1>
 	<%
-		/*Comedian클래스를 통해 새로운 객체를 생성한 후 그 주소를 comedianDao에 담는다.
+		/*ComedianDao클래스를 통해 새로운 객체를 생성한 후 그 주소를 comedianDao에 담는다.
 		 *Comedian형 ArrayList 클래스를 통해 새로운 객체를 생성한 후 주소를 list에 담는다.
-		 *ComedianDao클래스 내 selectComedianList메소드를 실행한 후 주소를 list에 담는다.
+		 *ComedianDao클래스 내 selectComedianList메소드를 실행한 후 리턴값을 list에 담는다.
+		 *ArrayList의 크기만큼 반복하면서 Comedian 객체에 리턴값을 담고(=Comedian객체 내 select값 세팅)
+		 *Comedian객체에서 값을 getting하여 화면에 뿌려준다.
 		 */
 		request.setCharacterEncoding("euc-kr");
 		ComedianDao comedianDao = new ComedianDao();

@@ -18,17 +18,17 @@ public class ComedianDao {
 	ResultSet resultSet = null;
 	Comedian comedian = null;
 	
-	public Comedian updateComedianOne(int id) {
+	public Comedian updateComedianOne(Comedian comedian) {
 		comedian = new Comedian();
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
 			String dbUser = "root";
 			String dbPass = "java0000";
-			String sql = "SELECT * FROM comedian WHERE comedian_id=?";
+			String sql = "SELECT * FROM comedian WHERE comedian_id=? ORDER BY comedian_id ASC";
 			connection = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			statement = connection.prepareStatement(sql);
-			statement.setInt(1, id);
+			statement.setInt(1, comedian.getComedianId());
 			resultSet = statement.executeQuery();
 			if(resultSet.next()) {
 				comedian.setComedianId(resultSet.getInt("comedian_id"));
@@ -51,6 +51,11 @@ public class ComedianDao {
 		return comedian;
 	}
 	
+	/*updateComedianAction.jsp에서 사용하기 위한 updateComedian(Comedian comedian)메서드 선언.
+	 *리턴은 받지 않는다.
+	 *드라이버 로딩, 데이터베이스 연결, insert쿼리준비, 쿼리실행 후,
+	 *사용한 객체 Statement, Connection을 종료한다.
+	 */
 	public void updateComedian(Comedian comedian) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -79,18 +84,19 @@ public class ComedianDao {
 			}
 		}
 	}
-	
-	public void deleteComedian(int id) {
+
+
+	public void deleteComedian(Comedian comedian) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			
 			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
 			String dbUser = "root";
 			String dbPass = "java0000";
-			String sql = "DELETE FROM comedian where comedian_id=?";
+			String sql = "DELETE FROM comedian WHERE comedian_id=?";
 			connection = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			statement=connection.prepareStatement(sql);
-			statement.setInt(1, id);
+			statement.setInt(1, comedian.getComedianId());
 			statement.executeUpdate();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -106,6 +112,11 @@ public class ComedianDao {
 		}
 	}
 	
+	/*insertComedianAction.jsp에서 사용하기 위한 insertComedian(Comedian comedian)메서드 선언.
+	 *리턴은 받지 않는다.
+	 *드라이버 로딩, 데이터베이스 연결, insert쿼리준비, 쿼리실행 후,
+	 *사용한 객체 Statement, Connection을 종료한다.
+	 */
 	public void insertComedian(Comedian comedian) {
 			try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -138,6 +149,11 @@ public class ComedianDao {
 	}
 		
 	
+	/*ComedianList.jsp에서 코미디언 리스트를 보여주기 위한 selectComedianList()메서드 선언.
+	 *리턴값은 Comedian클래스형 ArrayList형태로 받는다.
+	 *드라이버 로딩, 데이터베이스 연결, select쿼리준비, 쿼리실행 후 resultSet.next()메서드가 '참'이면 ResultSet객체 내에서 데이터를 가져와 Comedian클래스에 세팅하고 값이 세팅된 객체참조변수 comedian을 객체참조변수 list에 담는다.
+	 *사용한 객체 ResultSet, Statement, Connection을 종료한 후 list를 리턴한다. 
+	 */
 	public ArrayList<Comedian> selectComedianList(){
 		
 		list = new ArrayList<Comedian>();
@@ -155,7 +171,7 @@ public class ComedianDao {
 			resultSet = statement.executeQuery();
 		
 			while(resultSet.next()) {
-				Comedian comedian = new Comedian();
+				comedian = new Comedian();
 				comedian.setComedianId(resultSet.getInt("comedianId"));
 				comedian.setComedianName(resultSet.getString("comedianName"));
 				comedian.setComedianAge(resultSet.getInt("comedianAge"));
@@ -168,9 +184,9 @@ public class ComedianDao {
 			e.printStackTrace();
 				
 		}finally {
+			if(resultSet!=null) {try {resultSet.close();} catch (SQLException e) {e.printStackTrace();}}
 			if(statement!=null) {try {statement.close();} catch (SQLException e) {e.printStackTrace();}}
 			if(connection!=null) {try {connection.close();} catch (SQLException e) {e.printStackTrace();}}
-			if(resultSet!=null) {try {resultSet.close();} catch (SQLException e) {e.printStackTrace();}}
 		}
 		return list;
 	}

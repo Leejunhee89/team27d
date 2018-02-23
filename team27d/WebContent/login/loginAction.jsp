@@ -5,13 +5,16 @@
 <%@ page import = "java.util.HashMap" %>
 <!DOCTYPE html>
 <%
-	Member member = new Member();
-	member.setMember_id(request.getParameter("memberId"));
-	member.setMember_pw(request.getParameter("memberPw"));
-	System.out.println(member.getMember_id());
-	System.out.println(member.getMember_pw());
-	
+	String memberId = request.getParameter("memberId");
+	String memberPw = request.getParameter("memberPw");
+	/* member.setMember_id(request.getParameter("memberId"));
+	member.setMember_pw(request.getParameter("memberPw")); */
+	/* System.out.println(member.getMember_id());
+	System.out.println(member.getMember_pw()); */
+
 	LoginDao loginDao = new LoginDao();
+	Member member = loginDao.getLoginSettingMember(memberId);
+	System.out.println(member);
 	int result = loginDao.loginCheck(member);
 	System.out.println("result : " + result);
 	

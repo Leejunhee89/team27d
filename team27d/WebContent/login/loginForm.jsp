@@ -7,7 +7,7 @@
 	<title>Insert title here</title>
 </head>
 <body>
-	<form action = "<%= request.getContextPath() %>/login/loginAction.jsp" method = "get">
+	<form action = "<%= request.getContextPath() %>/login/loginAction.jsp" method = "post">
 		<table border = "1">
 			<tr>
 				<th>¾ÆÀÌµğ</th>

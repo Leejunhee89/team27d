@@ -112,17 +112,13 @@ public class RapperDao {// 예외는 전부 try-catch 처리
 	
 	// 모든 래퍼 리스트화면 메서드
 	public ArrayList<Rapper> selectRapper() {
-		// ArrayList 래퍼클래스타입으로 객체생성 - 참조변수명은 보통 list로 쓴다
-		// rapperlist -> list로 일괄변경하려면! 변수명 블럭-Refactor-Rename클릭
 		ArrayList<Rapper> rapperlist = new ArrayList<Rapper>();
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
 			String dbID = "root";
 			String dbPass = "java0000";
-			// sql에서 쿼리문은 대문자로 구분해주고. 디비칼럼명은 언더바를 많이 쓰고 클래스명은 대문자로 구분이기때문에 일치시켜주려고 as를 쓰면
-			// 좋다.
-			// select + order by
+			// as를 쓰면 좋다. select + order by ... ASC 오름차순정렬
 			String sql = "SELECT rapper_id AS rapperId, rapper_name AS rapperName, rapper_age AS rapperAge FROM rapper ORDER BY rapper_id ASC";
 			conn = DriverManager.getConnection(jdbcDriver, dbID, dbPass);
 			
@@ -133,7 +129,7 @@ public class RapperDao {// 예외는 전부 try-catch 처리
 				rapper.setRapperId(rs.getInt("rapperId")); 
 				rapper.setRapperName(rs.getString("rapperName"));
 				rapper.setRapperAge(rs.getInt("rapperAge"));
-				rapperlist.add(rapper); // 래퍼리스트에 래퍼객체(반복) 추가 -> 리턴값으로 담을 데이터***
+				rapperlist.add(rapper);
 			}
 			rs.close();
 			pstmt.close();
@@ -143,6 +139,6 @@ public class RapperDao {// 예외는 전부 try-catch 처리
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} 
-		return rapperlist; // ***추가한 리스트들을 반환
+		return rapperlist;
 	}
 }

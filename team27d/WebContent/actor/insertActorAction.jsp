@@ -18,6 +18,6 @@
 	ActorDao actdao = new ActorDao();
 	actdao.insertActor(actor);
 	
-	response.sendRedirect(request.getContextPath()+ "/list/actorList.jsp");
+	response.sendRedirect(request.getContextPath()+ "/actor/actorList.jsp");
 
 %>

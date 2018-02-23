@@ -16,7 +16,7 @@
 	
 	ActressDao actressdao = new ActressDao();
 	actressdao.updateActress(actress);
-	response.sendRedirect(request.getContextPath() + "/list/actressList.jsp");
+	response.sendRedirect(request.getContextPath() + "/actress/actressList.jsp");
 
 
 

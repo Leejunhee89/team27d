@@ -1,11 +1,9 @@
 //team27d [이준희] 
 package service;
 
-//<1>DB연결을 위해 Connection을 import 시킨다.
+
 import java.sql.Connection;
-//<2>DB를 연결하고 쿼리문을 실행시키기 위해 PreparedStatement을 import 시킨다.
 import java.sql.PreparedStatement;
-//<3>쿼리문을 실행 시킬 ResultSet을 임포트 한다.
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,66 +16,70 @@ public class ActorDao {
 	Actor actor = null;
 	
 	public Actor updateActorOne(int actorId) {
-				
+			// 아이디값 하나에 해당되는 값을 받아서 그 아이디값에 해당되는 데이만 수정하게 하는 메서드이다.
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		
-		String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=utf8";
-		String dbUser = "root";
-		String dbPass = "java0000";
-		conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
-		String sql = "SELECT * FROM actor WHERE actor_id=?";
-		pstmt = conn.prepareStatement(sql);
-		pstmt.setInt(1, actorId);
-		result = pstmt.executeQuery();
-		
-		if (result.next()) {
-			actor = new Actor();
-			actor.setActorId(result.getInt("actor_id"));
-			actor.setActorName(result.getString("actor_name"));
-			actor.setActorAge(result.getInt("actor_age"));
-		}
-		
-		pstmt.close();
-		conn.close();
-		
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return actor;
-	}
+			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=utf8";
+			String dbUser = "root";
+			String dbPass = "java0000";
+			conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
+			String sql = "SELECT * FROM actor WHERE actor_id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, actorId);
+			result = pstmt.executeQuery();
+			// 아이디값을 기준으로 그에 해당되는 값을 수정하기 위해 기준이 되는 아이디값을 입력받아야 한다. 
+			// 그래서 SELECT 쿼리문으로 아이디값만 받아왔다. 
+			// actorId 해당되는 값은 list에서 받아온다. 
+			if (result.next()) {
+				actor = new Actor();
+				actor.setActorId(result.getInt("actor_id"));
+				actor.setActorName(result.getString("actor_name"));
+				actor.setActorAge(result.getInt("actor_age"));
+			}
+				// 위에 SELECT 쿼리문으로 아이디에 해당되는값 아이디,이름,나이를 겟팅하고 셋팅하면서 주소값을 actor에 넘긴다. 
+			pstmt.close();
+			conn.close();
+			
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return actor;
+	}			// 주소를 넘겨받은 actor를 리턴시킨다.
 	
 	public void updateActor(Actor actor) {
-		System.out.println(actor.toString());
-		System.out.println("-------------------");
+				// 수정된 값을 셋팅시키는 메서드이다. 
+				// Actor클래스에 필드값을 쓰기위해 참조형 데이터 타입으로 설정했다.
 		try {
 		
-		Class.forName("com.mysql.jdbc.Driver");
-		
-		String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=utf8";
-		String dbUser = "root";
-		String dbPass = "java0000";
-		conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
-		String sql = "UPDATE actor SET actor_name=?, actor_age=? WHERE actor_id=?";
-		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, actor.getActorName());
-		pstmt.setInt(2, actor.getActorAge());
-		pstmt.setInt(3, actor.getActorId());
-		pstmt.executeUpdate();
-		
-		pstmt.close();
-		conn.close();
-		
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+			Class.forName("com.mysql.jdbc.Driver");
+			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=utf8";
+			String dbUser = "root";
+			String dbPass = "java0000";
+			conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
+			String sql = "UPDATE actor SET actor_name=?, actor_age=? WHERE actor_id=?";
+					// 아이디값을 입력받아 UPDATE 쿼리문으로 이름 과 나이를 수정한다. 
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, actor.getActorName());
+			pstmt.setInt(2, actor.getActorAge());
+			pstmt.setInt(3, actor.getActorId());
+			pstmt.executeUpdate();
+			
+			pstmt.close();
+			conn.close();
+			
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 	}
 	
 	public void deleteActor(int actorId) {
+			// 배우 아이디 값을 입력받아 입력받은 아이디 값에 해당되는 입력값들을 지우기 위한 메서드이다.
+			// 그래서 변수이름을 actorId 라고 지었다. 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=utf8";
@@ -85,7 +87,7 @@ public class ActorDao {
 			String dbPass = "java0000";
 			conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			String sql = "DELETE FROM actor WHERE actor_id=?";
-			
+					// 아이디값을 받아 아이디값에 해당이 되어있는 값들을 지운다. 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, actorId);
 			pstmt.executeUpdate();
@@ -111,7 +113,8 @@ public class ActorDao {
 			String dbPass = "java0000";
 			conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			String sql = "insert into actor(actor_name, actor_age) values(?, ?)";
-			// insert 쿼리문을 작성하고 이름과 나이 값만 넣는다. 
+			// 배우이름과 나이를 등록하기 위해 insert 쿼리문장을 썻다. 
+			// 배우 아이디에 해당되는 값은 오토값으로 셋팅되게 설정 해놨기에 아이디 값은 뺏다. 
 			
 			pstmt = conn.prepareStatement(sql);
 			/*pstmt.setInt(1, actor.getActorId());*/
@@ -119,8 +122,8 @@ public class ActorDao {
 			pstmt.setInt(2, actor.getActorAge());
 			pstmt.executeUpdate();
 			
-			//쿼리문을 준비시키고, ? 에 해당하는 값을 셋팅해준다. 
-			// ? 에 해당되는값은 
+			// ?에 순서대로 해당되는 이름과 나이를 셋팅 시킬때는 Acter클래스 참조형변수에 가서 값들은 얻어와서 셋팅시킨다. 
+			
 			pstmt.close();
 			conn.close();
 		} catch (ClassNotFoundException e) {

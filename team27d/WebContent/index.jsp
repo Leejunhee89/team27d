@@ -11,7 +11,8 @@
 <body>
 	<table border="1"> 
 	   <tr>   
-	      <td>팀명 : team27d</td><td>사진</td>
+	      <td>팀명 : team27d  &nbsp; <a href="<%= request.getContextPath() %>/login/loginForm.jsp">actor list</a></td>  
+	      <td>사진</td>
 	   </tr>
 	   <tr>
 	      <td>팀장 :이준희 역할: actor,actress CRUD</td>

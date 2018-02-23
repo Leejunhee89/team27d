@@ -9,5 +9,5 @@
 	ActressDao actress = new ActressDao();
 	actress.deleteActress(actressId);
 	
-	response.sendRedirect(request.getContextPath() +"/list/actressList.jsp");
+	response.sendRedirect(request.getContextPath() +"/actress/actressList.jsp");
 %>

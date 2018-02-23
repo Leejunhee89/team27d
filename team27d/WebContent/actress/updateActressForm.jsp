@@ -18,7 +18,7 @@
 </head>
 <body>
 	<h3>여배우 수정화면</h3>
- <form action="<%=request.getContextPath() %>/update/updateActressAction.jsp" method= "post">
+ <form action="<%=request.getContextPath() %>/actress/updateActressAction.jsp" method= "post">
  <table border="1">
  	
  	<tbody>

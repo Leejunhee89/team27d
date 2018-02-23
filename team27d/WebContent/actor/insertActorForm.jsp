@@ -8,7 +8,7 @@
 </head>
 <body>
  <h3>남배우 등록화면</h3>
- <form action="<%=request.getContextPath() %>/insert/insertActorAction.jsp" method= "post">
+ <form action="<%=request.getContextPath() %>/actor/insertActorAction.jsp" method= "post">
  <table border="1">
  	
  	<tbody>

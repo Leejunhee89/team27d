@@ -9,5 +9,5 @@
 	ActorDao actor = new ActorDao();
 	actor.deleteActor(actorId);
 	
-	response.sendRedirect(request.getContextPath() +"/list/actorList.jsp");
+	response.sendRedirect(request.getContextPath() +"/actor/actorList.jsp");
 %>

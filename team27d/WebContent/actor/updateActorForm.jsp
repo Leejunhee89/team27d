@@ -20,7 +20,7 @@
 </head>
 <body>
  <h3>남배우 수정화면</h3>
- <form action="<%=request.getContextPath() %>/update/updateActorAction.jsp" method= "post">
+ <form action="<%=request.getContextPath() %>/actor/updateActorAction.jsp" method= "post">
  <table border="1">
  	
  	<tbody>

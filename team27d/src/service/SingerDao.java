@@ -15,27 +15,24 @@ public class SingerDao {
 	ResultSet resultset = null;
 	Connection connection = null;
 	PreparedStatement preparedstatement = null;
+	Singer singer = null;
 
-	public Singer singerupdate(int singerid) {
-		Singer singer = null;
-		
+	public Singer updateSingerOne(int singerid) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
-			String id = "root";
-			String pw = "java0000";
-			connection = DriverManager.getConnection(url, id, pw);
+			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
+			String dbUser = "root";
+			String dbPass = "java0000";
+			connection = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			preparedstatement = connection.prepareStatement("SELECT * FROM singer WHERE singer_id = ?");
 			preparedstatement.setInt(1, singerid);
 			resultset = preparedstatement.executeQuery();
-			
-			if(resultset.next()) {
+			while(resultset.next()) {
 				singer = new Singer();
 				singer.setSingerId(resultset.getInt("singer_id"));
 				singer.setSingerName(resultset.getString("singer_name"));
 				singer.setSingerAge(resultset.getInt("singer_age"));
-			}
-			
+			}			
 		}catch(SQLException exception) {
 			exception.printStackTrace();
 		}catch(ClassNotFoundException exception) {
@@ -69,22 +66,18 @@ public class SingerDao {
 		return singer;
 	}
 	
-	public int updateSinger(Singer singer) {
-		int result = 0;
-		
+	public void updateSinger(Singer singer) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
-			String id = "root";
-			String pw = "java0000";
-			connection = DriverManager.getConnection(url, id, pw);
+			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
+			String dbUser = "root";
+			String dbPass = "java0000";
+			connection = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			preparedstatement = connection.prepareStatement("UPDATE singer SET singer_name = ?, singer_age = ? WHERE singer_id = ?");
 			preparedstatement.setString(1, singer.getSingerName());
 			preparedstatement.setInt(2, singer.getSingerAge());
 			preparedstatement.setInt(3, singer.getSingerId());
-			
-			result = preparedstatement.executeUpdate();
-			
+			preparedstatement.executeUpdate();			
 		}catch(SQLException exception) {
 			exception.printStackTrace();
 		}catch(ClassNotFoundException exception) {
@@ -107,58 +100,65 @@ public class SingerDao {
 				}
 			}
 		}
-		return result;
 	}
 
-	public void deleteSinger(int singerid) throws ClassNotFoundException, SQLException {		
-		//try {
-		Class.forName("com.mysql.jdbc.Driver");		
-		String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
-		String dbUser = "root";
-		String dbPass = "java0000";
-		String sql = "DELETE FROM `singer` WHERE  `singer_id`=?";
-		connection = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
-		preparedstatement = connection.prepareStatement(sql);	
-	
-		preparedstatement.setInt(1, singerid);	
-	
-		preparedstatement.executeUpdate();		
-		/*}catch(SQLException exception) {
+	public void deleteSinger(int singerid) {		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");		
+			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
+			String dbUser = "root";
+			String dbPass = "java0000";
+			String sql = "DELETE FROM `singer` WHERE  `singer_id`=?";
+			connection = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
+			preparedstatement = connection.prepareStatement(sql);	
+			preparedstatement.setInt(1, singerid);	
+			preparedstatement.executeUpdate();		
+			
+		}catch(ClassNotFoundException exception){
 			exception.printStackTrace();
-		}catch(ClassNotFoundException exception) {
+			System.out.println(exception.getMessage	());
+			System.out.println("예외발생");
+		}catch(SQLException exception) {
 			exception.printStackTrace();
+			System.out.println(exception.getMessage	());
+			System.out.println("예외발생");
 		}finally {
 			if(preparedstatement != null) {
-				try {preparedstatement.close();
+				try{
+					preparedstatement.close();
 					preparedstatement = null;
-				}catch(SQLException exception) {exception.printStackTrace();}
-			}
-			if(connection != null) {
-				try {
-					connection.close();
-					connection = null;
-				}catch(SQLException exception) {
+				} catch(SQLException exception) {
 					exception.printStackTrace();
+					System.out.println(exception.getMessage());
+					System.out.println("예외발생");
 				}
 			}
-		}		*/
+			if(connection != null) {
+				try{
+					connection.close();
+					connection = null;
+				} catch(SQLException exception) {
+					exception.printStackTrace();
+					System.out.println(exception.getMessage());
+					System.out.println("예외발생");
+				}
+			}
+		}
 	}
 	
-	public int insertSigner(Singer singer) {
-		int isUpdate = 0;
+	public void insertSigner(Singer singer) {
 		try {
-		Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.jdbc.Driver");			
+			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
+			String dbUser = "root";
+			String dbPass = "java0000";
+			String sql = "INSERT INTO `singer` (`singer_name`, `singer_age`) VALUES (?, ?);";
+			connection = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
+			preparedstatement = connection.prepareStatement(sql);
 		
-		String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
-		String dbUser = "root";
-		String dbPass = "java0000";
-		String sql = "INSERT INTO `singer` (`singer_name`, `singer_age`) VALUES (?, ?);";
-		connection = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
-		preparedstatement = connection.prepareStatement(sql);
-		
-/*		preparedstatement.setInt(1, id);*/
-		preparedstatement.setString(1, singer.getSingerName());
-		preparedstatement.setInt(2, singer.getSingerAge());
+			preparedstatement.setString(1, singer.getSingerName());
+			preparedstatement.setInt(2, singer.getSingerAge());
+			preparedstatement.executeUpdate();
 	
 		}catch(ClassNotFoundException exception){
 			exception.printStackTrace();
@@ -190,10 +190,9 @@ public class SingerDao {
 				}
 			}
 		}
-		return isUpdate;
 	}
 
-	public ArrayList<Singer> selectSingerList() {
+	public ArrayList<Singer> selectSinger() {
 		
 		ArrayList<Singer> singerlist = new ArrayList<Singer>();
 		

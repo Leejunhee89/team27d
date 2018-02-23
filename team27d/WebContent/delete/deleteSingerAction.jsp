@@ -2,15 +2,9 @@
 <%@ page import="service.SingerDao" %>
 <%@ page import="service.Singer" %>
 <!DOCTYPE html>
-
 <%
-	request.setCharacterEncoding("euc-kr");
-
-	
-	int singerid = Integer.parseInt(request.getParameter("singerId"));
-	System.out.print(singerid);
+	int singerId = Integer.parseInt(request.getParameter("singerId"));
 	SingerDao singerdao = new SingerDao();
-	singerdao.deleteSinger(singerid);
-	
+	singerdao.deleteSinger(singerId);	
 	response.sendRedirect(request.getContextPath() + "/list/singerList.jsp");
 %>

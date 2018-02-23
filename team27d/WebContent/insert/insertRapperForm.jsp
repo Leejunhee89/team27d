@@ -9,7 +9,7 @@
 <%
 	request.setCharacterEncoding("euc-kr");
 %>
-	<h3>래퍼 등록</h3>
+	<h3>래퍼 등록화면</h3>
 		<hr>
 		<table border = "1">
 			<thead>
@@ -30,9 +30,7 @@
 						<td><input type = "text" name = "rapper_age"></td>
 					</tr>
 					<tr>
-						<td colspan = "2">
-							<input type = "submit" value = "등록버튼" >
-						</td>
+						<td colspan = "2"><input type = "submit" value = "등록버튼" ></td>
 					</tr>
 				</form>
 			</tbody>

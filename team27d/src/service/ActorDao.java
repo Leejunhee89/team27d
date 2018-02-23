@@ -101,7 +101,9 @@ public class ActorDao {
 	}
 		
 	public void insertActor(Actor actor)  {
-				
+		// 배우등록을 위한 메서드 실행 Actor(참조형)데이터 타입 변수를 사용하고 변수이름을 actor라고 지었다. 
+		// 실제 Actor 클래스에 필드값을 사용하게 된다. 
+		
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=utf8";
@@ -109,13 +111,16 @@ public class ActorDao {
 			String dbPass = "java0000";
 			conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			String sql = "insert into actor(actor_name, actor_age) values(?, ?)";
+			// insert 쿼리문을 작성하고 이름과 나이 값만 넣는다. 
 			
 			pstmt = conn.prepareStatement(sql);
 			/*pstmt.setInt(1, actor.getActorId());*/
 			pstmt.setString(1, actor.getActorName());
 			pstmt.setInt(2, actor.getActorAge());
-						
 			pstmt.executeUpdate();
+			
+			//쿼리문을 준비시키고, ? 에 해당하는 값을 셋팅해준다. 
+			// ? 에 해당되는값은 
 			pstmt.close();
 			conn.close();
 		} catch (ClassNotFoundException e) {

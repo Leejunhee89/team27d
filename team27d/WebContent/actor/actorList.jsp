@@ -15,6 +15,7 @@
 	<% 
 		ActorDao ado = new ActorDao();
 		ArrayList<Actor> list = ado.selectActor();
+			
 	%>
 		<a href= "<%= request.getContextPath() %>/index.jsp">홈</a> &nbsp;
 		<a href= "<%= request.getContextPath() %>/insert/insertActorForm.jsp">배우등록</a> <br><br>

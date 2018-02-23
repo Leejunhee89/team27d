@@ -1,5 +1,6 @@
 <!-- author -->
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page import = "service.Member" %>
 <!DOCTYPE html >
 
 <html>
@@ -10,8 +11,23 @@
 </head>
 <body>
 	<table border="1"> 
+	   <tr>
+			<%	 
+				Member member = (Member)session.getAttribute("loginMember");
+				if(member == null){
+			%>
+		   		<a href="<%= request.getContextPath() %>/login/loginForm.jsp"> 로그인 </a> &nbsp;
+		   	<%
+		   		}else {
+		   	%>	
+		   		<%= member.getMember_id()%>  님은 로그인 되었습니다.
+		   		<a href="<%= request.getContextPath() %>/login/logoutAction.jsp">  로그아웃</a>
+		   	<%
+		   		}
+		    %>
+	   </tr>
 	   <tr>   
-	      <td>팀명 : team27d  &nbsp; <a href="<%= request.getContextPath() %>/login/loginForm.jsp">actor list</a></td>  
+	      <td>팀명 : team27d </td>  
 	      <td>사진</td>
 	   </tr>
 	   <tr>

@@ -35,16 +35,16 @@
 	      <td><img  src="/team27d/image/kong.JPG" width="100" height="150"> </td>
 	   </tr>
 	</table>
-    
+           
 
 	<ul>
 	   <!-- request.getContextPath() -->
-	   <li><a href="<%= request.getContextPath() %>/list/actorList.jsp">actor list</a></li> 
-	   <li><a href="<%= request.getContextPath() %>/list/actressList.jsp">actress list</a></li> 
-	   <li><a href="<%= request.getContextPath() %>/list/announcerList.jsp">announcer list</a></li> 
-	   <li><a href="<%= request.getContextPath() %>/list/comedianList.jsp">comedian list</a></li>
-	   <li><a href="<%= request.getContextPath() %>/list/rapperList.jsp">rapper list</a></li>
-	   <li><a href="<%= request.getContextPath() %>/list/singerList.jsp">singer list</a></li>
+	   <li><a href="<%= request.getContextPath() %>/actor/actorList.jsp">actor list</a></li> 
+	   <li><a href="<%= request.getContextPath() %>/actress/actressList.jsp">actress list</a></li> 
+	   <li><a href="<%= request.getContextPath() %>/anaunseo/announcerList.jsp">announcer list</a></li> 
+	   <li><a href="<%= request.getContextPath() %>/comedian/comedianList.jsp">comedian list</a></li>
+	   <li><a href="<%= request.getContextPath() %>/rapper/rapperList.jsp">rapper list</a></li>
+	   <li><a href="<%= request.getContextPath() %>/singer/singerList.jsp">singer list</a></li>
 	</ul>   
 
 </body>

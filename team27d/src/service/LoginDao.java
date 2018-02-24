@@ -11,69 +11,9 @@ public class LoginDao {
 	PreparedStatement preparedStatement;
 	ResultSet resultSet;
 	
-	public Member getLoginSettingMember(String memberId) {
-		Member member = null;
-		
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
-			String id = "root";
-			String pw = "java0000";
-			connection = DriverManager.getConnection(url, id, pw);
-			preparedStatement = connection.prepareStatement("SELECT * FROM member WHERE member_id = ? ORDER BY member_no ASC");
-			preparedStatement.setString(1, memberId);
-			resultSet = preparedStatement.executeQuery();
-			if(resultSet.next()) {
-				member = new Member();
-				member.setMember_no(resultSet.getInt("member_no"));
-				member.setMember_id(resultSet.getString("member_id"));
-				member.setMember_pw(resultSet.getString("member_pw"));
-			}
-			
-		}catch(ClassNotFoundException exception) {
-			exception.printStackTrace();
-			System.out.println(exception.getMessage());
-			System.out.println("LoginDao.loginCheck() ClassNotFoundException");
-		}catch(SQLException exception) {
-			exception.printStackTrace();
-			System.out.println(exception.getMessage());
-			System.out.println("LoginDao.loginCheck() SQLException");
-		}finally {
-			if(resultSet != null) {
-				try {
-					resultSet.close();
-					resultSet = null;
-				}catch(SQLException exception) {
-					exception.printStackTrace();
-					System.out.println(exception.getMessage());
-					System.out.println("LoginDao.loginCheck() resultSet.close() 에외 발생");
-				}
-			}
-			if(preparedStatement != null) {
-				try {
-					preparedStatement.close();
-					preparedStatement = null;
-				}catch(SQLException exception) {
-					exception.printStackTrace();
-					System.out.println(exception.getMessage());
-					System.out.println("LoginDao.loginCheck() preparedStatement.close() 에외 발생");
-				}
-			}
-			if(connection != null) {
-				try {
-					connection.close();
-					connection = null;
-				}catch(SQLException exception) {
-					exception.printStackTrace();
-					System.out.println(exception.getMessage());
-					System.out.println("LoginDao.loginCheck() connection.close() 에외 발생");
-				}
-			}
-		}
-		return member;
-	}
-	
 	public int loginCheck(Member member) {
+		System.out.println("@@@@@ int LoginDao.loginCheck(Member member) @@@@@");
+		System.out.println("parameter member : " + member);
 		int result = 0;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -81,11 +21,9 @@ public class LoginDao {
 			String id = "root";
 			String pw = "java0000";
 			connection = DriverManager.getConnection(url, id, pw);
-			preparedStatement = connection.prepareStatement("SELECT * FROM member_id = ? WHERE ORDER BY member_id ASC");
+			preparedStatement = connection.prepareStatement("SELECT * FROM member WHERE member_id = ? ORDER BY member_no ASC");
 			preparedStatement.setString(1, member.getMember_id());
 			resultSet = preparedStatement.executeQuery();
-			
-			System.out.println("============check전============");
 			
 			if(resultSet.next()) {
 				System.out.println("아이디 일치");
@@ -104,11 +42,11 @@ public class LoginDao {
 		}catch(ClassNotFoundException exception) {
 			exception.printStackTrace();
 			System.out.println(exception.getMessage());
-			System.out.println("LoginDao.loginCheck() ClassNotFoundException");
+			System.out.println("LoginDao.loginCheck() / ClassNotFoundException");
 		}catch(SQLException exception) {
 			exception.printStackTrace();
 			System.out.println(exception.getMessage());
-			System.out.println("LoginDao.loginCheck() SQLException");
+			System.out.println("LoginDao.loginCheck() / SQLException");
 		}finally {
 			if(resultSet != null) {
 				try {
@@ -117,7 +55,7 @@ public class LoginDao {
 				}catch(SQLException exception) {
 					exception.printStackTrace();
 					System.out.println(exception.getMessage());
-					System.out.println("LoginDao.loginCheck() resultSet.close() 에외 발생");
+					System.out.println("LoginDao.loginCheck() / resultSet.close() 에외 발생");
 				}
 			}
 			if(preparedStatement != null) {
@@ -127,7 +65,7 @@ public class LoginDao {
 				}catch(SQLException exception) {
 					exception.printStackTrace();
 					System.out.println(exception.getMessage());
-					System.out.println("LoginDao.loginCheck() preparedStatement.close() 에외 발생");
+					System.out.println("LoginDao.loginCheck() / preparedStatement.close() 에외 발생");
 				}
 			}
 			if(connection != null) {
@@ -137,10 +75,12 @@ public class LoginDao {
 				}catch(SQLException exception) {
 					exception.printStackTrace();
 					System.out.println(exception.getMessage());
-					System.out.println("LoginDao.loginCheck() connection.close() 에외 발생");
+					System.out.println("LoginDao.loginCheck() / connection.close() 에외 발생");
 				}
 			}
 		}
+		System.out.println("return result : " + result);
+		System.out.println("@@@@@@@@@@");
 		return result;
 	}
 }

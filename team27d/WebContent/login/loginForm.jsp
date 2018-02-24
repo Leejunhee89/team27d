@@ -7,6 +7,9 @@
 	<title>Insert title here</title>
 </head>
 <body>
+	<%
+		System.out.println("=====loginForm.jsp=====");
+	%>
 	<form action = "<%= request.getContextPath() %>/login/loginAction.jsp" method = "post">
 		<table border = "1">
 			<tr>

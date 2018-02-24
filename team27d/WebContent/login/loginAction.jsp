@@ -2,21 +2,17 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ page import = "service.Member" %>
 <%@ page import = "service.LoginDao" %>
-<%@ page import = "java.util.HashMap" %>
 <!DOCTYPE html>
 <%
-	String memberId = request.getParameter("memberId");
-	String memberPw = request.getParameter("memberPw");
-	/* member.setMember_id(request.getParameter("memberId"));
-	member.setMember_pw(request.getParameter("memberPw")); */
-	/* System.out.println(member.getMember_id());
-	System.out.println(member.getMember_pw()); */
-
+	System.out.println("=====loginAction.jsp=====");
+	Member member = new Member();
+	member.setMember_id(request.getParameter("memberId"));
+	member.setMember_pw(request.getParameter("memberPw"));
+	System.out.println("memberId : " + member.getMember_id());
+	System.out.println("memberPw : " + member.getMember_pw());
+	
 	LoginDao loginDao = new LoginDao();
-	Member member = loginDao.getLoginSettingMember(memberId);
-	System.out.println(member);
 	int result = loginDao.loginCheck(member);
-	System.out.println("result : " + result);
 	
 	if(result == 1){
 		System.out.println("result : " + result + " /로그인 성공");
@@ -29,10 +25,7 @@
 		System.out.println("result : " + result + " /시스템 오류");
 	}
 	
-	System.out.println(session.getAttribute("loginMember"));
-	/*
-		session getting할때 이런식으로 받으면 된다.
-		Member member = (Member)session.getAttribute("loginMember");
-	*/
+	System.out.println("세션 맴버객체 확인 : " + session.getAttribute("loginMember"));
+
 	response.sendRedirect(request.getContextPath() + "/index.jsp");
 %>

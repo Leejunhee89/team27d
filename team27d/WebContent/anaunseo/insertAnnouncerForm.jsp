@@ -4,9 +4,12 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-		<title>Insert title here</title>
+		<title>insertAnnouncerForm.jsp</title>
 	</head>
 	<body>
+		<%
+			System.out.println("===== insertAnnouncerForm.jsp =====");
+		%>
 		<h3>아나운서 등록</h3>
 		<hr>
 		<form action = "<%= request.getContextPath() %>/anaunseo/insertAnnouncerAction.jsp" method = "post">

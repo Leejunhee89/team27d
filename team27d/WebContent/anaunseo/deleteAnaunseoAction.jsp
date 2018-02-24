@@ -3,12 +3,13 @@
 <%@ page import = "service.AnaunseoDao" %>
 <!DOCTYPE html>
 <%
-	String anaunseoId = request.getParameter("anaunseoId");
-	int anaId = Integer.parseInt(anaunseoId);
-	System.out.println("===========anaId : " + anaId);
+	System.out.println("=====deleteAnaunseoAction.jsp=====");
+
+	int aunaunseoId = Integer.parseInt(request.getParameter("anaunseoId"));
+	System.out.println("aunaunseoId : " + aunaunseoId);
 
 	AnaunseoDao anaunseoDao = new AnaunseoDao();
-	anaunseoDao.deleteAnaunseo(anaId);
+	anaunseoDao.deleteAnaunseo(aunaunseoId);
 	
 	response.sendRedirect(request.getContextPath() + "/anaunseo/announcerList.jsp");
 %>

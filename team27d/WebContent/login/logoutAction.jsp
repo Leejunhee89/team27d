@@ -4,8 +4,7 @@
 <!DOCTYPE html>
 <%
 	System.out.println("=====logoutAction.jsp=====");
-	Member member = (Member)session.getAttribute("loginMember");
-	
+	//로그아웃 시 세션을 닫아준다.
 	session.invalidate();
 
 	response.sendRedirect(request.getContextPath() + "/index.jsp");

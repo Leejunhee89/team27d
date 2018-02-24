@@ -2,31 +2,31 @@
 package service;
 
 public class Member {
-	private int member_no;
-	private String member_id;
-	private String member_pw;
+	private int memberNo;
+	private String memberId;
+	private String memberPw;
 	
-	public int getMember_no() {
-		return member_no;
+	public int getMemberNo() {
+		return memberNo;
 	}
-	public void setMember_no(int member_no) {
-		this.member_no = member_no;
+	public void setMemberNo(int memberNo) {
+		this.memberNo = memberNo;
 	}
-	public String getMember_id() {
-		return member_id;
+	public String getMemberId() {
+		return memberId;
 	}
-	public void setMember_id(String member_id) {
-		this.member_id = member_id;
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
 	}
-	public String getMember_pw() {
-		return member_pw;
+	public String getMemberPw() {
+		return memberPw;
 	}
-	public void setMember_pw(String member_pw) {
-		this.member_pw = member_pw;
+	public void setMemberPw(String memberPw) {
+		this.memberPw = memberPw;
 	}
 	
 	@Override
 	public String toString() {
-		return "Member [member_no=" + member_no + ", member_id=" + member_id + ", member_pw=" + member_pw + "]";
+		return "Member [memberNo=" + memberNo + ", memberId=" + memberId + ", memberPw=" + memberPw + "]";
 	}
 }

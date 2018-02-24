@@ -20,7 +20,7 @@
 		   	<%
 		   		}else {
 		   	%>	
-		   		<%= member.getMember_id()%>  님은 로그인 되었습니다.
+		   		<%= member.getMemberId() %>  님은 로그인 되었습니다.
 		   		<a href="<%= request.getContextPath() %>/login/logoutAction.jsp">  로그아웃</a>
 		   	<%
 		   		}

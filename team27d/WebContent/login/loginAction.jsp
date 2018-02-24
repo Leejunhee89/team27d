@@ -5,12 +5,17 @@
 <!DOCTYPE html>
 <%
 	System.out.println("=====loginAction.jsp=====");
+	/*
+		Member객체를 생성한 후 객체참조변수 member에 그 주소를 할당한다.
+		set메서드를 통해 loginform.jsp 화면에서 입력한 id, pw를
+		Member객체에 각각 세팅하여 loginDao.loginCheck() 메서드의 매개변수로 넣어준다.
+	*/
 	Member member = new Member();
-	member.setMember_id(request.getParameter("memberId"));
-	member.setMember_pw(request.getParameter("memberPw"));
-	System.out.println("memberId : " + member.getMember_id());
-	System.out.println("memberPw : " + member.getMember_pw());
-	
+	member.setMemberId(request.getParameter("memberId"));
+	member.setMemberPw(request.getParameter("memberPw"));
+	System.out.println("memberId : " + member.getMemberId());
+	System.out.println("memberPw : " + member.getMemberPw());
+
 	LoginDao loginDao = new LoginDao();
 	int result = loginDao.loginCheck(member);
 	

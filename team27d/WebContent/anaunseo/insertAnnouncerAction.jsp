@@ -8,12 +8,15 @@
 <!DOCTYPE html>
 <%
 	request.setCharacterEncoding("euc-kr");
-	String anaunseo_name = request.getParameter("anaunseo_name");
-	int anaunseo_age = Integer.parseInt(request.getParameter("anaunseo_age"));
+	System.out.println("===== insertAnnouncerAction.jsp =====");
+	
+	String anaunseoName = request.getParameter("anaunseo_name");
+	int anaunseoAge = Integer.parseInt(request.getParameter("anaunseo_age"));
 	
 	Anaunseo anaunseo = new Anaunseo();
-	anaunseo.setAnaunseoName(anaunseo_name);
-	anaunseo.setAnaunseoAge(anaunseo_age);
+	anaunseo.setAnaunseoName(anaunseoName);
+	anaunseo.setAnaunseoAge(anaunseoAge);
+	System.out.println("setted anaunseo : " + anaunseo);
 	
 	AnaunseoDao anaunseoDao = new AnaunseoDao();
 	anaunseoDao.insertAnaunseo(anaunseo);

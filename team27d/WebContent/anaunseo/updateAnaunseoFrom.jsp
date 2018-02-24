@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-		<title>Insert title here</title>
+		<title>updateAnaunseoFrom.jsp</title>
 	</head>
 	<body>
 		<table border = "1">
@@ -18,8 +18,11 @@
 			</thead>
 			<%
 				request.setCharacterEncoding("euc-kr");
-				String strId = request.getParameter("anaunseoId");
-				int anaunseoId = Integer.parseInt(strId);
+				System.out.println("===== updateAnaunseoFrom.jsp =====");
+				
+				int anaunseoId = Integer.parseInt(request.getParameter("anaunseoId"));
+				System.out.println("anaunseoId : " + anaunseoId);
+				
 				AnaunseoDao anaunseoDao = new AnaunseoDao();
 				Anaunseo anaunseo = anaunseoDao.updateAnaunseoOne(anaunseoId);
 			%>

@@ -10,7 +10,7 @@
 		request.setCharacterEncoding("euc-kr");
 	%>
 	<h3>래퍼 등록화면</h3>
-		<hr>
+	<form action = "<%= request.getContextPath() %>/rapper/insertRapperAction.jsp" method = "post">
 		<table border = "1">
 			<thead>
 				<tr>
@@ -18,8 +18,7 @@
 					<th>입력란</th>
 				</tr>	
 			</thead>
-			<tbody>
-				<form action = "<%= request.getContextPath() %>/rapper/insertRapperAction.jsp" method = "post">
+			<tbody>				
 					<tr>
 						<tr>
 						<td>이름</td>
@@ -32,8 +31,9 @@
 					<tr>
 						<td colspan = "2"><input type = "submit" value = "등록버튼" ></td>
 					</tr>
-				</form>
+				
 			</tbody>
 		</table>
+	</form>
 </body>
 </html>

@@ -18,17 +18,22 @@ public class ComedianDao {
 	ResultSet resultSet = null;
 	Comedian comedian = null;
 	
-	public Comedian updateComedianOne(Comedian comedian) {
+	/*updateComedianForm.jsp에서 사용하기 위한 updateComedianOne(int id)메서드 선언. <-다른 메서드와 다르게 매개변수를 Comedian데이터 타입으로 받지 않은 이유는 이 메서드에서는 int형 하나의 매개변수를 받는 것이 updateComedianForm에서 코드작성이 더 간단하기 때문이다.
+	 *리턴은 Comedian클래스 데이터 타입으로 받는다.
+	 *드라이버 로딩, 데이터베이스 연결, select쿼리준비, 쿼리실행 후 resultSet.next()메서드가 '참'이면 ResultSet객체 내에서 데이터를 가져와 Comedian클래스에 세팅한다.
+	 *사용한 객체 ResultSet, Statement, Connection을 종료한 후 comedian을 리턴한다.
+	 */
+	public Comedian updateComedianOne(int id) {
 		comedian = new Comedian();
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			String jdbcDriver = "jdbc:mysql://localhost:3306/jjdev?useUnicode=true&characterEncoding=euckr";
 			String dbUser = "root";
 			String dbPass = "java0000";
-			String sql = "SELECT * FROM comedian WHERE comedian_id=? ORDER BY comedian_id ASC";
+			String sql = "SELECT * FROM comedian WHERE comedian_id=?";
 			connection = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			statement = connection.prepareStatement(sql);
-			statement.setInt(1, comedian.getComedianId());
+			statement.setInt(1, id);
 			resultSet = statement.executeQuery();
 			if(resultSet.next()) {
 				comedian.setComedianId(resultSet.getInt("comedian_id"));
@@ -85,7 +90,11 @@ public class ComedianDao {
 		}
 	}
 
-
+	/*deleteComedianAction.jsp에서 사용하기 위한 deleteComedian(Comedian comedian)메서드 선언.
+	 *리턴은 받지 않는다.
+	 *드라이버 로딩, 데이터베이스 연결, insert쿼리준비, 쿼리실행 후,
+	 *사용한 객체 Statement, Connection을 종료한다.
+	 */
 	public void deleteComedian(Comedian comedian) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");

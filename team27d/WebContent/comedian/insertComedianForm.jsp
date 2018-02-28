@@ -9,7 +9,7 @@
 	</head>
 	<body>
 		<h3>코메디언 등록</h3>
-		<form action="<%=request.getContextPath() %>/insert/insertComedianAction.jsp" method="post">
+		<form action="<%=request.getContextPath() %>/comedian/insertComedianAction.jsp" method="post">
 			<hr>
 			<table border="1">
 				<thead>

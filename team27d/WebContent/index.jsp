@@ -58,7 +58,7 @@
 	   <!-- request.getContextPath() -->
 	   <li><a href="<%= request.getContextPath() %>/actor/actorList.jsp">actor list</a></li> 
 	   <li><a href="<%= request.getContextPath() %>/actress/actressList.jsp">actress list</a></li> 
-	   <li><a href="<%= request.getContextPath() %>/anaunseo/announcerList.jsp">announcer list</a></li> 
+	   <li><a href="<%= request.getContextPath() %>/anaunseo/anaunseoList.jsp">announcer list</a></li> 
 	   <li><a href="<%= request.getContextPath() %>/comedian/comedianList.jsp">comedian list</a></li>
 	   <li><a href="<%= request.getContextPath() %>/rapper/rapperList.jsp">rapper list</a></li>
 	   <li><a href="<%= request.getContextPath() %>/singer/singerList.jsp">singer list</a></li>

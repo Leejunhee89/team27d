@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <%
 	request.setCharacterEncoding("euc-kr");
-	System.out.println("===== insertAnnouncerAction.jsp =====");
+	System.out.println("===== insertAnaunseoAction.jsp =====");
 	
 	String anaunseoName = request.getParameter("anaunseo_name");
 	int anaunseoAge = Integer.parseInt(request.getParameter("anaunseo_age"));
@@ -21,5 +21,5 @@
 	AnaunseoDao anaunseoDao = new AnaunseoDao();
 	anaunseoDao.insertAnaunseo(anaunseo);
 		
-	response.sendRedirect(request.getContextPath() + "/anaunseo/announcerList.jsp");
+	response.sendRedirect(request.getContextPath() + "/anaunseo/anaunseoList.jsp");
 %>

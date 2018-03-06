@@ -40,7 +40,7 @@
 		%>
 		<h3>아나운서 등록</h3>
 		<hr>
-		<form id = "insertForm" method = "post" action = "<%= request.getContextPath() %>/anaunseo/insertAnnouncerAction.jsp" enctype = "application/x-www-form-urlencoded">
+		<form id = "insertForm" method = "post" action = "<%= request.getContextPath() %>/anaunseo/insertAnaunseoAction.jsp" enctype = "application/x-www-form-urlencoded">
 			<table border = "1">
 				<thead>
 					<tr>

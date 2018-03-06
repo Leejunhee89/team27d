@@ -36,7 +36,7 @@
 	      <td><img src="/team27d/image/niche.jpg" width="100" height="150"> </td>
 	   </tr>
 	   <tr>
-	      <td>팀원 :이춘림 역할: announcer CRUD</td>
+	      <td>팀원 :이춘림 역할: login, anaunseo CRUD</td>
 	      <td><img  src="/team27d/image/tam.jpg" width="100" height="150"> </td>
 	   </tr>
 	   <tr>
